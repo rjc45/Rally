@@ -6,4 +6,5 @@ How to Run:
 3. expo start
 
 WORKFLOW
+
 individual branch --> devo --> master
