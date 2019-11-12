@@ -29,6 +29,4 @@ make sure to pull from master early and often
 1. git checkout -b origin
 2. git pull
 
-if master and your branch have conflicts (i.e) master is ahead of branch
-1. git checkout "your branch name"
-2. git rebase master
+if branch is behind master, check for any errors but if not just don't do anything lul
