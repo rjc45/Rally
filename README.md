@@ -8,9 +8,9 @@ How to Run:
 WORKFLOW
 
 delete your personal and remote branches
-1. git branch -a        command lists all of the branches
-2. git branch -d "your branch name"    deletes local branches
-3. git push origin --delete "your remote branch name"    deletes remote branches
+1. list all of the branches - git branch -a        
+2. delete local branches - git branch -d "your branch name"
+3. delete remote branches - git push origin --delete "your remote branch name"
 
 create a new branch that branches off of origin/master
 1. git checkout -b "your branch name" origin
