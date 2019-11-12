@@ -26,7 +26,7 @@ opening pull requests
 4. if no merge conflicts, merge with master through github
 
 make sure to pull from master early and often
-1. git checkout -b origin
+1. git checkout origin
 2. git pull
 
 if branch is behind master, check for any errors but if not just don't do anything lul
