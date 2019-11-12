@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import map from './map.png';
+import map from './assets/map.png';
 
 export default function App() {
   return (
