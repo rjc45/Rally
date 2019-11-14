@@ -1,18 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
-import map from '../assets/map.png';
-import logo from '../assets/logo.png';
+import { Images } from '../Themes';
 
-export default class FilterFriends extends React.Component {
+export default class FilterEvents extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={logo}/>),
+    headerTitle: (<Image source={Images.logo}/>),
   };
 
   render() {
     return (
       <View style={styles.container}>
-          <ImageBackground source={map} style={{width: '100%', height: '100%'}}>
+          <ImageBackground source={Images.map} style={{width: '100%', height: '100%'}}>
           </ImageBackground>
       </View>
     );
