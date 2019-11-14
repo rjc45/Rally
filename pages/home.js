@@ -16,6 +16,7 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
           <ImageBackground source={map} style={{width: '100%', height: '100%'}}>
+            
             <View style={styles.filters}>
               
               <TouchableHighlight
@@ -25,6 +26,12 @@ export default class Home extends React.Component {
               </TouchableHighlight> 
 
               <TouchableHighlight
+                onPress={() => this.props.navigation.navigate('FilterRallies')}
+              >
+                <Image source={filterRallies}/>
+              </TouchableHighlight> 
+
+              <TouchableHighlight //PLACEHOLDER, NEED NEW ICON
                 onPress={() => this.props.navigation.navigate('FilterRallies')}
               >
                 <Image source={filterRallies}/>
@@ -45,6 +52,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   filters: {
-    flex: 1
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingTop: 700,
   },
 });
