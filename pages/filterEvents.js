@@ -7,7 +7,7 @@ export default class FilterEvents extends React.Component {
 
   static navigationOptions = {
     headerTitle: (<Image source={logo}/>),
-   };
+  };
 
   render() {
     return (
