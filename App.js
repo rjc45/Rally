@@ -1,22 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import map from './assets/map.png';
+import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import * as pages from './pages';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-        <ImageBackground source={map} style={{width: '100%', height: '100%'}}>
-          
-        </ImageBackground>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const StackNav = createStackNavigator({
+  Home: {screen: pages.Home},
+  Buttons: {screen: pages.Buttons},
+},{
+  initialRouteName: 'Home',
+  // mode: 'modal',
 });
+
+const MyApp = createAppContainer(StackNav);
+export default MyApp;
