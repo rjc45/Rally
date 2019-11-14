@@ -1,41 +1,40 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
-import map from '../assets/map.png';
-import logo from '../assets/logo.png';
-import filterEvents from '../assets/filter-events.png';
-import filterRallies from '../assets/filter-rallies.png';
-import filterFriends from '../assets/filter-friends.png';
+import { Images } from '../Themes';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class Home extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={logo}/>),
+    headerTitle: (<Image source={Images.logo}/>),
   };
 
   render() {
     return (
       <View style={styles.container}>
-          <ImageBackground source={map} style={{width: '100%', height: '100%'}}>
-            
+          <ImageBackground source={Images.map} style={{width: '100%', height: '100%'}}>
+            <View style={styles.map}>
+              
+            </View>
+
             <View style={styles.filters}>
               
               <TouchableHighlight
                 onPress={() => this.props.navigation.navigate('FilterEvents')}
               >
-                <Image source={filterEvents}/>
+                <Image source={Images.filterEvents}/>
               </TouchableHighlight> 
 
               <TouchableHighlight
                 onPress={() => this.props.navigation.navigate('FilterRallies')}
               >
-                <Image source={filterRallies}/>
+                <Image source={Images.filterRallies}/>
               </TouchableHighlight> 
 
               <TouchableHighlight
                 onPress={() => this.props.navigation.navigate('FilterFriends')}
               >
-                <Image source={filterFriends}/>
+                <Image source={Images.filterFriends}/>
               </TouchableHighlight> 
 
             </View>
