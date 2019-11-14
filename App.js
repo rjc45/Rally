@@ -8,6 +8,7 @@ const StackNav = createStackNavigator({
   Home: {screen: pages.Home},
   FilterEvents: {screen: pages.FilterEvents},
   FilterRallies: {screen: pages.FilterRallies},
+  FilterFriends: {screen: pages.FilterFriends},
 },{
   initialRouteName: 'Home',
   // mode: 'modal',
