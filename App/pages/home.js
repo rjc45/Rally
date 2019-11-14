@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
 import { Images } from '../Themes';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import metrics from '../Themes/Metrics';
 
 export default class Home extends React.Component {
 
@@ -55,6 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop: 700,
+    paddingTop: metrics.screenHeight - 200,
   },
 });
