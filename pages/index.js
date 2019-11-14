@@ -1,7 +1,9 @@
 import Home from './home';
-import Buttons from './events/buttons';
+import FilterEvents from './filterEvents';
+import FilterRallies from './filterRallies';
 
 export {
   Home,
-  Buttons,
+  FilterEvents,
+  FilterRallies,
 }

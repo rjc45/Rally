@@ -6,7 +6,8 @@ import * as pages from './pages';
 
 const StackNav = createStackNavigator({
   Home: {screen: pages.Home},
-  Buttons: {screen: pages.Buttons},
+  FilterEvents: {screen: pages.FilterEvents},
+  FilterRallies: {screen: pages.FilterRallies},
 },{
   initialRouteName: 'Home',
   // mode: 'modal',
