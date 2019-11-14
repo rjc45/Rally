@@ -28,5 +28,6 @@ opening pull requests
 make sure to pull from master early and often
 1. git checkout origin
 2. git pull
+3. npm install
 
 if branch is behind master, check for any errors but if not just don't do anything lul
