@@ -4,6 +4,7 @@ import map from '../assets/map.png';
 import logo from '../assets/logo.png';
 import filterEvents from '../assets/filter-events.png';
 import filterRallies from '../assets/filter-rallies.png';
+import filterFriends from '../assets/filter-friends.png';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class Home extends React.Component {
@@ -31,10 +32,10 @@ export default class Home extends React.Component {
                 <Image source={filterRallies}/>
               </TouchableHighlight> 
 
-              <TouchableHighlight //PLACEHOLDER, NEED NEW ICON
-                onPress={() => this.props.navigation.navigate('FilterRallies')}
+              <TouchableHighlight
+                onPress={() => this.props.navigation.navigate('FilterFriends')}
               >
-                <Image source={filterRallies}/>
+                <Image source={filterFriends}/>
               </TouchableHighlight> 
 
             </View>
