@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { Images } from '../Themes';
+import metrics from '../Themes/Metrics';
+import MapView from 'react-native-maps';
 
 export default class FilterEvents extends React.Component {
 
@@ -11,9 +13,7 @@ export default class FilterEvents extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <ImageBackground source={Images.map} style={{width: '100%', height: '100%'}}>
-            <Text> garby </Text>
-          </ImageBackground>
+        <MapView style={styles.mapStyle} />
       </View>
     );
   }
@@ -25,5 +25,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  mapStyle: {
+    width: metrics.screenWidth,
+    height: metrics.screenHeight,
   },
 });
