@@ -12,6 +12,7 @@ export default class FilterEvents extends React.Component {
     return (
       <View style={styles.container}>
           <ImageBackground source={Images.map} style={{width: '100%', height: '100%'}}>
+            <Text> lmao </Text>
           </ImageBackground>
       </View>
     );

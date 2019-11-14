@@ -4,22 +4,14 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import * as pages from './App/pages';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>RALLY WOO!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const StackNav = createStackNavigator({
+    Home: {screen: pages.Home},
+    FilterEvents: {screen: pages.FilterEvents},
+    FilterRallies: {screen: pages.FilterRallies},
+    FilterFriends: {screen: pages.FilterFriends},
+  },{
+    initialRouteName: 'Home',
+  });
 
 const MyApp = createAppContainer(StackNav);
 export default MyApp;
