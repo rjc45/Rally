@@ -1,5 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import * as pages from './App/pages';
 
 export default function App() {
   return (
@@ -17,3 +20,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const MyApp = createAppContainer(StackNav);
+export default MyApp;
