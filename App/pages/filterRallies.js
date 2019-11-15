@@ -13,7 +13,14 @@ export default class FilterRallies extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <MapView style={styles.mapStyle} />
+          <MapView 
+          initialRegion={{
+            latitude: 37.4274,
+            longitude: -122.1697,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          style={styles.mapStyle} />
       </View>
     );
   }
