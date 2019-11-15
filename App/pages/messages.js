@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Images } from '../Themes';
-import metrics from '../Themes/Metrics';
+import { Images, Metrics } from '../Themes';
 
 export default class Messages extends React.Component {
 

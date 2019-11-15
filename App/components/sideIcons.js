@@ -4,9 +4,6 @@ import { TouchableHighlight } from 'react-native-gesture-handler'
 import { Images, Metrics } from '../Themes';
 
 export default class SideIcons extends Component {
-  static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
-  };
 
   render () {
     return (
@@ -27,12 +24,11 @@ export default class SideIcons extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   sideIcons: {
     position: 'absolute',
     alignSelf: 'flex-end',
-    top:'5%',
+    top:'6%',
     paddingRight: 10,
   },
 });

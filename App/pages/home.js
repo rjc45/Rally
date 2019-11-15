@@ -8,7 +8,7 @@ import { SideIcons } from '../components';
 export default class Home extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
+    header: null,
   };
 
   render() {
@@ -23,6 +23,10 @@ export default class Home extends React.Component {
           }}
           style={styles.mapStyle}
         />
+
+        <View style={styles.rallyLogo}>
+          <Image source={Images.logo} />
+        </View>
 
         <SideIcons navigation={this.props.navigation}/>
 
@@ -63,6 +67,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
+  },
+  rallyLogo: {
+    position: 'absolute',
+    top: '5%',
   },
   filters: {
     position: 'absolute',
