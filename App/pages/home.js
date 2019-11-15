@@ -22,29 +22,28 @@ export default class Home extends React.Component {
             longitudeDelta: 0.0421,
           }}
           style={styles.mapStyle}
-        > 
-        </MapView>
+        /> 
         <View style={styles.filters}>
 
-<TouchableHighlight
-  onPress={() => this.props.navigation.navigate('FilterEvents')}
->
-  <Image source={Images.filterEvents}/>
-</TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('FilterEvents')}
+          >
+            <Image source={Images.filterEvents}/>
+          </TouchableHighlight>
 
-<TouchableHighlight
-  onPress={() => this.props.navigation.navigate('FilterRallies')}
->
-  <Image source={Images.filterRallies}/>
-</TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('FilterRallies')}
+          >
+            <Image source={Images.filterRallies}/>
+          </TouchableHighlight>
 
-<TouchableHighlight
-  onPress={() => this.props.navigation.navigate('FilterFriends')}
->
-  <Image source={Images.filterFriends}/>
-</TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('FilterFriends')}
+          >
+            <Image source={Images.filterFriends}/>
+          </TouchableHighlight>
 
-</View>
+        </View>
       </View>
     );
   }
