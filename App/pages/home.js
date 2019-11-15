@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import MapView from 'react-native-maps';
-import { Images } from '../Themes';
+import { Images, Metrics } from '../Themes';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import metrics from '../Themes/Metrics';
+import { SideIcons } from '../components';
 
 export default class Home extends React.Component {
 
@@ -24,19 +24,7 @@ export default class Home extends React.Component {
           style={styles.mapStyle}
         />
 
-        <View style={styles.sideIcons}> 
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('Messages')}
-          >
-            <Image source={Images.messages}/>
-          </TouchableHighlight>
-
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('Profile')}
-          >
-            <Image source={Images.profile}/>
-          </TouchableHighlight>
-        </View>
+        <SideIcons navigation={this.props.navigation}/>
 
         <View style={styles.filters}>
 
@@ -73,14 +61,8 @@ const styles = StyleSheet.create({
   },
   mapStyle: {
     flex: 1,
-    width: metrics.screenWidth,
-    height: metrics.screenHeight,
-  },
-  sideIcons: {
-    position: 'absolute',
-    alignSelf: 'flex-end',
-    top:'5%',
-    paddingRight: 10,
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight,
   },
   filters: {
     position: 'absolute',
