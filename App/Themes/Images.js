@@ -8,7 +8,9 @@ const images = {
   filterRallies: require('../Images/filter-rallies.png'),
   logo: require('../Images/logo.png'),
   male: require('../Images/male.png'),
-  map: require('../Images/map.png')
+  messages: require('../Images/messages.png'),
+  profile: require('../Images/profile.png'),
+  yourImage: require('../Images/yourImage.png'),
 }
 
 export default images
