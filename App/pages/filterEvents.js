@@ -32,23 +32,28 @@ export default class FilterEvents extends React.Component {
 
         <Marker
             coordinate={{
+              latitude: 37.427799,
+              longitude: -122.171198,
+            }}
+            title="Event 2">
+            <Image source = {Images.event2}/>
+        </Marker>
+        <Marker
+            coordinate={{
               latitude: 37.4274,
               longitude: -122.1697,
             }}
-            title="HELP ME">
+            title="Event 1">
+            <Image source = {Images.event1}/>
         </Marker>
-
-        {this.state.coordinates.map(marker => (
-          <Marker
-          key={marker.name}
-          coordinate={
-            {latitude: marker.latitude,
-            longitude: marker.longitude}}
-          title={marker.name}
-          >
-          </Marker>
-        ))
-      }
+        <Marker
+            coordinate={{
+              latitude: 37.425682,
+              longitude: -122.167445,
+            }}
+            title="Event 3">
+            <Image source = {Images.event3}/>
+        </Marker>
         </MapView>
       </View>
     );
