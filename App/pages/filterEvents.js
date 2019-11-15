@@ -4,6 +4,7 @@ import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { RallyLogo, SideIcons, BackButton } from '../components';
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default class FilterEvents extends React.Component {
 
@@ -41,9 +42,9 @@ export default class FilterEvents extends React.Component {
               }}
               title="Event 2">
 
-              <TouchableHighlight onPress= {this._onPressButton}>
+              <TouchableOpacity onPress= {this._onPressButton}>
                 <Image source = {Images.event2}/>
-              </TouchableHighlight>
+              </TouchableOpacity>
           </Marker>
 
           <Marker
