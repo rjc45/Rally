@@ -1,19 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Image} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Images } from '../Themes';
 import metrics from '../Themes/Metrics';
-import MapView from 'react-native-maps';
 
-export default class FilterFriends extends React.Component {
+export default class Messages extends React.Component {
 
   static navigationOptions = {
     headerTitle: (<Image source={Images.logo}/>),
-  };
+   };
 
   render() {
     return (
       <View style={styles.container}>
-          <MapView style={styles.mapStyle} />
+        <Text> messages screen to do</Text>
       </View>
     );
   }
@@ -25,9 +24,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  mapStyle: {
-    width: metrics.screenWidth,
-    height: metrics.screenHeight,
   },
 });

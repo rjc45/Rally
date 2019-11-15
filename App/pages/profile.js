@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Images } from '../Themes';
 import metrics from '../Themes/Metrics';
-import MapView from 'react-native-maps';
 
-export default class FilterRallies extends React.Component {
+export default class Profile extends React.Component {
 
   static navigationOptions = {
     headerTitle: (<Image source={Images.logo}/>),
@@ -13,14 +12,7 @@ export default class FilterRallies extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <MapView 
-          initialRegion={{
-            latitude: 37.4274,
-            longitude: -122.1697,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          style={styles.mapStyle} />
+          <Image source={Images.yourImage} />
       </View>
     );
   }

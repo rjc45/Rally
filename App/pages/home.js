@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import MapView from 'react-native-maps';
 import { Images } from '../Themes';
 import { TouchableHighlight } from 'react-native-gesture-handler';
@@ -22,7 +22,22 @@ export default class Home extends React.Component {
             longitudeDelta: 0.0421,
           }}
           style={styles.mapStyle}
-        /> 
+        />
+
+        <View style={styles.sideIcons}> 
+          <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('Messages')}
+          >
+            <Image source={Images.messages}/>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('Profile')}
+          >
+            <Image source={Images.profile}/>
+          </TouchableHighlight>
+        </View>
+
         <View style={styles.filters}>
 
           <TouchableHighlight
@@ -60,6 +75,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: metrics.screenWidth,
     height: metrics.screenHeight,
+  },
+  sideIcons: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    top:'5%',
+    paddingRight: 10,
   },
   filters: {
     position: 'absolute',

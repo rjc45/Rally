@@ -5,10 +5,12 @@ import { createAppContainer } from 'react-navigation';
 import * as pages from './App/pages';
 
 const StackNav = createStackNavigator({
-   Home: {screen: pages.Home},
-   FilterEvents: {screen: pages.FilterEvents},
-   FilterRallies: {screen: pages.FilterRallies},
-   FilterFriends: {screen: pages.FilterFriends},
+  Home: {screen: pages.Home},
+  FilterEvents: {screen: pages.FilterEvents},
+  FilterRallies: {screen: pages.FilterRallies},
+  FilterFriends: {screen: pages.FilterFriends},
+  Messages: {screen: pages.Messages},
+  Profile: {screen: pages.Profile},
 },{
    initialRouteName: 'Home',
 });
