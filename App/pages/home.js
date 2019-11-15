@@ -15,28 +15,28 @@ export default class Home extends React.Component {
       <View style={styles.container}>
           <ImageBackground source={Images.map} style={{width: '100%', height: '100%'}}>
             <View style={styles.map}>
-              
+
             </View>
 
             <View style={styles.filters}>
-              
+
               <TouchableHighlight
                 onPress={() => this.props.navigation.navigate('FilterEvents')}
               >
                 <Image source={Images.filterEvents}/>
-              </TouchableHighlight> 
+              </TouchableHighlight>
 
               <TouchableHighlight
                 onPress={() => this.props.navigation.navigate('FilterRallies')}
               >
                 <Image source={Images.filterRallies}/>
-              </TouchableHighlight> 
+              </TouchableHighlight>
 
               <TouchableHighlight
                 onPress={() => this.props.navigation.navigate('FilterFriends')}
               >
                 <Image source={Images.filterFriends}/>
-              </TouchableHighlight> 
+              </TouchableHighlight>
 
             </View>
           </ImageBackground>
