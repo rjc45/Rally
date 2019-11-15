@@ -1,15 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Image, Alert} from 'react-native';
-import { Images } from '../Themes';
-import metrics from '../Themes/Metrics';
+import { StyleSheet, View, Image, Alert } from 'react-native';
+import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { RallyLogo, SideIcons, BackButton } from '../components';
 
 export default class FilterEvents extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
+    header: null,
   };
 
   state = {
@@ -26,7 +25,7 @@ export default class FilterEvents extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <MapView
+        <MapView
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
@@ -66,6 +65,10 @@ export default class FilterEvents extends React.Component {
           </Marker>
 
         </MapView>
+
+        <RallyLogo navigation={this.props.navigation} />
+        <SideIcons navigation={this.props.navigation} />
+        <BackButton navigation={this.props.navigation} />
       </View>
     );
   }
@@ -79,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mapStyle: {
-    width: metrics.screenWidth,
-    height: metrics.screenHeight,
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight,
   },
 });

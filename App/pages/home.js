@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import { SideIcons } from '../components';
 
 export default class Home extends React.Component {
@@ -32,23 +31,23 @@ export default class Home extends React.Component {
 
         <View style={styles.filters}>
 
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterEvents')}
           >
             <Image source={Images.filterEvents}/>
-          </TouchableHighlight>
+          </TouchableOpacity>
 
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterRallies')}
           >
             <Image source={Images.filterRallies}/>
-          </TouchableHighlight>
+          </TouchableOpacity>
 
-          <TouchableHighlight
+          <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterFriends')}
           >
             <Image source={Images.filterFriends}/>
-          </TouchableHighlight>
+          </TouchableOpacity>
 
         </View>
       </View>
