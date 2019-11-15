@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Image} from 'react-native';
-import { Images } from '../Themes';
-import metrics from '../Themes/Metrics';
+import { StyleSheet, View, Image } from 'react-native';
+import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
+import { RallyLogo, SideIcons, BackButton } from '../components';
 
 export default class FilterEvents extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
+    header: null,
   };
 
   state = {
@@ -21,40 +21,47 @@ export default class FilterEvents extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <MapView
+        <MapView
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-        style={styles.mapStyle} >
-
-        <Marker
+          style={styles.mapStyle} 
+        >
+          <Marker
             coordinate={{
               latitude: 37.427799,
               longitude: -122.171198,
             }}
-            title="Event 2">
+            title="Event 2"
+          >
             <Image source = {Images.event2}/>
-        </Marker>
-        <Marker
+          </Marker>
+          <Marker
             coordinate={{
               latitude: 37.4274,
               longitude: -122.1697,
             }}
-            title="Event 1">
+            title="Event 1"
+          >
             <Image source = {Images.event1}/>
-        </Marker>
-        <Marker
+          </Marker>
+          <Marker
             coordinate={{
               latitude: 37.425682,
               longitude: -122.167445,
             }}
-            title="Event 3">
+            title="Event 3"
+          >
             <Image source = {Images.event3}/>
-        </Marker>
+          </Marker>
         </MapView>
+
+        <RallyLogo navigation={this.props.navigation} />
+        <SideIcons navigation={this.props.navigation} />
+        <BackButton navigation={this.props.navigation} />
       </View>
     );
   }
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mapStyle: {
-    width: metrics.screenWidth,
-    height: metrics.screenHeight,
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight,
   },
 });

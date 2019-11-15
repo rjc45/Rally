@@ -1,19 +1,23 @@
 import React from 'react';
 import { StyleSheet, View, Image} from 'react-native';
-import { Images } from '../Themes';
-import metrics from '../Themes/Metrics';
+import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
+import { RallyLogo, BackButton, SideIcons } from '../components';
 
 export default class FilterFriends extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
+    header: null,
   };
 
   render() {
     return (
       <View style={styles.container}>
           <MapView style={styles.mapStyle} />
+          
+          <RallyLogo navigation={this.props.navigation} />
+          <SideIcons navigation={this.props.navigation} />
+          <BackButton navigation={this.props.navigation} />
       </View>
     );
   }
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mapStyle: {
-    width: metrics.screenWidth,
-    height: metrics.screenHeight,
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight,
   },
 });
