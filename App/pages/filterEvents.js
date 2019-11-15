@@ -34,8 +34,6 @@ export default class FilterEvents extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <MapView
       <ParallaxScrollView
         contentBackgroundColor="pink"
         parallaxHeaderHeight={550}

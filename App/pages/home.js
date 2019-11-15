@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   filters: {
     position: 'absolute',
-    top: '85%',
+    top: '90%',
     flexDirection: 'row',
   },
 });
