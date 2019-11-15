@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { Images } from '../Themes';
 import metrics from '../Themes/Metrics';
 import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 
 export default class FilterEvents extends React.Component {
 
@@ -13,14 +14,22 @@ export default class FilterEvents extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <MapView 
+          <MapView
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-        style={styles.mapStyle} />
+        style={styles.mapStyle} >
+
+        <MapView.Marker
+            coordinate={{
+              latitude: 37.4274,
+              longitude: -122.1697,
+            }}
+         />
+         </MapView>
       </View>
     );
   }
