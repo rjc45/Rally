@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Image} from 'react-native';
+import { StyleSheet, View, Image, Alert} from 'react-native';
 import { Images } from '../Themes';
 import metrics from '../Themes/Metrics';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class FilterEvents extends React.Component {
 
@@ -18,6 +19,10 @@ export default class FilterEvents extends React.Component {
     ]
   }
 
+  _onPressButton() {
+    Alert.alert("You tapped the button!")
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -25,35 +30,41 @@ export default class FilterEvents extends React.Component {
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.0222,
+            longitudeDelta: 0.0001,
           }}
         style={styles.mapStyle} >
 
-        <Marker
-            coordinate={{
-              latitude: 37.427799,
-              longitude: -122.171198,
-            }}
-            title="Event 2">
-            <Image source = {Images.event2}/>
-        </Marker>
-        <Marker
-            coordinate={{
-              latitude: 37.4274,
-              longitude: -122.1697,
-            }}
-            title="Event 1">
-            <Image source = {Images.event1}/>
-        </Marker>
-        <Marker
-            coordinate={{
-              latitude: 37.425682,
-              longitude: -122.167445,
-            }}
-            title="Event 3">
-            <Image source = {Images.event3}/>
-        </Marker>
+          <Marker
+              coordinate={{
+                latitude: 37.427799,
+                longitude: -122.171198,
+              }}
+              title="Event 2">
+
+              <TouchableHighlight onPress= {this._onPressButton}>
+                <Image source = {Images.event2}/>
+              </TouchableHighlight>
+          </Marker>
+
+          <Marker
+              coordinate={{
+                latitude: 37.4274,
+                longitude: -122.1697,
+              }}
+              title="Event 1">
+              <Image source = {Images.event1}/>
+          </Marker>
+
+          <Marker
+              coordinate={{
+                latitude: 37.425682,
+                longitude: -122.167445,
+              }}
+              title="Event 3">
+              <Image source = {Images.event3}/>
+          </Marker>
+
         </MapView>
       </View>
     );
