@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, Button } from 'react-native';
+import MapView from 'react-native-maps';
 import { Images } from '../Themes';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import metrics from '../Themes/Metrics';
@@ -13,33 +14,37 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <ImageBackground source={Images.map} style={{width: '100%', height: '100%'}}>
-            <View style={styles.map}>
+        <MapView 
+          initialRegion={{
+            latitude: 37.4274,
+            longitude: -122.1697,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          style={styles.mapStyle}
+        > 
+        </MapView>
+        <View style={styles.filters}>
 
-            </View>
+<TouchableHighlight
+  onPress={() => this.props.navigation.navigate('FilterEvents')}
+>
+  <Image source={Images.filterEvents}/>
+</TouchableHighlight>
 
-            <View style={styles.filters}>
+<TouchableHighlight
+  onPress={() => this.props.navigation.navigate('FilterRallies')}
+>
+  <Image source={Images.filterRallies}/>
+</TouchableHighlight>
 
-              <TouchableHighlight
-                onPress={() => this.props.navigation.navigate('FilterEvents')}
-              >
-                <Image source={Images.filterEvents}/>
-              </TouchableHighlight>
+<TouchableHighlight
+  onPress={() => this.props.navigation.navigate('FilterFriends')}
+>
+  <Image source={Images.filterFriends}/>
+</TouchableHighlight>
 
-              <TouchableHighlight
-                onPress={() => this.props.navigation.navigate('FilterRallies')}
-              >
-                <Image source={Images.filterRallies}/>
-              </TouchableHighlight>
-
-              <TouchableHighlight
-                onPress={() => this.props.navigation.navigate('FilterFriends')}
-              >
-                <Image source={Images.filterFriends}/>
-              </TouchableHighlight>
-
-            </View>
-          </ImageBackground>
+</View>
       </View>
     );
   }
@@ -52,10 +57,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  filters: {
+  mapStyle: {
     flex: 1,
+    width: metrics.screenWidth,
+    height: metrics.screenHeight,
+  },
+  filters: {
+    position: 'absolute',
+    top: '85%',
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingTop: metrics.screenHeight - 200,
   },
 });

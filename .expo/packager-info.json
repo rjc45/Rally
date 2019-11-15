@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19005,
+  "devToolsPort": 19003,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 38339,
-  "expoServerNgrokUrl": "https://qh-ecs.anonymous.rally.exp.direct",
-  "packagerNgrokUrl": "https://packager.qh-ecs.anonymous.rally.exp.direct",
-  "ngrokPid": 38358
+  "packagerPort": 19002,
+  "packagerPid": 58270,
+  "expoServerNgrokUrl": "https://ys-sg4.anonymous.rally.exp.direct",
+  "packagerNgrokUrl": "https://packager.ys-sg4.anonymous.rally.exp.direct",
+  "ngrokPid": 58278
 }
