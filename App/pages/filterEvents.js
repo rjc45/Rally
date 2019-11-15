@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Image, Alert } from 'react-native';
-import { Images, Metrics } from '../Themes';
+import { StyleSheet, View, Image, Text, Alert} from 'react-native';
+import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
@@ -14,8 +15,16 @@ export default class FilterEvents extends React.Component {
 
   state = {
     coordinates : [
-      { name: '1', latitude: 37.427799, longitude: -122.171198},
-      { name: '2', latitude: 37.425682, longitude: -122.167445},
+      { 
+        name: '1', 
+        latitude: 37.427799, 
+        longitude: -122.171198
+      },
+      { 
+        name: '2', 
+        latitude: 37.425682, 
+        longitude: -122.167445
+      },
     ]
   }
 
@@ -27,6 +36,13 @@ export default class FilterEvents extends React.Component {
     return (
       <View style={styles.container}>
         <MapView
+      <ParallaxScrollView
+        contentBackgroundColor="pink"
+        parallaxHeaderHeight={550}
+        renderForeground={() => (
+        <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={styles.container}>
+          <MapView
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
@@ -64,13 +80,17 @@ export default class FilterEvents extends React.Component {
               title="Event 3">
               <Image source = {Images.event3}/>
           </Marker>
-
+        
         </MapView>
 
         <RallyLogo navigation={this.props.navigation} />
         <SideIcons navigation={this.props.navigation} />
         <BackButton navigation={this.props.navigation} />
       </View>
+      </View>
+      )}>     
+      
+      </ParallaxScrollView>
     );
   }
 }
