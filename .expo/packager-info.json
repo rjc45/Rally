@@ -1,1 +1,9 @@
-{}
+{
+  "devToolsPort": 19003,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 73532,
+  "expoServerNgrokUrl": "https://y2-wqj.anonymous.rally.exp.direct",
+  "packagerNgrokUrl": "https://packager.y2-wqj.anonymous.rally.exp.direct",
+  "ngrokPid": 73543
+}

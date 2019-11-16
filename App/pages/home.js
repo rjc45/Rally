@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { SideIcons } from '../components';
@@ -13,7 +13,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <MapView 
+        <MapView
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
@@ -55,6 +55,8 @@ export default class Home extends React.Component {
   }
 }
 
+const { height, width } = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -75,5 +77,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '90%',
     flexDirection: 'row',
+    height: height * .3,
+    width: width,
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
   },
 });
