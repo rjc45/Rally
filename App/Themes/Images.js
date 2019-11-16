@@ -10,7 +10,10 @@ const images = {
   logo: require('../Images/logo.png'),
   male: require('../Images/male.png'),
   messages: require('../Images/messages.png'),
+  messagesFilled: require('../Images/messages-filled.png'),
   profile: require('../Images/profile.png'),
+  profileFilled: require('../Images/profile_filled.png'),
+  rally: require('../Images/logo_filled.png'),
   yourImage: require('../Images/yourImage.png'),
 }
 

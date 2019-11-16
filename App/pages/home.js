@@ -13,18 +13,19 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+
         <MapView
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.0222,
+            longitudeDelta: 0.0001,
           }}
           style={styles.mapStyle}
         />
 
         <View style={styles.rallyLogo}>
-          <Image source={Images.logo} />
+          <Image source={Images.rally} />
         </View>
 
         <SideIcons navigation={this.props.navigation}/>
@@ -70,8 +71,13 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight,
   },
   rallyLogo: {
+    height: height * .2,
+    width: width,
     position: 'absolute',
     top: '5%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
   },
   filters: {
     position: 'absolute',
