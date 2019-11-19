@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '6%',
     alignSelf: 'flex-start',
-    paddingLeft: 10,
+    paddingLeft: 15,
   },
 });

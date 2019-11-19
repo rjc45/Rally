@@ -71,13 +71,8 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight,
   },
   rallyLogo: {
-    height: height * .2,
-    width: width,
     position: 'absolute',
-    top: '5%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
+    top: '5.5%',
   },
   filters: {
     position: 'absolute',
