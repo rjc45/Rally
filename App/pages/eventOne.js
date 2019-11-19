@@ -26,15 +26,13 @@ export default class EventOne extends React.Component {
           style={styles.mapStyle}
         >
           <Marker
-                coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                }}
-                title="Event 1">
-                <Image source = {Images.event1}/>
-              </Marker>
-        
-
+            coordinate={{
+              latitude: 37.4274,
+              longitude: -122.1697,
+            }}
+            title="Event 1">
+            <Image source = {Images.event1}/>
+          </Marker>
         </MapView>
 
         <RallyLogo navigation={this.props.navigation} />
@@ -59,9 +57,8 @@ export default class EventOne extends React.Component {
                   <Text style={styles.smallText}>La Maison Francaise</Text>
                 </View>
               </View>
-                
 
-            </CardView>
+          </CardView>
         </View>
 
       </View>
