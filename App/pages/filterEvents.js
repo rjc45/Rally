@@ -12,19 +12,19 @@ import { AntDesign } from '@expo/vector-icons';
 const events = [
   {
     eventNum: '1.',
-    name: 'Social Justice Activities Fair',
+    name: '2020 Election Trivia Night',
     distance: '5 mi',
-    navigation: 'Home',
+    navigation: 'EventOne',
   },
   {
     eventNum: '2.',
-    name: '2020 Election Trivia Night',
+    name: 'Mana O Maunakea',
     distance: '7 mi',
     navigation: 'Home',
   },
   {
     eventNum: '3.',
-    name: 'Cardinal for Warren',
+    name: 'Social Justice Activities Fair',
     distance: '12 mi',
     navigation: 'Home',
   },
@@ -102,9 +102,9 @@ export default class FilterEvents extends React.Component {
         </View>
       )}>
 
-        <View>
+        <View style={styles.scrollView}>
           <View style={styles.visualization}>
-            <Text style={styles.listText}>Filtering By Events</Text>
+            <Text style={styles.title}>Filtering By Events</Text>
             <Image 
               source={Images.filterEvents}
               style={{height: 25, width: 17}}
@@ -115,6 +115,7 @@ export default class FilterEvents extends React.Component {
             <TouchableOpacity> 
               <AntDesign
                 name='search1'
+                style={{paddingLeft: 10}}
               />
             </TouchableOpacity>
             <TextInput
@@ -160,15 +161,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     paddingTop: 10,
   },
+  scrollView: {
+    borderRadius: 10,
+  },
   visualization: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    padding: 20,
+    fontSize: 20,
+  },
   search: {
-    marginLeft: 10,
-    marginRight: 10,
-    paddingTop: 3,
+    marginLeft: 40,
+    marginRight: 40,
+    padding: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -177,9 +185,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   listText: {
-    padding: 10,
+    paddingTop: 30,
     paddingLeft: 40,
     fontSize: 20,
+    borderColor: 'gray',
+    borderBottomWidth: 1,
   },
   smallText: {
     fontSize: 13,

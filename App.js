@@ -11,6 +11,7 @@ const StackNav = createStackNavigator({
   FilterFriends: {screen: pages.FilterFriends},
   Messages: {screen: pages.Messages},
   Profile: {screen: pages.Profile},
+  EventOne: {screen: pages.EventOne},
 },{
    initialRouteName: 'Home',
 });

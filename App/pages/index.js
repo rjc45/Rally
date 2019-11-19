@@ -4,6 +4,7 @@ import FilterRallies from './filterRallies';
 import FilterFriends from './filterFriends';
 import Messages from './messages';
 import Profile from './profile';
+import EventOne from './eventOne';
 
 export {
   Home,
@@ -12,4 +13,5 @@ export {
   FilterFriends,
   Messages,
   Profile,
+  EventOne,
 }
