@@ -104,7 +104,7 @@ export default class FilterEvents extends React.Component {
 
         <View>
           <View style={styles.visualization}>
-            <Text style={styles.listText}>Filtering By Events </Text>
+            <Text style={styles.listText}>Filtering By Events</Text>
             <Image 
               source={Images.filterEvents}
               style={{height: 25, width: 17}}
@@ -112,16 +112,16 @@ export default class FilterEvents extends React.Component {
           </View>
 
           <View style={styles.search}>
-            <TextInput
-              placeholder=''
-              onChangeText={searchText => this.setState({searchText})}
-              value={searchText}
-            />
             <TouchableOpacity> 
               <AntDesign
                 name='search1'
               />
             </TouchableOpacity>
+            <TextInput
+              placeholder=''
+              onChangeText={searchText => this.setState({searchText})}
+              value={searchText}
+            />
           </View>
 
           <FlatList
@@ -132,7 +132,7 @@ export default class FilterEvents extends React.Component {
                   <Text style={styles.listText}>
                     <Text>{item.eventNum} </Text>
                     <Text>{item.name}  </Text>
-                    <Text style={styles.smallText}>{item.distance}  </Text>
+                    <Text style={styles.smallText}>{item.distance}</Text>
                   </Text>
                 </TouchableOpacity>
               </View>
