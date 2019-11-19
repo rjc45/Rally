@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert} from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, Card, Title} from 'react-native';
 import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
@@ -15,14 +15,14 @@ export default class FilterEvents extends React.Component {
 
   state = {
     coordinates : [
-      { 
-        name: '1', 
-        latitude: 37.427799, 
+      {
+        name: '1',
+        latitude: 37.427799,
         longitude: -122.171198
       },
-      { 
-        name: '2', 
-        latitude: 37.425682, 
+      {
+        name: '2',
+        latitude: 37.425682,
         longitude: -122.167445
       },
     ]
@@ -38,56 +38,55 @@ export default class FilterEvents extends React.Component {
         contentBackgroundColor="pink"
         parallaxHeaderHeight={550}
         renderForeground={() => (
-        <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={styles.container}>
-          <MapView
-          initialRegion={{
-            latitude: 37.4274,
-            longitude: -122.1697,
-            latitudeDelta: 0.0222,
-            longitudeDelta: 0.0001,
-          }}
-        style={styles.mapStyle} >
+          <View style={{ height: 300, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={styles.container}>
+            <MapView
+            initialRegion={{
+              latitude: 37.4274,
+              longitude: -122.1697,
+              latitudeDelta: 0.0222,
+              longitudeDelta: 0.0001,
+            }}
+          style={styles.mapStyle} >
 
-          <Marker
-              coordinate={{
-                latitude: 37.427799,
-                longitude: -122.171198,
-              }}
-              title="Event 2">
+            <Marker
+                coordinate={{
+                  latitude: 37.427799,
+                  longitude: -122.171198,
+                }}
+                title="Event 2">
 
-              <TouchableOpacity onPress= {this._onPressButton}>
-                <Image source = {Images.event2}/>
-              </TouchableOpacity>
-          </Marker>
+                <TouchableOpacity onPress= {this._onPressButton}>
+                  <Image source = {Images.event2}/>
+                </TouchableOpacity>
+            </Marker>
 
-          <Marker
-              coordinate={{
-                latitude: 37.4274,
-                longitude: -122.1697,
-              }}
-              title="Event 1">
-              <Image source = {Images.event1}/>
-          </Marker>
+            <Marker
+                coordinate={{
+                  latitude: 37.4274,
+                  longitude: -122.1697,
+                }}
+                title="Event 1">
+                <Image source = {Images.event1}/>
+            </Marker>
 
-          <Marker
-              coordinate={{
-                latitude: 37.425682,
-                longitude: -122.167445,
-              }}
-              title="Event 3">
-              <Image source = {Images.event3}/>
-          </Marker>
-        
-        </MapView>
+            <Marker
+                coordinate={{
+                  latitude: 37.425682,
+                  longitude: -122.167445,
+                }}
+                title="Event 3">
+                <Image source = {Images.event3}/>
+            </Marker>
 
-        <RallyLogo navigation={this.props.navigation} />
-        <SideIcons navigation={this.props.navigation} />
-        <BackButton navigation={this.props.navigation} />
-      </View>
-      </View>
-      )}>     
-      
+          </MapView>
+          <RallyLogo navigation={this.props.navigation} />
+          <SideIcons navigation={this.props.navigation} />
+          <BackButton navigation={this.props.navigation} />
+        </View>
+        </View>
+      )}>
+
       </ParallaxScrollView>
     );
   }
