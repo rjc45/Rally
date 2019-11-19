@@ -66,23 +66,23 @@ export default class FilterEvents extends React.Component {
 
               <Marker
                 coordinate={{
-                  latitude: 37.427799,
-                  longitude: -122.171198,
+                  latitude: 37.4274,
+                  longitude: -122.1697,
                 }}
-                title="Event 2">
-
-                <TouchableOpacity onPress= {this._onPressButton}>
-                  <Image source = {Images.event2}/>
+                title="2020 Election Trivia Night">
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+                  <Image source = {Images.event1}/>
                 </TouchableOpacity>
               </Marker>
 
               <Marker
                 coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
+                  latitude: 37.427799,
+                  longitude: -122.171198,
                 }}
-                title="Event 1">
-                <Image source = {Images.event1}/>
+                title="Mano O Maunakea">
+
+                <Image source = {Images.event2}/>
               </Marker>
 
               <Marker
@@ -90,7 +90,7 @@ export default class FilterEvents extends React.Component {
                   latitude: 37.425682,
                   longitude: -122.167445,
                 }}
-                title="Event 3">
+                title="Social Justice Activities Fair">
                 <Image source = {Images.event3}/>
               </Marker>
             </MapView>
@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
   title: {
     padding: 20,
     fontSize: 20,
+    fontWeight: 'bold',
   },
   search: {
     marginLeft: 40,

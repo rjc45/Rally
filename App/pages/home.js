@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { SideIcons } from '../components';
 
@@ -22,7 +23,34 @@ export default class Home extends React.Component {
             longitudeDelta: 0.0001,
           }}
           style={styles.mapStyle}
-        />
+        >
+          <Marker
+            coordinate={{
+              latitude: 37.4274,
+              longitude: -122.1697,
+            }}
+            title="2020 Election Trivia Night">
+            <Image source = {Images.event1}/>
+          </Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 37.427799,
+              longitude: -122.171198,
+            }}
+            title="Mano O Maunakea">
+            <Image source = {Images.event2}/>
+          </Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 37.425682,
+              longitude: -122.167445,
+            }}
+            title="Social Justice Activities Fair">
+            <Image source = {Images.event3}/>
+          </Marker>
+        </MapView>
 
         <View style={styles.rallyLogo}>
           <Image source={Images.rally} />
@@ -76,7 +104,7 @@ const styles = StyleSheet.create({
   },
   filters: {
     position: 'absolute',
-    top: '90%',
+    top: '85%',
     flexDirection: 'row',
     height: height * .3,
     width: width,
