@@ -52,7 +52,7 @@ export default class EventTwoExpanded extends React.Component {
 
 
         <View style={styles.scrollView}>
-          <Image source={Images.event3Pic} style={styles.eventImage}/>
+          <Image source={Images.event2Pic} style={styles.eventImage}/>
           <View>
             <Text style={styles.title}>Social Justice Activities Fair</Text>
             <Text style={styles.smallText}>Hosted by: Columbae</Text>
@@ -114,12 +114,13 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: 300,
+    height: 200,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
+    paddingTop: 10,
   },
   smallText: {
     fontSize: 16,
