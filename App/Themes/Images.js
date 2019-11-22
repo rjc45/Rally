@@ -22,6 +22,7 @@ const images = {
   profile: require('../Images/profile.png'),
   profileFilled: require('../Images/profile_filled.png'),
   rally: require('../Images/logo_filled.png'),
+  star: require('../Images/star.png'),
   yourImage: require('../Images/yourImage.png'),
 }
 

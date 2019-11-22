@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, FlatList, Button, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -13,8 +13,14 @@ export default class EventOneExpanded extends React.Component {
     header: null,
   };
 
-  render() {
+  state = { interested: false };
 
+  interestedButton() {
+    this.setState({ interested: true});
+    alert('You are interested in this event!');
+  }
+
+  render() {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
@@ -69,6 +75,24 @@ export default class EventOneExpanded extends React.Component {
             <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
             or whatever)!</Text>
           </View>
+          <View style={styles.bottombuttons}>
+            {this.state.interested ?
+              <View style={styles.confirmedInterest}>
+                <Text style={styles.smallText}>Interested  </Text>
+                <Image source={Images.star}
+                  style={styles.star}/>
+              </View>
+            :
+              <Button
+                title="Interested"
+                onPress={() => this.interestedButton()}
+              />
+            }
+            <Button
+              title="Start a Rally"
+              onPress={() => Alert.alert('Start a Rally!')}
+            />
+          </View>
         </View>
       </ParallaxScrollView>
     );
@@ -116,5 +140,20 @@ const styles = StyleSheet.create({
   },
   description: {
     textAlign: 'center',
-  }
+  },
+  bottombuttons: {
+    paddingTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 25,
+  },
+  confirmedInterest: {
+    paddingLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  star: {
+    height: 25,
+    width: 25,
+  },
 });

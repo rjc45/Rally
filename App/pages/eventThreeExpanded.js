@@ -66,16 +66,24 @@ export default class EventThreeExpanded extends React.Component {
             on indigenous scientific perspectives through oral history and cultural knowledge-based future 
             planning. This is a once in a lifetime opportunity and we would love to have as many people join 
             us as possible!</Text>
-            <View style={styles.bottombuttons}>
+          </View>
+          <View style={styles.bottombuttons}>
+            {this.state.interested ?
+              <View style={styles.confirmedInterest}>
+                <Text style={styles.smallText}>Interested  </Text>
+                <Image source={Images.star}
+                  style={styles.star}/>
+              </View>
+            :
               <Button
                 title="Interested"
-                onPress={() => Alert.alert('You are interested in this event!')}
+                onPress={() => this.interestedButton()}
               />
-              <Button
-                title="Start a Rally"
-                onPress={() => Alert.alert('Start a Rally!')}
-              />
-            </View>
+            }
+            <Button
+              title="Start a Rally"
+              onPress={() => Alert.alert('Start a Rally!')}
+            />
           </View>
         </View>
       </ParallaxScrollView>
@@ -126,8 +134,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottombuttons: {
+    paddingTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 25,
+  },
+  confirmedInterest: {
+    paddingLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  star: {
+    height: 25,
+    width: 25,
   },
 });
