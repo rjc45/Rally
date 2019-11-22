@@ -18,10 +18,10 @@ export default class EventThree extends React.Component {
 
         <MapView
           initialRegion={{
-            latitude: 37.4200,
+            latitude: 37.4250,
             longitude: -122.1697,
-            latitudeDelta: 0.0300,
-            longitudeDelta: 0.0001,
+            latitudeDelta: 0.0200,
+            longitudeDelta: 0.00005,
           }}
           style={styles.mapStyle}
         >
@@ -56,22 +56,22 @@ export default class EventThree extends React.Component {
         <BackButton navigation={this.props.navigation} />
 
         <View style={styles.card}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThreeExpanded')}>
             <CardView
               cardElevation={2}
               cardMaxElevation={2}
               cornerRadius={5}
               >
                 <Image 
-                  source={Images.event1Card}
+                  source={Images.event3Card}
                   style={styles.imagePic}/>
                 
                 <View style={styles.description}>
                   <Image source={Images.event1}/>
                   <View>
-                    <Text style={styles.title}>2020 Election Trivia Night</Text>
-                    <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
-                    <Text style={styles.smallText}>La Maison Francaise</Text>
+                    <Text style={styles.title}>Mana `O Maunakea</Text>
+                    <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
+                    <Text style={styles.smallText}>Native American Culture Center</Text>
                   </View>
                 </View>
             </CardView>

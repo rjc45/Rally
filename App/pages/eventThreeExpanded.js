@@ -38,10 +38,8 @@ export default class EventThreeExpanded extends React.Component {
                   latitude: 37.4274,
                   longitude: -122.1697,
                 }}
-                title="2020 Election Trivia Night">
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
-                  <Image source = {Images.event3}/>
-                </TouchableOpacity>
+                title="Mana `O ">
+                <Image source = {Images.event1}/>
               </Marker>
             </MapView>
           
@@ -54,21 +52,20 @@ export default class EventThreeExpanded extends React.Component {
 
 
         <View style={styles.scrollView}>
-          <Image source={Images.event1Pic} style={styles.eventImage}/>
+          <Image source={Images.event3Pic} style={styles.eventImage}/>
           <View>
-            <Text style={styles.title}>2020 Election Trivia Night</Text>
-            <Text style={styles.smallText}>Hosted by: Cardinal for Warren</Text>
-            <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
-            <Text style={styles.smallText}>La Maison Francaise</Text>
+            <Text style={styles.title}>Mana `O Maunakea</Text>
+            <Text style={styles.smallText}>Hosted by: Stanford Hui O Nā Moku</Text>
+            <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
+            <Text style={styles.smallText}>Native American Culture Center</Text>
             <Text></Text>
-            <Text style={styles.description}>Join Cardinal for Warren for a 2020 election trivia about 
-            all the candidates at French House! We'll split up into teams (or bring your own team),
-            and the winning team will get a prize!</Text>
+            <Text style={styles.description}>Stanford Hui O Nā Moku is excited to welcome Lanakila Mangauil 
+            to the Stanford Native American Cultural Center on October 30th from 6:30-8:30PM. </Text>
             <Text></Text>
-            <Text style={styles.description}>The trivia begins at 9:00pm! All are welcome!</Text>
-            <Text></Text>
-            <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
-            or whatever)!</Text>
+            <Text style={styles.description}>Lanakila will be teaching a workshop that will offer knowledge 
+            on indigenous scientific perspectives through oral history and cultural knowledge-based future 
+            planning. This is a once in a lifetime opportunity and we would love to have as many people join 
+            us as possible!</Text>
             <View style={styles.bottombuttons}>
               <Button
                 title="Interested"

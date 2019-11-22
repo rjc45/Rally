@@ -18,7 +18,7 @@ const StackNav = createStackNavigator({
   EventTwoExpanded: {screen: pages.EventTwoExpanded},
   EventThreeExpanded: {screen: pages.EventThreeExpanded},
 },{
-   initialRouteName: 'Home',
+   initialRouteName: 'EventTwo',
 });
 
 const MyApp = createAppContainer(StackNav);

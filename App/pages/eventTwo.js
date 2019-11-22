@@ -43,11 +43,11 @@ export default class EventTwo extends React.Component {
 
           <Marker
             coordinate={{
-              latitude: 37.427799,
-              longitude: -122.171198,
+              latitude: 37.425682,
+              longitude: -122.167445,
             }}
-            title="Mano `O Maunakea">
-            <Image source = {Images.event1}/>
+            title="Social Justice Activities Fair">
+            <Image source = {Images.event2}/>
           </Marker>
         </MapView>
 
@@ -56,22 +56,22 @@ export default class EventTwo extends React.Component {
         <BackButton navigation={this.props.navigation} />
 
         <View style={styles.card}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwoExpanded')}>
             <CardView
               cardElevation={2}
               cardMaxElevation={2}
               cornerRadius={5}
               >
                 <Image 
-                  source={Images.event1Card}
+                  source={Images.event2Card}
                   style={styles.imagePic}/>
                 
                 <View style={styles.description}>
-                  <Image source={Images.event1}/>
+                  <Image source={Images.event2}/>
                   <View>
-                    <Text style={styles.title}>2020 Election Trivia Night</Text>
-                    <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
-                    <Text style={styles.smallText}>La Maison Francaise</Text>
+                    <Text style={styles.title}>Social Justice Activities Fair</Text>
+                    <Text style={styles.smallText}>Nov. 1 | 4PM - 6PM</Text>
+                    <Text style={styles.smallText}>Columbae Lawn</Text>
                   </View>
                 </View>
             </CardView>

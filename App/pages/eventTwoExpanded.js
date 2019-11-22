@@ -35,13 +35,11 @@ export default class EventTwoExpanded extends React.Component {
 
               <Marker
                 coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
+                  latitude: 37.425682,
+                  longitude: -122.167445,
                 }}
-                title="2020 Election Trivia Night">
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
-                  <Image source = {Images.event3}/>
-                </TouchableOpacity>
+                title="Social Justice Activities Fair">
+                <Image source = {Images.event2}/>
               </Marker>
             </MapView>
           
@@ -54,21 +52,24 @@ export default class EventTwoExpanded extends React.Component {
 
 
         <View style={styles.scrollView}>
-          <Image source={Images.event1Pic} style={styles.eventImage}/>
+          <Image source={Images.event3Pic} style={styles.eventImage}/>
           <View>
-            <Text style={styles.title}>2020 Election Trivia Night</Text>
-            <Text style={styles.smallText}>Hosted by: Cardinal for Warren</Text>
-            <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
-            <Text style={styles.smallText}>La Maison Francaise</Text>
+            <Text style={styles.title}>Social Justice Activities Fair</Text>
+            <Text style={styles.smallText}>Hosted by: Columbae</Text>
+            <Text style={styles.smallText}>Nov. 1 | 4PM - 6PM</Text>
+            <Text style={styles.smallText}>Columbae Lawn</Text>
             <Text></Text>
-            <Text style={styles.description}>Join Cardinal for Warren for a 2020 election trivia about 
-            all the candidates at French House! We'll split up into teams (or bring your own team),
-            and the winning team will get a prize!</Text>
+            <Text style={styles.description}>Interested in social justice on campus, but don't know where 
+            to start? Want to get involved with organizing around causes you care about? Trying to build 
+            coalitions between different activist groups on campus?</Text>
             <Text></Text>
-            <Text style={styles.description}>The trivia begins at 9:00pm! All are welcome!</Text>
+            <Text style={styles.description}>Come to Columbae’s First Social Justice Activities Fair on 
+            Friday, November 1 from 4-6! Meet with leaders from 15+ activist groups on campus, organizing 
+            on everything from workers’ rights and affordable housing to racial justice and sustainability.</Text>
             <Text></Text>
-            <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
-            or whatever)!</Text>
+            <Text style={styles.description}>Whether you’re an experienced activist looking for a new cause, 
+            or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem, 
+            come through!! Light refreshments will be provided.</Text>
             <View style={styles.bottombuttons}>
               <Button
                 title="Interested"
