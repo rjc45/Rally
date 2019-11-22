@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -68,6 +68,16 @@ export default class EventOneExpanded extends React.Component {
             <Text></Text>
             <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
             or whatever)!</Text>
+            <View style={styles.bottombuttons}>
+              <Button
+                title="Interested"
+                onPress={() => Alert.alert('You are interested in this event!')}
+              />
+              <Button
+                title="Start a Rally"
+                onPress={() => Alert.alert('Start a Rally!')}
+              />
+            </View>
           </View>
         </View>
       </ParallaxScrollView>
@@ -116,5 +126,10 @@ const styles = StyleSheet.create({
   },
   description: {
     textAlign: 'center',
-  }
+  },
+  bottombuttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 25,
+  },
 });
