@@ -12,21 +12,21 @@ import { AntDesign } from '@expo/vector-icons';
 const events = [
   {
     eventNum: '1.',
-    name: '2020 Election Trivia Night',
+    name: 'Mana O Maunakea',
     distance: '5 mi',
-    navigation: 'EventOne',
+    navigation: 'Home',
   },
   {
     eventNum: '2.',
-    name: 'Mana O Maunakea',
+    name: 'Social Justice Activities Fair',
     distance: '7 mi',
     navigation: 'Home',
   },
   {
     eventNum: '3.',
-    name: 'Social Justice Activities Fair',
+    name: '2020 Election Trivia Night',
     distance: '12 mi',
-    navigation: 'Home',
+    navigation: 'EventOne',
   },
 ];
 
@@ -64,36 +64,51 @@ export default class FilterEvents extends React.Component {
                 style={styles.mapStyle} 
               >
 
-              <Marker
-                coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                }}
-                title="2020 Election Trivia Night">
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+                <Marker
+                  coordinate={{
+                    latitude: 37.4274,
+                    longitude: -122.1697,
+                  }}>
+                  <Image source={Images.currentLocation}/>
+                </Marker>
+
+                <Marker
+                  coordinate={{
+                    latitude: 37.4274,
+                    longitude: -122.1697,
+                  }}>
+                  <Image source={Images.currentLocation2}/>
+                </Marker>
+
+                <Marker
+                  coordinate={{
+                    latitude: 37.427799,
+                    longitude: -122.171198,
+                  }}
+                  title="Mano `O Maunakea">
                   <Image source = {Images.event1}/>
-                </TouchableOpacity>
-              </Marker>
+                </Marker>
 
-              <Marker
-                coordinate={{
-                  latitude: 37.427799,
-                  longitude: -122.171198,
-                }}
-                title="Mano O Maunakea">
+                <Marker
+                  coordinate={{
+                    latitude: 37.425682,
+                    longitude: -122.167445,
+                  }}
+                  title="Social Justice Activities Fair">
+                  <Image source = {Images.event2}/>
+                </Marker>
 
-                <Image source = {Images.event2}/>
-              </Marker>
-
-              <Marker
-                coordinate={{
-                  latitude: 37.425682,
-                  longitude: -122.167445,
-                }}
-                title="Social Justice Activities Fair">
-                <Image source = {Images.event3}/>
-              </Marker>
-            </MapView>
+                <Marker
+                  coordinate={{
+                    latitude: 37.420561,
+                    longitude: -122.166688,
+                  }}
+                  title="2020 Election Trivia Night">
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+                    <Image source = {Images.event3}/>
+                  </TouchableOpacity>
+                </Marker>
+              </MapView>
           
             <RallyLogo navigation={this.props.navigation} />
             <SideIcons navigation={this.props.navigation} />

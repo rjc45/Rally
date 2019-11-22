@@ -18,9 +18,9 @@ export default class EventOne extends React.Component {
 
         <MapView
           initialRegion={{
-            latitude: 37.4240,
+            latitude: 37.4200,
             longitude: -122.1697,
-            latitudeDelta: 0.0222,
+            latitudeDelta: 0.0300,
             longitudeDelta: 0.0001,
           }}
           style={styles.mapStyle}
@@ -29,9 +29,25 @@ export default class EventOne extends React.Component {
             coordinate={{
               latitude: 37.4274,
               longitude: -122.1697,
+            }}>
+            <Image source={Images.currentLocation}/>
+          </Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 37.4274,
+              longitude: -122.1697,
+            }}>
+            <Image source={Images.currentLocation2}/>
+          </Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 37.420561,
+              longitude: -122.166688,
             }}
-            title="Event 1">
-            <Image source = {Images.event1}/>
+            title="2020 Election Trivia Night">
+            <Image source = {Images.event3}/>
           </Marker>
         </MapView>
 

@@ -1,5 +1,7 @@
 const images = {
   back: require('../Images/back.png'),
+  currentLocation: require('../Images/currentLocation.png'),
+  currentLocation2: require('../Images/currentLocation2.png'),
   event1: require('../Images/event1.png'),
   event1Card: require('../Images/event1Card.png'),
   event1Pic: require('../Images/event1Pic.png'),
