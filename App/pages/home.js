@@ -28,9 +28,16 @@ export default class Home extends React.Component {
             coordinate={{
               latitude: 37.4274,
               longitude: -122.1697,
-            }}
-            title="2020 Election Trivia Night">
-            <Image source = {Images.event1}/>
+            }}>
+            <Image source={Images.currentLocation}/>
+          </Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 37.4274,
+              longitude: -122.1697,
+            }}>
+            <Image source={Images.currentLocation2}/>
           </Marker>
 
           <Marker
@@ -38,8 +45,8 @@ export default class Home extends React.Component {
               latitude: 37.427799,
               longitude: -122.171198,
             }}
-            title="Mano O Maunakea">
-            <Image source = {Images.event2}/>
+            title="Mano `O Maunakea">
+            <Image source = {Images.event1}/>
           </Marker>
 
           <Marker
@@ -48,7 +55,18 @@ export default class Home extends React.Component {
               longitude: -122.167445,
             }}
             title="Social Justice Activities Fair">
-            <Image source = {Images.event3}/>
+              <Image source = {Images.event2}/>
+          </Marker>
+
+          <Marker
+            coordinate={{
+              latitude: 37.420561,
+              longitude: -122.166688,
+            }}
+            title="2020 Election Trivia Night">
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+              <Image source = {Images.event3}/>
+            </TouchableOpacity>
           </Marker>
         </MapView>
 
@@ -59,7 +77,6 @@ export default class Home extends React.Component {
         <SideIcons navigation={this.props.navigation}/>
 
         <View style={styles.filters}>
-
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterEvents')}
           >
@@ -77,7 +94,6 @@ export default class Home extends React.Component {
           >
             <Image source={Images.filterFriends}/>
           </TouchableOpacity>
-
         </View>
       </View>
     );
