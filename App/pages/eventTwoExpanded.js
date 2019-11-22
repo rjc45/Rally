@@ -14,8 +14,14 @@ export default class EventTwoExpanded extends React.Component {
     header: null,
   };
 
-  render() {
+  state = { interested: false };
 
+  interestedButton() {
+    this.setState({ interested: true});
+    alert('You are interested in this event!');
+  }
+
+  render() {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
@@ -70,16 +76,24 @@ export default class EventTwoExpanded extends React.Component {
             <Text style={styles.description}>Whether you’re an experienced activist looking for a new cause, 
             or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem, 
             come through!! Light refreshments will be provided.</Text>
-            <View style={styles.bottombuttons}>
+          </View>
+          <View style={styles.bottombuttons}>
+            {this.state.interested ?
+              <View style={styles.confirmedInterest}>
+                <Text style={styles.smallText}>Interested  </Text>
+                <Image source={Images.star}
+                  style={styles.star}/>
+              </View>
+            :
               <Button
                 title="Interested"
-                onPress={() => Alert.alert('You are interested in this event!')}
+                onPress={() => this.interestedButton()}
               />
-              <Button
-                title="Start a Rally"
-                onPress={() => Alert.alert('Start a Rally!')}
-              />
-            </View>
+            }
+            <Button
+              title="Start a Rally"
+              onPress={() => Alert.alert('Start a Rally!')}
+            />
           </View>
         </View>
       </ParallaxScrollView>
@@ -130,8 +144,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottombuttons: {
+    paddingTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 25,
+  },
+  confirmedInterest: {
+    paddingLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  star: {
+    height: 25,
+    width: 25,
   },
 });
