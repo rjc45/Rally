@@ -40,25 +40,26 @@ export default class EventOne extends React.Component {
         <BackButton navigation={this.props.navigation} />
 
         <View style={styles.card}>
-          <CardView
-            cardElevation={2}
-            cardMaxElevation={2}
-            cornerRadius={5}
-            >
-              <Image 
-                source={Images.event1Pic}
-                style={styles.imagePic}/>
-              
-              <View style={styles.description}>
-                <Image source={Images.event1}/>
-                <View>
-                  <Text style={styles.title}>2020 Election Trivia Night</Text>
-                  <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
-                  <Text style={styles.smallText}>La Maison Francaise</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
+            <CardView
+              cardElevation={2}
+              cardMaxElevation={2}
+              cornerRadius={5}
+              >
+                <Image 
+                  source={Images.event1Card}
+                  style={styles.imagePic}/>
+                
+                <View style={styles.description}>
+                  <Image source={Images.event1}/>
+                  <View>
+                    <Text style={styles.title}>2020 Election Trivia Night</Text>
+                    <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
+                    <Text style={styles.smallText}>La Maison Francaise</Text>
+                  </View>
                 </View>
-              </View>
-
-          </CardView>
+            </CardView>
+          </TouchableOpacity>
         </View>
 
       </View>
