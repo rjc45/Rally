@@ -86,7 +86,9 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.171198,
                   }}
                   title="Mano `O Maunakea">
-                  <Image source = {Images.event1}/>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThree')}>
+                    <Image source = {Images.event1}/>
+                  </TouchableOpacity>
                 </Marker>
 
                 <Marker

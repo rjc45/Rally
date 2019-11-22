@@ -67,7 +67,7 @@ export default class EventOne extends React.Component {
                   style={styles.imagePic}/>
                 
                 <View style={styles.description}>
-                  <Image source={Images.event1}/>
+                  <Image source={Images.event3}/>
                   <View>
                     <Text style={styles.title}>2020 Election Trivia Night</Text>
                     <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
