@@ -14,8 +14,14 @@ export default class EventThreeExpanded extends React.Component {
     header: null,
   };
 
-  render() {
+  state = { interested: false };
 
+  interestedButton() {
+    this.setState({ interested: true});
+    alert('You are interested in this event!');
+  }
+
+  render() {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
