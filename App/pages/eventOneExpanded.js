@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import { AntDesign } from '@expo/vector-icons';
 
 export default class EventOneExpanded extends React.Component {
 
@@ -12,30 +14,45 @@ export default class EventOneExpanded extends React.Component {
   };
 
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.map}>
-          <MapView
-            initialRegion={{
-              latitude: 37.4240,
-              longitude: -122.1697,
-              latitudeDelta: 0.0222,
-              longitudeDelta: 0.0001,
-            }}
-            style={styles.mapStyle}
-          >
-            <Marker
-              coordinate={{
-                latitude: 37.4274,
-                longitude: -122.1697,
-              }}
-              title="Event 1">
-              <Image source = {Images.event1}/>
-            </Marker>
-          </MapView>
-        </View>
 
-        <View style={styles.info}>
+    return (
+      <ParallaxScrollView
+        contentBackgroundColor="white"
+        parallaxHeaderHeight={700}
+        renderForeground={() => (
+          <View style={styles.foreground}>
+            <View style={styles.container}>
+              <MapView
+                initialRegion={{
+                  latitude: 37.4274,
+                  longitude: -122.1697,
+                  latitudeDelta: 0.0222,
+                  longitudeDelta: 0.0001,
+                }}
+                style={styles.mapStyle} 
+              >
+
+              <Marker
+                coordinate={{
+                  latitude: 37.4274,
+                  longitude: -122.1697,
+                }}
+                title="2020 Election Trivia Night">
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+                  <Image source = {Images.event1}/>
+                </TouchableOpacity>
+              </Marker>
+            </MapView>
+          
+            <RallyLogo navigation={this.props.navigation} />
+            <SideIcons navigation={this.props.navigation} />
+            <BackButton navigation={this.props.navigation} />
+          </View>
+        </View>
+      )}>
+
+
+        <View style={styles.scrollView}>
           <Image source={Images.event1Pic} style={styles.eventImage}/>
           <View>
             <Text style={styles.title}>2020 Election Trivia Night</Text>
@@ -52,13 +69,8 @@ export default class EventOneExpanded extends React.Component {
             <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
             or whatever)!</Text>
           </View>
-
         </View>
-
-        <RallyLogo navigation={this.props.navigation} />
-        <SideIcons navigation={this.props.navigation} />
-        <BackButton navigation={this.props.navigation} />
-      </View>
+      </ParallaxScrollView>
     );
   }
 }
@@ -69,6 +81,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  foreground: {
+    height: 700, 
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    paddingTop: 10,
   },
   map: {
     flex: 1,
