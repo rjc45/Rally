@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19003,
+  "devToolsPort": 19004,
   "expoServerPort": 19000,
   "packagerPort": 19003,
-  "packagerPid": 33171,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 33661,
+  "expoServerNgrokUrl": "https://hx-pc3.anonymous.rally.exp.direct",
+  "packagerNgrokUrl": "https://packager.hx-pc3.anonymous.rally.exp.direct",
+  "ngrokPid": 33671
 }

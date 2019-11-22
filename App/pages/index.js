@@ -5,7 +5,11 @@ import FilterFriends from './filterFriends';
 import Messages from './messages';
 import Profile from './profile';
 import EventOne from './eventOne';
+import EventTwo from './eventTwo';
+import EventThree from './eventThree';
 import EventOneExpanded from './eventOneExpanded';
+import EventTwoExpanded from './eventTwoExpanded';
+import EventThreeExpanded from './eventThreeExpanded';
 
 export {
   Home,
@@ -15,5 +19,9 @@ export {
   Messages,
   Profile,
   EventOne,
+  EventTwo,
+  EventThree,
   EventOneExpanded,
+  EventTwoExpanded,
+  EventThreeExpanded,
 }

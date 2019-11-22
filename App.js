@@ -12,7 +12,11 @@ const StackNav = createStackNavigator({
   Messages: {screen: pages.Messages},
   Profile: {screen: pages.Profile},
   EventOne: {screen: pages.EventOne},
+  EventTwo: {screen: pages.EventTwo},
+  EventThree: {screen: pages.EventThree},
   EventOneExpanded: {screen: pages.EventOneExpanded},
+  EventTwoExpanded: {screen: pages.EventTwoExpanded},
+  EventThreeExpanded: {screen: pages.EventThreeExpanded},
 },{
    initialRouteName: 'Home',
 });

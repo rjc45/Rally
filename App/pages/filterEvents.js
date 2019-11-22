@@ -14,13 +14,13 @@ const events = [
     eventNum: '1.',
     name: 'Mana O Maunakea',
     distance: '5 mi',
-    navigation: 'Home',
+    navigation: 'EventThree',
   },
   {
     eventNum: '2.',
     name: 'Social Justice Activities Fair',
     distance: '7 mi',
-    navigation: 'Home',
+    navigation: 'EventTwo',
   },
   {
     eventNum: '3.',
@@ -97,7 +97,9 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.167445,
                   }}
                   title="Social Justice Activities Fair">
-                  <Image source = {Images.event2}/>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwo')}>
+                    <Image source = {Images.event2}/>
+                  </TouchableOpacity>
                 </Marker>
 
                 <Marker
