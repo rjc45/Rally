@@ -152,16 +152,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottombuttons: {
-<<<<<<< HEAD
-=======
     paddingTop: 20,
->>>>>>> db6b683bc9860eba208ff9fbcc960064af391a54
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
-<<<<<<< HEAD
-=======
   confirmedInterest: {
     paddingLeft: 10,
     flexDirection: 'row',
@@ -171,5 +166,4 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
->>>>>>> db6b683bc9860eba208ff9fbcc960064af391a54
 });
