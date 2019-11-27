@@ -1,11 +1,14 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { AntDesign } from '@expo/vector-icons';
+
+const { height, width } = Dimensions.get('window')
+
 
 export default class EventOneExpanded extends React.Component {
 
@@ -24,7 +27,7 @@ export default class EventOneExpanded extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={335}
+        parallaxHeaderHeight={height * .5}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -35,7 +38,7 @@ export default class EventOneExpanded extends React.Component {
                   latitudeDelta: 0.0222,
                   longitudeDelta: 0.0001,
                 }}
-                style={styles.mapStyle} 
+                style={styles.mapStyle}
               >
 
               <Marker
@@ -49,7 +52,7 @@ export default class EventOneExpanded extends React.Component {
                 </TouchableOpacity>
               </Marker>
             </MapView>
-          
+
             <RallyLogo navigation={this.props.navigation} />
             <SideIcons navigation={this.props.navigation} />
             <BackButton navigation={this.props.navigation} />
@@ -66,7 +69,7 @@ export default class EventOneExpanded extends React.Component {
             <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
             <Text style={styles.smallText}>La Maison Francaise</Text>
             <Text></Text>
-            <Text style={styles.description}>Join Cardinal for Warren for a 2020 election trivia about 
+            <Text style={styles.description}>Join Cardinal for Warren for a 2020 election trivia about
             all the candidates at French House! We'll split up into teams (or bring your own team),
             and the winning team will get a prize!</Text>
             <Text></Text>
@@ -117,10 +120,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700, 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 10,
   },
   map: {
@@ -152,16 +155,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottombuttons: {
-<<<<<<< HEAD
-=======
     paddingTop: 20,
->>>>>>> db6b683bc9860eba208ff9fbcc960064af391a54
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
-<<<<<<< HEAD
-=======
   confirmedInterest: {
     paddingLeft: 10,
     flexDirection: 'row',
@@ -171,5 +169,4 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
->>>>>>> db6b683bc9860eba208ff9fbcc960064af391a54
 });

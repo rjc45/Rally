@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
 import CardView from 'react-native-cardview'
+
+const { height, width } = Dimensions.get('window')
 
 export default class EventOne extends React.Component {
 
@@ -62,10 +64,10 @@ export default class EventOne extends React.Component {
               cardMaxElevation={2}
               cornerRadius={5}
               >
-                <Image 
+                <Image
                   source={Images.event1Card}
                   style={styles.imagePic}/>
-                
+
                 <View style={styles.description}>
                   <Image source={Images.event3}/>
                   <View>
@@ -96,11 +98,10 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight,
   },
   card: {
-    position: 'absolute',
-    top: '60%',
+    top: height * .8,
     backgroundColor: 'white',
     width: '90%',
-    height: 300,
+    height: height * .8,
     borderRadius: 30,
   },
   imagePic: {

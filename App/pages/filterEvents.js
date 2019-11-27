@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput} from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, Dimensions} from 'react-native';
 import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
@@ -8,6 +8,7 @@ import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
 
+const { height, width } = Dimensions.get('window')
 
 const events = [
   {
@@ -50,7 +51,7 @@ export default class FilterEvents extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={675}
+        parallaxHeaderHeight={height * .8}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -61,7 +62,7 @@ export default class FilterEvents extends React.Component {
                   latitudeDelta: 0.0222,
                   longitudeDelta: 0.0001,
                 }}
-                style={styles.mapStyle} 
+                style={styles.mapStyle}
               >
 
                 <Marker
@@ -113,7 +114,7 @@ export default class FilterEvents extends React.Component {
                   </TouchableOpacity>
                 </Marker>
               </MapView>
-          
+
             <RallyLogo navigation={this.props.navigation} />
             <SideIcons navigation={this.props.navigation} />
             <BackButton navigation={this.props.navigation} />
@@ -124,14 +125,14 @@ export default class FilterEvents extends React.Component {
         <View style={styles.scrollView}>
           <View style={styles.visualization}>
             <Text style={styles.title}>Filtering By Events</Text>
-            <Image 
+            <Image
               source={Images.filterEvents}
               style={{height: 25, width: 17}}
             />
           </View>
 
           <View style={styles.search}>
-            <TouchableOpacity> 
+            <TouchableOpacity>
               <AntDesign
                 name='search1'
                 style={{paddingLeft: 10}}
@@ -158,7 +159,7 @@ export default class FilterEvents extends React.Component {
               </View>
             )}
             keyExtractor={item => item.eventNum}
-          /> 
+          />
         </View>
 
       </ParallaxScrollView>
@@ -174,10 +175,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700, 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 10,
   },
   scrollView: {
