@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Images, Metrics } from '../Themes';
+import { RallyLogo } from '../components';
 
 export default class Profile extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
+    headerTitle: <Text> My Profile </Text>,
    };
 
   render() {
     return (
       <View style={styles.container}>
-          <Image source={Images.yourImage} />
+        <Image source={Images.yourImage} />
       </View>
     );
   }

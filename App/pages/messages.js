@@ -5,7 +5,7 @@ import { Images, Metrics } from '../Themes';
 export default class Messages extends React.Component {
 
   static navigationOptions = {
-    headerTitle: (<Image source={Images.logo}/>),
+    headerTitle: <Text> My Messages </Text>,
    };
 
   render() {
