@@ -94,7 +94,7 @@ export default class EventTwoExpanded extends React.Component {
             }
             <Button
               title="Start a Rally"
-              onPress={() => this.props.navigation.navigate('EventOneStartRally')}
+              onPress={() => this.props.navigation.navigate('EventTwoStartRally')}
             />
           </View>
         </View>
