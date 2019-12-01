@@ -33,42 +33,7 @@ export default class EventOneStartRally extends React.Component {
             <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
             <Text style={styles.smallText}>La Maison Francaise</Text>
             <Text></Text>
-            <Text style={styles.description}>Join Cardinal for Warren for a 2020 election trivia about
-            all the candidates at French House! We'll split up into teams (or bring your own team),
-            and the winning team will get a prize!</Text>
-            <Text></Text>
-            <Text style={styles.description}>The trivia begins at 9:00pm! All are welcome!</Text>
-            <Text></Text>
-            <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
-            or whatever)!</Text>
-            <View style={styles.bottombuttons}>
-              <Button
-                title="Interested"
-                onPress={() => Alert.alert('You are interested in this event!')}
-              />
-              <Button
-                title="Start a Rally"
-                onPress={() => Alert.alert('Start a Rally!')}
-              />
-            </View>
-          </View>
-          <View style={styles.bottombuttons}>
-            {this.state.interested ?
-              <View style={styles.confirmedInterest}>
-                <Text style={styles.smallText}>Interested  </Text>
-                <Image source={Images.star}
-                  style={styles.star}/>
-              </View>
-            :
-              <Button
-                title="Interested"
-                onPress={() => this.interestedButton()}
-              />
-            }
-            <Button
-              title="Start a Rally"
-              onPress={() => Alert.alert('Start a Rally!')}
-            />
+            
           </View>
         </View>
     );

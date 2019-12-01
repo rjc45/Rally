@@ -10,6 +10,7 @@ import EventThree from './eventThree';
 import EventOneExpanded from './eventOneExpanded';
 import EventTwoExpanded from './eventTwoExpanded';
 import EventThreeExpanded from './eventThreeExpanded';
+import EventOneStartRally from './eventOneStartRally';
 
 export {
   Home,
@@ -24,4 +25,5 @@ export {
   EventOneExpanded,
   EventTwoExpanded,
   EventThreeExpanded,
+  EventOneStartRally,
 }

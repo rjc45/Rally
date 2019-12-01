@@ -93,7 +93,7 @@ export default class EventOneExpanded extends React.Component {
             }
             <Button
               title="Start a Rally"
-              onPress={() => Alert.alert('Start a Rally!')}
+              onPress={() => this.props.navigation.navigate('EventOneStartRally')}
             />
           </View>
         </View>
