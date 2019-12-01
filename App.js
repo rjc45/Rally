@@ -19,6 +19,7 @@ const StackNav = createStackNavigator({
   EventThreeExpanded: {screen: pages.EventThreeExpanded},
   EventOneStartRally: {screen: pages.EventOneStartRally},
   EventTwoStartRally: {screen: pages.EventTwoStartRally},
+  EventThreeStartRally: {screen: pages.EventThreeStartRally},
 },{
    initialRouteName: 'Home',
 });
