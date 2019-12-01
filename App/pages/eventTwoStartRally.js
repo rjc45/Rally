@@ -10,7 +10,7 @@ import Constants from 'expo-constants';
 
 const { height, width } = Dimensions.get('window')
 
-export default class EventTwoExpanded extends React.Component {
+export default class EventTwoStartRally extends React.Component {
 
   static navigationOptions = {
     header: null,
@@ -25,40 +25,6 @@ export default class EventTwoExpanded extends React.Component {
 
   render() {
     return (
-      <ParallaxScrollView
-        contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .5}
-        renderForeground={() => (
-          <View style={styles.foreground}>
-            <View style={styles.container}>
-              <MapView
-                initialRegion={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                  latitudeDelta: 0.0222,
-                  longitudeDelta: 0.0001,
-                }}
-                style={styles.mapStyle} 
-              >
-
-              <Marker
-                coordinate={{
-                  latitude: 37.425682,
-                  longitude: -122.167445,
-                }}
-                title="Social Justice Activities Fair">
-                <Image source = {Images.event2}/>
-              </Marker>
-            </MapView>
-          
-            <RallyLogo navigation={this.props.navigation} />
-            <SideIcons navigation={this.props.navigation} />
-            <BackButton navigation={this.props.navigation} />
-          </View>
-        </View>
-      )}>
-
-
         <View style={styles.scrollView}>
           <Image source={Images.event2Pic} style={styles.eventImage}/>
           <View>
@@ -79,26 +45,7 @@ export default class EventTwoExpanded extends React.Component {
             or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem, 
             come through!! Light refreshments will be provided.</Text>
           </View>
-          <View style={styles.bottombuttons}>
-            {this.state.interested ?
-              <View style={styles.confirmedInterest}>
-                <Text style={styles.smallText}>Interested  </Text>
-                <Image source={Images.star}
-                  style={styles.star}/>
-              </View>
-            :
-              <Button
-                title="Interested"
-                onPress={() => this.interestedButton()}
-              />
-            }
-            <Button
-              title="Start a Rally"
-              onPress={() => this.props.navigation.navigate('EventOneStartRally')}
-            />
-          </View>
         </View>
-      </ParallaxScrollView>
     );
   }
 }
