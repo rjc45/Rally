@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -7,6 +7,8 @@ import { RallyLogo, BackButton, SideIcons } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { AntDesign } from '@expo/vector-icons';
 import Constants from 'expo-constants';
+
+const { height, width } = Dimensions.get('window')
 
 export default class EventTwoExpanded extends React.Component {
 
@@ -25,7 +27,7 @@ export default class EventTwoExpanded extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={335}
+        parallaxHeaderHeight={height * .5}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>

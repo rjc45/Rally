@@ -25,42 +25,6 @@ export default class EventOneStartRally extends React.Component {
 
   render() {
     return (
-      <ParallaxScrollView
-        contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .5}
-        renderForeground={() => (
-          <View style={styles.foreground}>
-            <View style={styles.container}>
-              <MapView
-                initialRegion={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                  latitudeDelta: 0.0222,
-                  longitudeDelta: 0.0001,
-                }}
-                style={styles.mapStyle}
-              >
-
-              <Marker
-                coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                }}
-                title="2020 Election Trivia Night">
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
-                  <Image source = {Images.event1}/>
-                </TouchableOpacity>
-              </Marker>
-            </MapView>
-
-            <RallyLogo navigation={this.props.navigation} />
-            <SideIcons navigation={this.props.navigation} />
-            <BackButton navigation={this.props.navigation} />
-          </View>
-        </View>
-      )}>
-
-
         <View style={styles.scrollView}>
           <Image source={Images.event1Pic} style={styles.eventImage}/>
           <View>
@@ -107,7 +71,6 @@ export default class EventOneStartRally extends React.Component {
             />
           </View>
         </View>
-      </ParallaxScrollView>
     );
   }
 }

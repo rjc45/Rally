@@ -98,10 +98,11 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight,
   },
   card: {
-    top: height * .8,
+    position: 'absolute',
+    top: '60%',
     backgroundColor: 'white',
     width: '90%',
-    height: height * .8,
+    height: 300,
     borderRadius: 30,
   },
   imagePic: {

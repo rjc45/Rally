@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
 import CardView from 'react-native-cardview'
+
+const { height, width } = Dimensions.get('window')
 
 export default class EventTwo extends React.Component {
 
