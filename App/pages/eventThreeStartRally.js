@@ -51,6 +51,12 @@ export default class EventThreeStartRally extends React.Component {
               <Image source={Images.star} style={styles.star}/>
             </View>
            </View>
+           <View style={styles.bottombuttons}>
+           <Button
+              title="Let's Rally!"
+              onPress={() => this.props.navigation.navigate('Messages')}
+            />
+           </View>
           </View>
     );
   }
@@ -117,10 +123,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottombuttons: {
-    paddingTop: 20,
+    paddingTop: height * .02,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 25,
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   friendRow: {
     flexDirection: 'row',
