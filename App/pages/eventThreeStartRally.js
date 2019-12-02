@@ -46,7 +46,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(0)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[0].clicked ?
-              <Image source={Images.star} style={styles.star}/> 
+              <Image source={Images.check} style={styles.check}/> 
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -56,7 +56,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(1)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[1].clicked ?
-              <Image source={Images.star} style={styles.star}/> 
+              <Image source={Images.check} style={styles.check}/> 
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -66,7 +66,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(2)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[2].clicked ?
-              <Image source={Images.star} style={styles.star}/> 
+              <Image source={Images.check} style={styles.check}/> 
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -76,7 +76,7 @@ export default class EventThreeStartRally extends React.Component {
               title="Let's Rally!"
               onPress={() => this.props.navigation.navigate('Messages')}
             />
-           </View>
+           </View><BackButton navigation={this.props.navigation} />
           </View>
     );
   }
@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  star: {
-    height: 25,
-    width: 25,
+  check: {
+    height: 35,
+    width: 35,
   },
 });
