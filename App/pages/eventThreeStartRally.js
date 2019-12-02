@@ -16,11 +16,19 @@ export default class EventThreeStartRally extends React.Component {
     header: null,
   };
 
-  state = { rally: false };
+  state = { 
+    arr: [
+      { friend: "friendOne", clicked: false },
+      { friend: "friendTwo", clicked: false},
+      { friend: "friendThree", clicked: false},
+    ]
+  };
 
-  rallyButton() {
-    this.setState({ rally: true});
-    alert('Start a Rally!');
+  rallyButton(index) {
+    let tmp = this.state.arr;
+    tmp[index].clicked = !tmp[index].clicked;
+    this.setState({ arr: tmp });
+    return tmp[index].clicked;
   }
 
   render() {
@@ -35,21 +43,33 @@ export default class EventThreeStartRally extends React.Component {
           <Text style={styles.title}>Rally with Friends</Text>
           <View style={styles.friendRow}>
             <Text style={styles.largeText}>Friend 1</Text>
+            <TouchableOpacity onPress={() => this.rallyButton(0)}>
             <View style={styles.checkBoxWrapper}>
-              <Image source={Images.star} style={styles.star}/>
+              {this.state.arr[0].clicked ?
+              <Image source={Images.star} style={styles.star}/> 
+              : <Text></Text>}
             </View>
+            </TouchableOpacity>
            </View>
            <View style={styles.friendRow}>
-            <Text style={styles.largeText}>Friend 2</Text>
+           <Text style={styles.largeText}>Friend 2</Text>
+            <TouchableOpacity onPress={() => this.rallyButton(1)}>
             <View style={styles.checkBoxWrapper}>
-              <Image source={Images.star} style={styles.star}/>
+              {this.state.arr[1].clicked ?
+              <Image source={Images.star} style={styles.star}/> 
+              : <Text></Text>}
             </View>
+            </TouchableOpacity>
            </View>
            <View style={styles.friendRow}>
-            <Text style={styles.largeText}>Friend 3</Text>
+           <Text style={styles.largeText}>Friend 3</Text>
+            <TouchableOpacity onPress={() => this.rallyButton(2)}>
             <View style={styles.checkBoxWrapper}>
-              <Image source={Images.star} style={styles.star}/>
+              {this.state.arr[2].clicked ?
+              <Image source={Images.star} style={styles.star}/> 
+              : <Text></Text>}
             </View>
+            </TouchableOpacity>
            </View>
            <View style={styles.bottombuttons}>
            <Button
