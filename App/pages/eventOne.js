@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
-import { Marker, Callout } from 'react-native-maps';
+import { Marker, Callout, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
 import CardView from 'react-native-cardview'
@@ -51,6 +51,18 @@ export default class EventOne extends React.Component {
             title="2020 Election Trivia Night">
             <Image source = {Images.event3}/>
           </Marker>
+
+          <Polyline 
+            coordinates= {[{
+              latitude: 37.4274,
+              longitude: -122.1697,
+            },
+            {
+              latitude: 37.420561,
+              longitude: -122.166688,
+            }
+            ]}
+          />
         </MapView>
 
         <RallyLogo navigation={this.props.navigation} />
