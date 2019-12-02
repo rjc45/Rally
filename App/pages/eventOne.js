@@ -19,7 +19,6 @@ export default class EventOne extends React.Component {
       <View style={styles.container}>
 
         <MapView
-          provider='google'
           initialRegion={{
             latitude: 37.4200,
             longitude: -122.1697,
