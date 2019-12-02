@@ -8,8 +8,6 @@ import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
 
-const { height, width } = Dimensions.get('window')
-
 const friends = [
   {
     friendNum: '1.',
@@ -51,7 +49,7 @@ export default class FilterEvents extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .8}
+        parallaxHeaderHeight={Metrics.screenHeight * .8}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -86,7 +84,7 @@ export default class FilterEvents extends React.Component {
                     latitude: 37.427799,
                     longitude: -122.171198,
                   }}
-                  title="Mano `O Maunakea">
+                  title="Ryan">
                   <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThree')}>
                     <Image source = {Images.event1}/>
                   </TouchableOpacity>
@@ -97,7 +95,7 @@ export default class FilterEvents extends React.Component {
                     latitude: 37.425682,
                     longitude: -122.167445,
                   }}
-                  title="Social Justice Activities Fair">
+                  title="Gabby">
                   <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwo')}>
                     <Image source = {Images.event2}/>
                   </TouchableOpacity>
@@ -108,7 +106,7 @@ export default class FilterEvents extends React.Component {
                     latitude: 37.420561,
                     longitude: -122.166688,
                   }}
-                  title="2020 Election Trivia Night">
+                  title="Peter">
                   <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
                     <Image source = {Images.event3}/>
                   </TouchableOpacity>
@@ -125,10 +123,6 @@ export default class FilterEvents extends React.Component {
         <View style={styles.scrollView}>
           <View style={styles.visualization}>
             <Text style={styles.title}>Filtering By Friends</Text>
-            <Image
-              source={Images.filterEvents}
-              style={{height: 25, width: 17}}
-            />
           </View>
 
           <View style={styles.search}>
