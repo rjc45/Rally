@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import { Marker, Callout, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
-import CardView from 'react-native-cardview'
+import CardView from 'react-native-cardview';
 
 const { height, width } = Dimensions.get('window')
 
