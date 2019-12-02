@@ -76,7 +76,7 @@ export default class EventThreeStartRally extends React.Component {
               title="Let's Rally!"
               onPress={() => this.props.navigation.navigate('Messages')}
             />
-           </View>
+           </View><BackButton navigation={this.props.navigation} />
           </View>
     );
   }

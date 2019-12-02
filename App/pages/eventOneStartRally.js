@@ -79,6 +79,7 @@ export default class EventOneStartRally extends React.Component {
             />
            </View>
            </View>
+           <BackButton navigation={this.props.navigation} />
           </View>
     );
   }
