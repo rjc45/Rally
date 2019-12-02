@@ -38,7 +38,7 @@ export default class EventThreeExpanded extends React.Component {
                   latitudeDelta: 0.0222,
                   longitudeDelta: 0.0001,
                 }}
-                style={styles.mapStyle} 
+                style={styles.mapStyle}
               >
 
               <Marker
@@ -50,7 +50,7 @@ export default class EventThreeExpanded extends React.Component {
                 <Image source = {Images.event1}/>
               </Marker>
             </MapView>
-          
+
             <RallyLogo navigation={this.props.navigation} />
             <SideIcons navigation={this.props.navigation} />
             <BackButton navigation={this.props.navigation} />
@@ -67,12 +67,12 @@ export default class EventThreeExpanded extends React.Component {
             <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
             <Text style={styles.smallText}>Native American Culture Center</Text>
             <Text></Text>
-            <Text style={styles.description}>Stanford Hui O Nā Moku is excited to welcome Lanakila Mangauil 
+            <Text style={styles.description}>Stanford Hui O Nā Moku is excited to welcome Lanakila Mangauil
             to the Stanford Native American Cultural Center on October 30th from 6:30-8:30PM. </Text>
             <Text></Text>
-            <Text style={styles.description}>Lanakila will be teaching a workshop that will offer knowledge 
-            on indigenous scientific perspectives through oral history and cultural knowledge-based future 
-            planning. This is a once in a lifetime opportunity and we would love to have as many people join 
+            <Text style={styles.description}>Lanakila will be teaching a workshop that will offer knowledge
+            on indigenous scientific perspectives through oral history and cultural knowledge-based future
+            planning. This is a once in a lifetime opportunity and we would love to have as many people join
             us as possible!</Text>
           </View>
           <View style={styles.bottombuttons}>
@@ -107,10 +107,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700, 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 10,
   },
   map: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: 300,
+    height: height*.4,
   },
   title: {
     fontSize: 24,

@@ -38,7 +38,7 @@ export default class EventTwoExpanded extends React.Component {
                   latitudeDelta: 0.0222,
                   longitudeDelta: 0.0001,
                 }}
-                style={styles.mapStyle} 
+                style={styles.mapStyle}
               >
 
               <Marker
@@ -50,7 +50,7 @@ export default class EventTwoExpanded extends React.Component {
                 <Image source = {Images.event2}/>
               </Marker>
             </MapView>
-          
+
             <RallyLogo navigation={this.props.navigation} />
             <SideIcons navigation={this.props.navigation} />
             <BackButton navigation={this.props.navigation} />
@@ -67,16 +67,16 @@ export default class EventTwoExpanded extends React.Component {
             <Text style={styles.smallText}>Nov. 1 | 4PM - 6PM</Text>
             <Text style={styles.smallText}>Columbae Lawn</Text>
             <Text></Text>
-            <Text style={styles.description}>Interested in social justice on campus, but don't know where 
-            to start? Want to get involved with organizing around causes you care about? Trying to build 
+            <Text style={styles.description}>Interested in social justice on campus, but don't know where
+            to start? Want to get involved with organizing around causes you care about? Trying to build
             coalitions between different activist groups on campus?</Text>
             <Text></Text>
-            <Text style={styles.description}>Come to Columbae’s First Social Justice Activities Fair on 
-            Friday, November 1 from 4-6! Meet with leaders from 15+ activist groups on campus, organizing 
+            <Text style={styles.description}>Come to Columbae’s First Social Justice Activities Fair on
+            Friday, November 1 from 4-6! Meet with leaders from 15+ activist groups on campus, organizing
             on everything from workers’ rights and affordable housing to racial justice and sustainability.</Text>
             <Text></Text>
-            <Text style={styles.description}>Whether you’re an experienced activist looking for a new cause, 
-            or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem, 
+            <Text style={styles.description}>Whether you’re an experienced activist looking for a new cause,
+            or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem,
             come through!! Light refreshments will be provided.</Text>
           </View>
           <View style={styles.bottombuttons}>
@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700, 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 10,
   },
   map: {
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: 200,
+    height: height*.4,
+
   },
   title: {
     fontSize: 24,
