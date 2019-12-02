@@ -41,7 +41,7 @@ export default class EventTwoStartRally extends React.Component {
             <Text style={styles.smallText}>Nov. 1 | 4PM - 6PM</Text>
             <Text style={styles.smallText}>Columbae Lawn</Text>
             <Text></Text>
-            <Text style={styles.title}>Rally with Friends</Text>
+            <Text style={styles.title}>Rally with Interested Friends</Text>
           <View style={styles.friendRow}>
             <Text style={styles.largeText}>Friend 1</Text>
             <TouchableOpacity onPress={() => this.rallyButton(0)}>
