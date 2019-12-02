@@ -16,6 +16,7 @@ export default class Home extends React.Component {
       <View style={styles.container}>
 
         <MapView
+          provider="google"
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
