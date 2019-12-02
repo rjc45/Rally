@@ -110,10 +110,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700, 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 10,
   },
   map: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: 300,
+    height: height*.4,
   },
   title: {
      fontSize: 24,

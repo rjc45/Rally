@@ -16,7 +16,7 @@ export default class EventThreeStartRally extends React.Component {
     header: null,
   };
 
-  state = { 
+  state = {
     arr: [
       { friend: "friendOne", clicked: false },
       { friend: "friendTwo", clicked: false},
@@ -46,7 +46,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(0)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[0].clicked ?
-              <Image source={Images.check} style={styles.check}/> 
+              <Image source={Images.check} style={styles.check}/>
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -56,7 +56,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(1)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[1].clicked ?
-              <Image source={Images.check} style={styles.check}/> 
+              <Image source={Images.check} style={styles.check}/>
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -66,7 +66,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(2)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[2].clicked ?
-              <Image source={Images.check} style={styles.check}/> 
+              <Image source={Images.check} style={styles.check}/>
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -90,10 +90,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700, 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 10,
   },
   map: {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: 300,
+    height: height*.4,
   },
   title: {
     fontSize: 24,
