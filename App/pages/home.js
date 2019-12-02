@@ -35,7 +35,7 @@ export default class Home extends React.Component {
 
           <Marker
             coordinate={{
-              latitude: 37.4274,
+              latitude: 37.4268,
               longitude: -122.1697,
             }}>
             <Image source={Images.currentLocation2}/>

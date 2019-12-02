@@ -56,6 +56,7 @@ export default class FilterEvents extends React.Component {
           <View style={styles.foreground}>
             <View style={styles.container}>
               <MapView
+                provider='google'
                 initialRegion={{
                   latitude: 37.4274,
                   longitude: -122.1697,
@@ -75,7 +76,7 @@ export default class FilterEvents extends React.Component {
 
                 <Marker
                   coordinate={{
-                    latitude: 37.4274,
+                    latitude: 37.4268,
                     longitude: -122.1697,
                   }}>
                   <Image source={Images.currentLocation2}/>
