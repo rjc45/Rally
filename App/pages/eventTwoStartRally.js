@@ -33,17 +33,25 @@ export default class EventTwoStartRally extends React.Component {
             <Text style={styles.smallText}>Nov. 1 | 4PM - 6PM</Text>
             <Text style={styles.smallText}>Columbae Lawn</Text>
             <Text></Text>
-            <Text style={styles.description}>Interested in social justice on campus, but don't know where 
-            to start? Want to get involved with organizing around causes you care about? Trying to build 
-            coalitions between different activist groups on campus?</Text>
-            <Text></Text>
-            <Text style={styles.description}>Come to Columbae’s First Social Justice Activities Fair on 
-            Friday, November 1 from 4-6! Meet with leaders from 15+ activist groups on campus, organizing 
-            on everything from workers’ rights and affordable housing to racial justice and sustainability.</Text>
-            <Text></Text>
-            <Text style={styles.description}>Whether you’re an experienced activist looking for a new cause, 
-            or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem, 
-            come through!! Light refreshments will be provided.</Text>
+            <Text style={styles.title}>Rally with Friends</Text>
+          <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 1</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
+           <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 2</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
+           <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 3</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
           </View>
         </View>
     );
@@ -77,7 +85,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: 200,
+    height: 300,
   },
   title: {
     fontSize: 24,
@@ -89,6 +97,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  largeText: {
+    fontSize: 24,
+    textAlign: 'left',
+    paddingVertical: height * .025
+  },
+  checkBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#F0F0F0',
+    borderRadius: 20
+  },
+  checkBox: {
+    height: 25,
+    width: 25,
+  },
   description: {
     textAlign: 'center',
   },
@@ -98,10 +124,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
-  confirmedInterest: {
-    paddingLeft: 10,
+  friendRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-around',
   },
   star: {
     height: 25,

@@ -33,7 +33,25 @@ export default class EventOneStartRally extends React.Component {
             <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
             <Text style={styles.smallText}>La Maison Francaise</Text>
             <Text></Text>
-            
+            <Text style={styles.title}>Rally with Friends</Text>
+          <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 1</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
+           <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 2</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
+           <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 3</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
           </View>
         </View>
     );
@@ -48,10 +66,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: 700, 
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
     paddingTop: 10,
   },
   map: {
@@ -79,6 +97,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  largeText: {
+    fontSize: 24,
+    textAlign: 'left',
+    paddingVertical: height * .025
+  },
+  checkBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#F0F0F0',
+    borderRadius: 20
+  },
+  checkBox: {
+    height: 25,
+    width: 25,
+  },
   description: {
     textAlign: 'center',
   },
@@ -88,10 +124,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
-  confirmedInterest: {
-    paddingLeft: 10,
+  friendRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-around',
   },
   star: {
     height: 25,

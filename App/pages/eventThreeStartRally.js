@@ -16,32 +16,42 @@ export default class EventThreeStartRally extends React.Component {
     header: null,
   };
 
-  state = { interested: false };
+  state = { rally: false };
 
-  interestedButton() {
-    this.setState({ interested: true});
-    alert('You are interested in this event!');
+  rallyButton() {
+    this.setState({ rally: true});
+    alert('Start a Rally!');
   }
 
   render() {
     return (
         <View style={styles.scrollView}>
           <Image source={Images.event3Pic} style={styles.eventImage}/>
-          <View>
             <Text style={styles.title}>Mana `O Maunakea</Text>
             <Text style={styles.smallText}>Hosted by: Stanford Hui O Nā Moku</Text>
             <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
             <Text style={styles.smallText}>Native American Culture Center</Text>
             <Text></Text>
-            <Text style={styles.description}>Stanford Hui O Nā Moku is excited to welcome Lanakila Mangauil 
-            to the Stanford Native American Cultural Center on October 30th from 6:30-8:30PM. </Text>
-            <Text></Text>
-            <Text style={styles.description}>Lanakila will be teaching a workshop that will offer knowledge 
-            on indigenous scientific perspectives through oral history and cultural knowledge-based future 
-            planning. This is a once in a lifetime opportunity and we would love to have as many people join 
-            us as possible!</Text>
+          <Text style={styles.title}>Rally with Friends</Text>
+          <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 1</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
+           <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 2</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
+           <View style={styles.friendRow}>
+            <Text style={styles.largeText}>Friend 3</Text>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.star} style={styles.star}/>
+            </View>
+           </View>
           </View>
-        </View>
     );
   }
 }
@@ -85,6 +95,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  largeText: {
+    fontSize: 24,
+    textAlign: 'left',
+    paddingVertical: height * .025
+  },
+  checkBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#F0F0F0',
+    borderRadius: 20
+  },
+  checkBox: {
+    height: 25,
+    width: 25,
+  },
   description: {
     textAlign: 'center',
   },
@@ -94,10 +122,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 25,
   },
-  confirmedInterest: {
-    paddingLeft: 10,
+  friendRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-around',
   },
   star: {
     height: 25,
