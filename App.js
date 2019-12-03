@@ -11,15 +11,14 @@ const StackNav = createStackNavigator({
   FilterFriends: {screen: pages.FilterFriends},
   Messages: {screen: pages.Messages},
   Profile: {screen: pages.Profile},
-  EventOne: {screen: pages.EventOne},
-  EventTwo: {screen: pages.EventTwo},
-  EventThree: {screen: pages.EventThree},
   EventOneExpanded: {screen: pages.EventOneExpanded},
   EventTwoExpanded: {screen: pages.EventTwoExpanded},
   EventThreeExpanded: {screen: pages.EventThreeExpanded},
   EventOneStartRally: {screen: pages.EventOneStartRally},
   EventTwoStartRally: {screen: pages.EventTwoStartRally},
   EventThreeStartRally: {screen: pages.EventThreeStartRally},
+  FriendOne: {screen: pages.FriendOne},
+  FriendTwo: {screen: pages.FriendTwo},
 },{
    initialRouteName: 'Home',
 });

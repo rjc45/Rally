@@ -8,26 +8,24 @@ import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
 
-const { height, width } = Dimensions.get('window')
-
 const events = [
   {
     eventNum: '1.',
-    name: 'Mana O Maunakea',
+    name: 'Mana `O Maunakea',
     distance: '5 mi',
-    navigation: 'EventThree',
+    navigation: 'EventThreeExpanded',
   },
   {
     eventNum: '2.',
     name: 'Social Justice Activities Fair',
     distance: '7 mi',
-    navigation: 'EventTwo',
+    navigation: 'EventTwoExpanded',
   },
   {
     eventNum: '3.',
     name: '2020 Election Trivia Night',
     distance: '12 mi',
-    navigation: 'EventOne',
+    navigation: 'EventOneExpanded',
   },
 ];
 
@@ -41,17 +39,13 @@ export default class FilterEvents extends React.Component {
     searchText: '',
   }
 
-  _onPressButton() {
-    Alert.alert("You tapped the button!")
-  }
-
   render() {
     const { searchText } = this.state;
 
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .8}
+        parallaxHeaderHeight={Metrics.screenHeight * .8}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -87,7 +81,7 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.171198,
                   }}
                   title="Mano `O Maunakea">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThree')}>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThreeExpanded')}>
                     <Image source = {Images.event1}/>
                   </TouchableOpacity>
                 </Marker>
@@ -98,7 +92,7 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.167445,
                   }}
                   title="Social Justice Activities Fair">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwo')}>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwoExpanded')}>
                     <Image source = {Images.event2}/>
                   </TouchableOpacity>
                 </Marker>
@@ -109,7 +103,7 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.166688,
                   }}
                   title="2020 Election Trivia Night">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
                     <Image source = {Images.event3}/>
                   </TouchableOpacity>
                 </Marker>

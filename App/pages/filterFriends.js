@@ -11,21 +11,15 @@ import { AntDesign } from '@expo/vector-icons';
 const friends = [
   {
     friendNum: '1.',
-    name: 'Ryan',
+    name: 'Sophie',
     distance: '5 mi',
     navigation: 'FriendOne',
   },
   {
     friendNum: '2.',
-    name: 'Gabby',
+    name: 'Patrick',
     distance: '7 mi',
     navigation: 'FriendTwo',
-  },
-  {
-    friendNum: '3.',
-    name: 'Peter',
-    distance: '12 mi',
-    navigation: 'FriendThree',
   },
 ];
 
@@ -84,8 +78,8 @@ export default class FilterEvents extends React.Component {
                     latitude: 37.427799,
                     longitude: -122.171198,
                   }}
-                  title="Ryan">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThree')}>
+                  title="Sophie">
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('FriendOne')}>
                     <Image source = {Images.event1}/>
                   </TouchableOpacity>
                 </Marker>
@@ -95,20 +89,9 @@ export default class FilterEvents extends React.Component {
                     latitude: 37.425682,
                     longitude: -122.167445,
                   }}
-                  title="Gabby">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwo')}>
+                  title="Patrick">
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('FriendTwo')}>
                     <Image source = {Images.event2}/>
-                  </TouchableOpacity>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.420561,
-                    longitude: -122.166688,
-                  }}
-                  title="Peter">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
-                    <Image source = {Images.event3}/>
                   </TouchableOpacity>
                 </Marker>
               </MapView>
