@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native'
 import { Images, Metrics } from '../Themes';
+import { AntDesign } from '@expo/vector-icons';
 
 export default class SideIcons extends Component {
 
@@ -10,13 +11,21 @@ export default class SideIcons extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Messages')}
         >
-          <Image source={Images.messagesFilled}/>
+          <AntDesign
+            name='mail'
+            size={40}
+            color='black'
+          />
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Profile')}
         >
-          <Image source={Images.profileFilled}/>
+          <AntDesign
+            name='user'
+            size={40}
+            color='black'
+          />
         </TouchableOpacity>
       </View>
     );
@@ -28,6 +37,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'flex-end',
     top:'6%',
-    paddingRight: 10,
+    paddingRight: 20,
   },
 });
