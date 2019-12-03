@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Image, TouchableOpacity} from 'react-native'
 import { Images, Metrics } from '../Themes';
+import { AntDesign } from '@expo/vector-icons';
 
 export default class BackButton extends Component {
 
@@ -10,9 +11,10 @@ export default class BackButton extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.goBack()}
         >
-          <Image 
-            source={Images.back}
-            style={{width: 30, height: 30}}
+          <AntDesign
+            name='arrowleft'
+            size={40}
+            color='black'
           />
         </TouchableOpacity>
       </View>

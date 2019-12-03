@@ -1,5 +1,4 @@
 const images = {
-  back: require('../Images/back.png'),
   check: require('../Images/bluecheck.png'),
   currentLocation: require('../Images/currentLocation.png'),
   currentLocation2: require('../Images/currentLocation2.png'),
@@ -18,10 +17,6 @@ const images = {
   filterRallies: require('../Images/filter-rallies.png'),
   logo: require('../Images/logo.png'),
   male: require('../Images/male.png'),
-  messages: require('../Images/messages.png'),
-  messagesFilled: require('../Images/messages-filled.png'),
-  profile: require('../Images/profile.png'),
-  profileFilled: require('../Images/profile_filled.png'),
   rally: require('../Images/logo_filled.png'),
   rally1: require('../Images/rally2.png'),
   rally2: require('../Images/rally1.png'),
