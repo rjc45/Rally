@@ -20,6 +20,7 @@ const StackNav = createStackNavigator({
   EventOneStartRally: {screen: pages.EventOneStartRally},
   EventTwoStartRally: {screen: pages.EventTwoStartRally},
   EventThreeStartRally: {screen: pages.EventThreeStartRally},
+  RallyOne: {screen: pages.RallyOne},
 },{
    initialRouteName: 'Home',
 });

@@ -64,10 +64,10 @@ export default class EventThree extends React.Component {
               cardMaxElevation={2}
               cornerRadius={5}
               >
-                <Image 
+                <Image
                   source={Images.event3Card}
                   style={styles.imagePic}/>
-                
+
                 <View style={styles.description}>
                   <Image source={Images.event1}/>
                   <View>
