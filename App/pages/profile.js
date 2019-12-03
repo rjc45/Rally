@@ -64,7 +64,7 @@ export default class Profile extends React.Component {
                 <Text style={styles.cardText}>Explore Events</Text>
                 <AntDesign
                   style={{paddingTop: 10}}
-                  name='plus'
+                  name='pluscircleo'
                   size={30}
                   color='black'
                 />
@@ -80,9 +80,37 @@ export default class Profile extends React.Component {
             horizontal={true}
             style={styles.sideScroll}
           >
-            <Text>Event1</Text>
-            <Text>Event2</Text>
-          </ScrollView>
+            <CardView 
+              cardElevation={2}
+              cardMaxElevation={2}
+              cornerRadius={5}
+              style={styles.cards}
+            >
+              <Text style={styles.cardText}>Environmental Justice Dinner</Text>
+              <Text>11/21/2019</Text>
+              <Text>Okada Lounge</Text>
+            </CardView>
+            <CardView 
+              cardElevation={2}
+              cardMaxElevation={2}
+              cornerRadius={5}
+              style={styles.cards}
+            >
+              <Text style={styles.cardText}>Fossil Free Sit-In</Text>
+              <Text>11/01/2019</Text>
+              <Text>White Plaza</Text>
+            </CardView>
+            <CardView 
+              cardElevation={2}
+              cardMaxElevation={2}
+              cornerRadius={5}
+              style={styles.cards}
+            >
+              <Text style={styles.cardText}>SCoPE 2035 Rally</Text>
+              <Text>10/22/2019</Text>
+              <Text style={{textAlign: 'center'}}>Palo Alto City Hall</Text>
+            </CardView>
+          </ScrollView> 
         </View>
 
         <BackButton navigation={this.props.navigation}/>
