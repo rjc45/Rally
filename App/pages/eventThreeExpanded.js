@@ -5,7 +5,7 @@ import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
 export default class EventThreeExpanded extends React.Component {
@@ -79,9 +79,11 @@ export default class EventThreeExpanded extends React.Component {
           <View style={styles.bottombuttons}>
             {this.state.interested ?
               <View style={styles.confirmedInterest}>
-                <Text style={styles.smallText}>Interested  </Text>
-                <Image source={Images.star}
-                  style={styles.star}/>
+                <Button
+                  title="Interested"
+                  onPress={() => this.interestedButton()}
+                />
+                <FontAwesome name='star' size={30}/>
               </View>
             :
               <Button
@@ -149,7 +151,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
   },
   confirmedInterest: {
-    paddingLeft: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },

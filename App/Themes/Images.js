@@ -20,7 +20,6 @@ const images = {
   rally: require('../Images/logo_filled.png'),
   rally1: require('../Images/rally2.png'),
   rally2: require('../Images/rally1.png'),
-  star: require('../Images/star.png'),
   yourImage: require('../Images/yourImage.png'),
 }
 

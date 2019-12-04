@@ -5,10 +5,7 @@ import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { AntDesign } from '@expo/vector-icons';
-import Constants from 'expo-constants';
-
-const { height, width } = Dimensions.get('window')
+import { FontAwesome } from '@expo/vector-icons';
 
 export default class EventOneExpanded extends React.Component {
 
@@ -19,15 +16,18 @@ export default class EventOneExpanded extends React.Component {
   state = { interested: false };
 
   interestedButton() {
-    this.setState({ interested: true});
-    alert('You are interested in this event!');
+    let tmp = !this.state.interested;
+    this.setState({ interested: tmp });
+    if (tmp) {
+      alert('You are interested in this event!');
+    }
   }
 
   render() {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .5}
+        parallaxHeaderHeight={Metrics.screenHeight * .5}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -81,9 +81,11 @@ export default class EventOneExpanded extends React.Component {
           <View style={styles.bottombuttons}>
              {this.state.interested ?
                <View style={styles.confirmedInterest}>
-                 <Text style={styles.smallText}>Interested  </Text>
-                 <Image source={Images.star}
-                   style={styles.star}/>
+                 <Button
+                  title="Interested"
+                  onPress={() => this.interestedButton()}
+                />
+                 <FontAwesome name='star' size={30}/>
                </View>
             :
               <Button
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: height*.4,
+    height: Metrics.screenHeight *.4,
   },
   title: {
      fontSize: 24,
@@ -151,7 +153,6 @@ const styles = StyleSheet.create({
      marginHorizontal: 25,
    },
    confirmedInterest: {
-     paddingLeft: 10,
      flexDirection: 'row',
      alignItems: 'center',
    },
