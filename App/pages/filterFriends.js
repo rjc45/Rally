@@ -6,7 +6,7 @@ import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 
 const friends = [
   {
@@ -103,6 +103,9 @@ export default class FilterEvents extends React.Component {
 
         <View style={styles.scrollView}>
           <View style={styles.visualization}>
+            <Entypo name='chevron-small-up' size={30}/>
+          </View>
+          <View style={styles.visualization}>
             <Text style={styles.title}>Filtering By Friends</Text>
             <Image source={Images.filterFriends}></Image>
           </View>
@@ -124,13 +127,13 @@ export default class FilterEvents extends React.Component {
           <FlatList
             data={friends}
             renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
-                  <View style={styles.listItems}>
-                    <Image source={item.image} style={styles.icon}/>
-                    <Text style={styles.listText}>{item.name}</Text>
-                    <Text style={styles.smallText}>{item.distance}</Text>
-                  </View>
-                </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
+                <View style={styles.listItems}>
+                  <Image source={item.image} style={styles.icon}/>
+                  <Text style={styles.listText}>{item.name}</Text>
+                  <Text style={styles.smallText}>{item.distance}</Text>
+                </View>
+              </TouchableOpacity>
             )}
             keyExtractor={item => item.id}
           />
@@ -169,13 +172,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    paddingTop: 20,
-    paddingBottom: 20,
     paddingRight: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
   search: {
+    marginTop: 10,
     marginLeft: 40,
     marginRight: 40,
     padding: 5,

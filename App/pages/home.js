@@ -46,7 +46,9 @@ export default class Home extends React.Component {
               longitude: -122.171198,
             }}
             title="Mano `O Maunakea">
-            <Image source = {Images.event1}/>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThreeExpanded')}>
+              <Image source = {Images.event1}/>
+            </TouchableOpacity>
           </Marker>
 
           <Marker
@@ -55,7 +57,9 @@ export default class Home extends React.Component {
               longitude: -122.167445,
             }}
             title="Social Justice Activities Fair">
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwoExpanded')}>
               <Image source = {Images.event2}/>
+            </TouchableOpacity>
           </Marker>
 
           <Marker
@@ -64,7 +68,7 @@ export default class Home extends React.Component {
               longitude: -122.166688,
             }}
             title="2020 Election Trivia Night">
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
               <Image source = {Images.event3}/>
             </TouchableOpacity>
           </Marker>

@@ -6,7 +6,7 @@ import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 
@@ -141,6 +141,9 @@ export default class FilterEvents extends React.Component {
 
         <View style={styles.scrollView}>
           <View style={styles.visualization}>
+            <Entypo name='chevron-small-up' size={30} style={{justifyContent: 'center'}}/>
+          </View>
+          <View style={styles.visualization}>
             <Text style={styles.title}>Filtering By Events</Text>
             <Image
               source={Images.filterEvents}
@@ -205,13 +208,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    paddingTop: 20,
-    paddingBottom: 20,
+    paddingTop: 5,
     paddingRight: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
   search: {
+    marginTop: 20,
     marginLeft: 40,
     marginRight: 40,
     padding: 5,
