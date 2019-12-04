@@ -7,6 +7,8 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
+import firestore from '../../firebase';
+import firebase from 'firebase';
 
 const events = [
   {
