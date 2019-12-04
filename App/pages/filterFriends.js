@@ -108,6 +108,7 @@ export default class FilterEvents extends React.Component {
         <View style={styles.scrollView}>
           <View style={styles.visualization}>
             <Text style={styles.title}>Filtering By Friends</Text>
+            <Image source={Images.filterFriends}></Image>
           </View>
 
           <View style={styles.search}>
@@ -172,7 +173,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    padding: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
