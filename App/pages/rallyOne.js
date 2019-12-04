@@ -1,99 +1,101 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons } from '../components';
-import CardView from 'react-native-cardview'
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import { AntDesign } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
-const { height, width } = Dimensions.get('window')
-
-export default class EventThree extends React.Component {
+export default class EventThreeExpanded extends React.Component {
 
   static navigationOptions = {
     header: null,
   };
 
-  state = { joinRally: false };
+  state = { rally: false };
 
-  joinRallyButton() {
-    this.setState({ joinRally: true});
-    alert('You joined this Rally!');
+  rallyButton() {
+    let tmp = !this.state.interested;
+    this.setState({ interested: tmp });
+    if (tmp) {
+      alert('You have joined Sophie\'s Rally!');
+    }
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <ParallaxScrollView
+        contentBackgroundColor="white"
+        parallaxHeaderHeight={Metrics.screenHeight * .5}
+        renderForeground={() => (
+          <View style={styles.foreground}>
+            <View style={styles.container}>
+              <MapView
+                initialRegion={{
+                  latitude: 37.4274,
+                  longitude: -122.1697,
+                  latitudeDelta: 0.0222,
+                  longitudeDelta: 0.0001,
+                }}
+                style={styles.mapStyle}
+              >
 
-        <MapView
-          initialRegion={{
-            latitude: 37.4250,
-            longitude: -122.1697,
-            latitudeDelta: 0.0200,
-            longitudeDelta: 0.00005,
-          }}
-          style={styles.mapStyle}
-        >
-          <Marker
-            coordinate={{
-              latitude: 37.4274,
-              longitude: -122.1697,
-            }}>
-            <Image source={Images.currentLocation}/>
-          </Marker>
+              <Marker
+                coordinate={{
+                  latitude: 37.4274,
+                  longitude: -122.1697,
+                }}
+                title="Mana `O ">
+                <Image source = {Images.rally1}/>
+              </Marker>
+            </MapView>
 
-          <Marker
-            coordinate={{
-              latitude: 37.4274,
-              longitude: -122.1697,
-            }}>
-            <Image source={Images.currentLocation2}/>
-          </Marker>
+            <RallyLogo navigation={this.props.navigation} />
+            <SideIcons navigation={this.props.navigation} />
+            <BackButton navigation={this.props.navigation} />
+          </View>
+        </View>
+      )}>
 
-          <Marker
-            coordinate={{
-              latitude: 37.427799,
-              longitude: -122.171198,
-            }}
-            title="Mano `O Maunakea">
-            <Image source = {Images.rally1}/>
-          </Marker>
 
-        </MapView>
-
-        <RallyLogo navigation={this.props.navigation} />
-        <SideIcons navigation={this.props.navigation} />
-        <BackButton navigation={this.props.navigation} />
-
-        <View style={styles.cardContainer}>
-          <View style={styles.cardObject}>
-            <Image
-              source={Images.event3Card}
-              style={styles.imagePic}/>
-              <View style={styles.description}>
-                <Image source={Images.event1}/>
-                <View>
-                  <Text style={styles.title}>Mana `O Maunakea</Text>
-                  <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
-                  <Text style={styles.smallText}>Native American Culture Center</Text>
-                </View>
+        <View style={styles.scrollView}>
+          <Image source={Images.event3Pic} style={styles.eventImage}/>
+          <View>
+            <Text style={styles.title}>Mana `O Maunakea</Text>
+            <Text style={styles.smallText}>Hosted by: Stanford Hui O Nā Moku</Text>
+            <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
+            <Text style={styles.smallText}>Native American Culture Center</Text>
+            <Text></Text>
+            <Text style={styles.description}>Stanford Hui O Nā Moku is excited to welcome Lanakila Mangauil
+            to the Stanford Native American Cultural Center on October 30th from 6:30-8:30PM. </Text>
+            <Text></Text>
+            <Text style={styles.description}>Lanakila will be teaching a workshop that will offer knowledge
+            on indigenous scientific perspectives through oral history and cultural knowledge-based future
+            planning. This is a once in a lifetime opportunity and we would love to have as many people join
+            us as possible!</Text>
+          </View>
+          <View style={styles.bottombuttons}>
+            {this.state.interested ?
+              <View style={styles.confirmedInterest}>
+                <Text style={styles.smallText}>Joined  </Text>
+                <Image source={Images.filterRallies}
+                  style={styles.star}/>
               </View>
+            :
+              <Button
+                title="Join Sophie's Rally"
+                onPress={() => this.rallyButton()}
+              />
+            }
+            <Button
+              title="See Sophie's Profile"
+              onPress={() => this.props.navigation.navigate('FriendOne')}
+            />
           </View>
         </View>
-
-        <View style={styles.lowerContainer}>
-        <TouchableOpacity onPress={() => this.joinRallyButton()}>
-          <View style={styles.joinRallyButton}>
-              <Text style={styles.title}>Join Sophie's Rally</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile')}>
-          <View style={styles.profileButton}>
-            <Text style={styles.title}>See Sophie's Profile</Text>
-          </View>
-        </TouchableOpacity>
-        </View>
-      </View>
+      </ParallaxScrollView>
     );
   }
 }
@@ -105,80 +107,54 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cardContainer: {
-    height: height * .3,
-    width: width,
-    alignItems: 'center'
-  },
-  lowerContainer: {
-    height: height * .15,
-    width: width,
-    flexDirection: 'row',
+  foreground: {
+    height: 700,
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+    paddingTop: 10,
   },
-  cardObject: {
-    borderRadius: 18,
-    width: width * .9,
-    height: height * .3,
-    borderColor: 'gray',
-    borderWidth: 2,
+  map: {
+    flex: 1,
   },
   mapStyle: {
     flex: 1,
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
   },
-  card: {
-    width: '90%',
-    height: 300,
-    borderRadius: 30,
-    flexDirection: 'row'
+  info: {
+    flex: 2.5,
   },
-  imagePic: {
-    width: '100%',
-    height: height * .2,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  profilePic: {
-    width: 30,
-    height: 30,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    borderRadius: 15,
-
-  },
-  description:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+  eventImage: {
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight *.4,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    padding: 10,
+    textAlign: 'center',
+    paddingTop: 10,
   },
   smallText: {
-    fontSize: 13,
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  description: {
+    textAlign: 'center',
+  },
+  bottombuttons: {
+    paddingTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 25,
+  },
+  confirmedInterest: {
     paddingLeft: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  joinRallyButton: {
-    borderRadius: 18,
-    width: 150,
-    height: 75,
-    backgroundColor: 'white',
-    borderWidth: 2,
-    borderColor: 'gray'
+  star: {
+    height: 25,
+    width: 30,
   },
-  profileButton: {
-    borderRadius: 18,
-    width: 150,
-    height: 75,
-    backgroundColor: 'white',
-    borderWidth: 2,
-    borderColor: 'gray'
-  },
-
 });
