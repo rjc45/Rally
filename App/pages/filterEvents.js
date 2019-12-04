@@ -7,6 +7,8 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
+import firestore from '../../firebase';
+import firebase from 'firebase';
 
 const events = [
   {
@@ -38,6 +40,25 @@ export default class FilterEvents extends React.Component {
   state = {
     searchText: '',
   }
+
+  getEvents = async () => {
+    try {
+      let events = [];
+      let eventCollectionRef = firestore.collection('events');
+      let allEvents = await eventCollectionRef.get();
+      allEvents.forEach((event) => {
+        events.push(event.data()); 
+      })
+
+      return (events ? events : []);
+    } catch (error) {
+      console.log(error);
+    }
+    return ([]);
+  }
+
+
+
 
   render() {
     const { searchText } = this.state;
