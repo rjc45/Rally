@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, Dimensions} from 'react-native';
-import { Images, Metrics} from '../Themes';
+import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
@@ -10,13 +10,15 @@ import { AntDesign } from '@expo/vector-icons';
 
 const friends = [
   {
-    friendNum: '1.',
+    id: '1',
+    image: Images.friend1,
     name: 'Sophie',
     distance: '5 mi',
     navigation: 'FriendOne',
   },
   {
-    friendNum: '2.',
+    id: '2',
+    image: Images.friend2,
     name: 'Patrick',
     distance: '7 mi',
     navigation: 'FriendTwo',
@@ -80,7 +82,7 @@ export default class FilterEvents extends React.Component {
                   }}
                   title="Sophie">
                   <TouchableOpacity onPress={() => this.props.navigation.navigate('FriendOne')}>
-                    <Image source = {Images.event1}/>
+                    <Image source = {Images.friend1} style={styles.icon}/>
                   </TouchableOpacity>
                 </Marker>
 
@@ -91,7 +93,7 @@ export default class FilterEvents extends React.Component {
                   }}
                   title="Patrick">
                   <TouchableOpacity onPress={() => this.props.navigation.navigate('FriendTwo')}>
-                    <Image source = {Images.event2}/>
+                    <Image source = {Images.friend2} style={styles.icon}/>
                   </TouchableOpacity>
                 </Marker>
               </MapView>
@@ -125,17 +127,15 @@ export default class FilterEvents extends React.Component {
           <FlatList
             data={friends}
             renderItem={({ item }) => (
-              <View style={styles.event}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
-                  <Text style={styles.listText}>
-                    <Text>{item.friendNum} </Text>
-                    <Text>{item.name}  </Text>
+                  <View style={styles.listItems}>
+                    <Image source={item.image} style={styles.icon}/>
+                    <Text style={styles.listText}>{item.name}</Text>
                     <Text style={styles.smallText}>{item.distance}</Text>
-                  </Text>
+                  </View>
                 </TouchableOpacity>
-              </View>
             )}
-            keyExtractor={item => item.friendNum}
+            keyExtractor={item => item.id}
           />
         </View>
 
@@ -157,6 +157,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 10,
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   scrollView: {
     borderRadius: 10,
@@ -182,15 +187,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
   },
-  listText: {
-    paddingTop: 30,
-    paddingLeft: 40,
-    fontSize: 20,
+  listItems: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30,
+    padding: 20,
+    paddingLeft: 0,
     borderColor: 'gray',
     borderBottomWidth: 1,
   },
+  listText: {
+    fontSize: 20,
+    paddingLeft: 20,
+    paddingRight: 10,
+  },
   smallText: {
     fontSize: 13,
+    paddingTop: 2,
   },
   mapStyle: {
     width: Metrics.screenWidth,

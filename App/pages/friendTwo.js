@@ -16,13 +16,13 @@ export default class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <Image 
-          source={Images.yourImage}
+          source={Images.friend2}
           style={styles.profilePic}
         />
-        <Text style={styles.header}>Your Profile</Text>
+        <Text style={styles.header}>Patrick</Text>
 
         <View style={styles.eventsLists}>
-          <Text style={styles.headerText}>My Interests</Text>
+          <Text style={styles.headerText}>Interests</Text>
           
           <ScrollView 
             horizontal={true}
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   profilePic: {
-    borderRadius: 44,
+    borderRadius: 40,
   },
   eventsLists: {
     height: Metrics.screenHeight * 0.2,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 25,
     fontWeight: 'bold',
-    paddingBottom: 10,
+    padding: 10,
   },
   headerText: {
     padding: 10,
