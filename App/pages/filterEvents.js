@@ -4,7 +4,7 @@ import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { RallyLogo, SideIcons, BackButton } from '../components';
+import { RallyLogo, SideIcons, BackButton, ScrollView } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
@@ -19,7 +19,6 @@ export default class FilterEvents extends React.Component {
   };
 
   state = {
-    searchText: '',
     events: [],
   }
 
@@ -43,8 +42,6 @@ export default class FilterEvents extends React.Component {
   }
 
   render() {
-    const { searchText } = this.state;
-
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
@@ -61,22 +58,23 @@ export default class FilterEvents extends React.Component {
                 }}
                 style={styles.mapStyle}
               >
+                <View>
+                  <Marker
+                    coordinate={{
+                      latitude: 37.4274,
+                      longitude: -122.1697,
+                    }}>
+                    <Image source={Images.currentLocation}/>
+                  </Marker>
 
-                <Marker
-                  coordinate={{
-                    latitude: 37.4274,
-                    longitude: -122.1697,
-                  }}>
-                  <Image source={Images.currentLocation}/>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.4274,
-                    longitude: -122.1697,
-                  }}>
-                  <Image source={Images.currentLocation2}/>
-                </Marker>
+                  <Marker
+                    coordinate={{
+                      latitude: 37.4274,
+                      longitude: -122.1697,
+                    }}>
+                    <Image source={Images.currentLocation2}/>
+                  </Marker>
+                </View>
 
                 {this.state.events.map((event) => {
                   return (
@@ -101,46 +99,12 @@ export default class FilterEvents extends React.Component {
         </View>
       )}>
 
-        <View style={styles.scrollView}>
-          <View style={styles.visualization}>
-            <Entypo name='chevron-small-up' size={30} style={{justifyContent: 'center'}}/>
-          </View>
-          <View style={styles.visualization}>
-            <Text style={styles.title}>Filtering By Events</Text>
-            <Image
-              source={Images.filterEvents}
-              style={{height: 25, width: 17}}
-            />
-          </View>
-
-          <View style={styles.search}>
-            <TouchableOpacity>
-              <AntDesign
-                name='search1'
-                style={{paddingLeft: 10}}
-              />
-            </TouchableOpacity>
-            <TextInput
-              placeholder=''
-              onChangeText={searchText => this.setState({searchText})}
-              value={searchText}
-            />
-          </View>
-
-          <FlatList
-            data={this.state.events}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
-                <View style={styles.listItems}>
-                  <Image source={eventIcons[Number(item.id) - 1]}/>
-                  <Text style={styles.listText}>{item.name}</Text>
-                  <Text style={styles.smallText}>{item.distance}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
-            keyExtractor={item => item.id}
-          />
-        </View>
+        <ScrollView 
+          filter={'Filtering By Events'}
+          icon={Images.filterEvents}
+          navigation={this.props.navigation}
+          data={this.state.events} 
+        />
 
       </ParallaxScrollView>
     );
@@ -160,50 +124,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 10,
-  },
-  scrollView: {
-    borderRadius: 10,
-  },
-  visualization: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    paddingTop: 5,
-    paddingRight: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  search: {
-    marginTop: 20,
-    marginLeft: 40,
-    marginRight: 40,
-    padding: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 10,
-  },
-  listItems: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 30,
-    marginRight: 30,
-    padding: 20,
-    paddingLeft: 0,
-    borderColor: 'gray',
-    borderBottomWidth: 1,
-  },
-  listText: {
-    fontSize: 20,
-    paddingRight: 10,
-  },
-  smallText: {
-    fontSize: 13,
-    paddingTop: 4,
   },
   mapStyle: {
     width: Metrics.screenWidth,

@@ -19,6 +19,10 @@ export default class LoginScreen extends React.Component {
     }
   }
 
+  static navigationOptions = {
+    header: null,
+  };
+
   // Check out this link to learn more about firebase.auth()
   // https://firebase.google.com/docs/reference/node/firebase.auth.Auth
   signUp = async () => {
@@ -37,6 +41,7 @@ export default class LoginScreen extends React.Component {
         this.props.navigation.navigate('Home');
       }
     } catch (err) {
+      Alert.alert('Sign Up Error', err.message)
       console.log(err);
     }
   }
@@ -50,7 +55,7 @@ export default class LoginScreen extends React.Component {
       await firebase.auth().signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword)
       this.props.navigation.navigate('Home');
     } catch (err) {
-      console.log(err);
+      Alert.alert('Login Error', err.message)
     }
   }
 
