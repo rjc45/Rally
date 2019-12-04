@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -8,7 +8,9 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { AntDesign } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
-export default class EventThreeExpanded extends React.Component {
+const { height, width } = Dimensions.get('window')
+
+export default class EventTwoExpanded extends React.Component {
 
   static navigationOptions = {
     header: null,
@@ -20,7 +22,7 @@ export default class EventThreeExpanded extends React.Component {
     let tmp = !this.state.interested;
     this.setState({ interested: tmp });
     if (tmp) {
-      alert('You have joined Sophie\'s Rally!');
+      alert('You have joined Patrick\'s Rally!');
     }
   }
 
@@ -28,7 +30,7 @@ export default class EventThreeExpanded extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={Metrics.screenHeight * .5}
+        parallaxHeaderHeight={height * .5}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -44,11 +46,11 @@ export default class EventThreeExpanded extends React.Component {
 
               <Marker
                 coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
+                  latitude: 37.425682,
+                  longitude: -122.167445,
                 }}
-                title="Mana `O ">
-                <Image source = {Images.rally1}/>
+                title="Social Justice Activities Fair">
+                <Image source = {Images.rally2}/>
               </Marker>
             </MapView>
 
@@ -61,20 +63,24 @@ export default class EventThreeExpanded extends React.Component {
 
 
         <View style={styles.scrollView}>
-          <Image source={Images.event3Pic} style={styles.eventImage}/>
+          <Image source={Images.event2Pic} style={styles.eventImage}/>
           <View>
-            <Text style={styles.title}>Mana `O Maunakea</Text>
-            <Text style={styles.smallText}>Hosted by: Stanford Hui O Nā Moku</Text>
-            <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
-            <Text style={styles.smallText}>Native American Culture Center</Text>
+            <Text style={styles.title}>Social Justice Activities Fair</Text>
+            <Text style={styles.smallText}>Hosted by: Columbae</Text>
+            <Text style={styles.smallText}>Nov. 1 | 4PM - 6PM</Text>
+            <Text style={styles.smallText}>Columbae Lawn</Text>
             <Text></Text>
-            <Text style={styles.description}>Stanford Hui O Nā Moku is excited to welcome Lanakila Mangauil
-            to the Stanford Native American Cultural Center on October 30th from 6:30-8:30PM. </Text>
+            <Text style={styles.description}>Interested in social justice on campus, but don't know where
+            to start? Want to get involved with organizing around causes you care about? Trying to build
+            coalitions between different activist groups on campus?</Text>
             <Text></Text>
-            <Text style={styles.description}>Lanakila will be teaching a workshop that will offer knowledge
-            on indigenous scientific perspectives through oral history and cultural knowledge-based future
-            planning. This is a once in a lifetime opportunity and we would love to have as many people join
-            us as possible!</Text>
+            <Text style={styles.description}>Come to Columbae’s First Social Justice Activities Fair on
+            Friday, November 1 from 4-6! Meet with leaders from 15+ activist groups on campus, organizing
+            on everything from workers’ rights and affordable housing to racial justice and sustainability.</Text>
+            <Text></Text>
+            <Text style={styles.description}>Whether you’re an experienced activist looking for a new cause,
+            or someone who’s just trying to figure out where they stand in Stanford’s activist ecosystem,
+            come through!! Light refreshments will be provided.</Text>
           </View>
           <View style={styles.bottombuttons}>
             {this.state.interested ?
@@ -85,13 +91,13 @@ export default class EventThreeExpanded extends React.Component {
               </View>
             :
               <Button
-                title="Join Sophie's Rally"
+                title="Join Patrick's Rally"
                 onPress={() => this.rallyButton()}
               />
             }
             <Button
-              title="See Sophie's Profile"
-              onPress={() => this.props.navigation.navigate('FriendOne')}
+              title="See Patrick's Profile"
+              onPress={() => this.props.navigation.navigate('FriendTwo')}
             />
           </View>
         </View>
@@ -127,7 +133,8 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: Metrics.screenHeight *.4,
+    height: height*.4,
+
   },
   title: {
     fontSize: 24,

@@ -88,7 +88,7 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.167445,
                   }}
                   title="Social Justice Activities Fair">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwo')}>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('RallyTwo')}>
                     <Image source = {Images.rally2}/>
                   </TouchableOpacity>
                 </Marker>
