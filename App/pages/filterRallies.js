@@ -12,16 +12,18 @@ const { height, width } = Dimensions.get('window')
 
 const events = [
   {
-    eventNum: '1.',
-    name: 'Mana O Maunakea',
+    id: '1',
+    name: 'Mana `O Maunakea',
+    image: Images.rally1,
     distance: '5 mi',
-    navigation: 'EventThree',
+    navigation: 'RallyOne',
   },
   {
-    eventNum: '2.',
+    id: '2',
     name: 'Social Justice Activities Fair',
+    image: Images.rally2,
     distance: '7 mi',
-    navigation: 'EventTwo',
+    navigation: 'RallyTwo',
   },
 ];
 
@@ -133,15 +135,15 @@ export default class FilterEvents extends React.Component {
             renderItem={({ item }) => (
               <View style={styles.event}>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
-                  <Text style={styles.listText}>
-                    <Text>{item.eventNum} </Text>
-                    <Text>{item.name}  </Text>
+                  <View style={styles.listItems}>
+                    <Image source={item.image} />
+                    <Text style={styles.listText}>{item.name}</Text>
                     <Text style={styles.smallText}>{item.distance}</Text>
-                  </Text>
+                  </View>
                 </TouchableOpacity>
               </View>
             )}
-            keyExtractor={item => item.eventNum}
+            keyExtractor={item => item.id}
           />
         </View>
 
@@ -173,7 +175,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    padding: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -188,15 +192,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
   },
-  listText: {
-    paddingTop: 30,
-    paddingLeft: 40,
-    fontSize: 20,
+  listItems: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30,
+    padding: 20,
+    paddingLeft: 0,
     borderColor: 'gray',
     borderBottomWidth: 1,
   },
+  listText: {
+    fontSize: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
   smallText: {
     fontSize: 13,
+    paddingTop: 4,
   },
   mapStyle: {
     width: Metrics.screenWidth,

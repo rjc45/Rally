@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -100,8 +100,6 @@ export default class Home extends React.Component {
   }
 }
 
-const { height, width } = Dimensions.get('window')
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -120,10 +118,9 @@ const styles = StyleSheet.create({
   },
   filters: {
     position: 'absolute',
-    top: '85%',
+    top: '87.5%',
+    width: Metrics.screenWidth,
     flexDirection: 'row',
-    height: height * .3,
-    width: width,
     justifyContent: 'space-around',
     alignItems: 'flex-start',
   },

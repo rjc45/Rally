@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, Dimensions} from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput} from 'react-native';
 import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
@@ -11,15 +11,15 @@ import { AntDesign } from '@expo/vector-icons';
 const friends = [
   {
     id: '1',
-    image: Images.friend1,
     name: 'Sophie',
+    image: Images.friend1,
     distance: '5 mi',
     navigation: 'FriendOne',
   },
   {
     id: '2',
-    image: Images.friend2,
     name: 'Patrick',
+    image: Images.friend2,
     distance: '7 mi',
     navigation: 'FriendTwo',
   },
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   },
   smallText: {
     fontSize: 13,
-    paddingTop: 2,
+    paddingTop: 4,
   },
   mapStyle: {
     width: Metrics.screenWidth,
