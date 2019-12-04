@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -7,8 +7,6 @@ import { RallyLogo, BackButton, SideIcons } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { AntDesign } from '@expo/vector-icons';
 import Constants from 'expo-constants';
-
-const { height, width } = Dimensions.get('window')
 
 export default class EventThreeExpanded extends React.Component {
 
@@ -19,15 +17,18 @@ export default class EventThreeExpanded extends React.Component {
   state = { interested: false };
 
   interestedButton() {
-    this.setState({ interested: true});
-    alert('You are interested in this event!');
+    let tmp = !this.state.interested;
+    this.setState({ interested: tmp });
+    if (tmp) {
+      alert('You are interested in this event!');
+    }
   }
 
   render() {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .5}
+        parallaxHeaderHeight={Metrics.screenHeight * .5}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth,
-    height: height*.4,
+    height: Metrics.screenHeight *.4,
   },
   title: {
     fontSize: 24,

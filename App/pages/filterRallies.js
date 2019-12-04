@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, Dimensions} from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput } from 'react-native';
 import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
@@ -7,8 +7,6 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons';
-
-const { height, width } = Dimensions.get('window')
 
 const events = [
   {
@@ -37,17 +35,13 @@ export default class FilterEvents extends React.Component {
     searchText: '',
   }
 
-  _onPressButton() {
-    Alert.alert("You tapped the button!")
-  }
-
   render() {
     const { searchText } = this.state;
 
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={height * .8}
+        parallaxHeaderHeight={Metrics.screenHeight * .8}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>

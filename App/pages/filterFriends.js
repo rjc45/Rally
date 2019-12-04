@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput} from 'react-native';
+import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput } from 'react-native';
 import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
@@ -33,10 +33,6 @@ export default class FilterEvents extends React.Component {
 
   state = {
     searchText: '',
-  }
-
-  _onPressButton() {
-    Alert.alert("You tapped the button!")
   }
 
   render() {
