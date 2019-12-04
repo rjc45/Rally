@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
-import { SideIcons } from '../components';
+import { RallyLogo, SideIcons } from '../components';
 
 export default class Home extends React.Component {
 
@@ -70,29 +70,32 @@ export default class Home extends React.Component {
           </Marker>
         </MapView>
 
-        <View style={styles.rallyLogo}>
-          <Image source={Images.rally} />
-        </View>
-
+        <RallyLogo navigation={this.props.navigation}/>
         <SideIcons navigation={this.props.navigation}/>
 
         <View style={styles.filters}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterEvents')}
           >
-            <Image source={Images.filterEvents}/>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.filterEvents}/>
+            </View>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterRallies')}
           >
-            <Image source={Images.filterRallies}/>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.filterRallies}/>
+            </View>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('FilterFriends')}
           >
-            <Image source={Images.filterFriends}/>
+            <View style={styles.checkBoxWrapper}>
+              <Image source={Images.filterFriends}/>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -118,10 +121,21 @@ const styles = StyleSheet.create({
   },
   filters: {
     position: 'absolute',
-    top: '87.5%',
+    top: '85%',
     width: Metrics.screenWidth,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-start',
+  },
+  checkBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 80,
+    height: 80,
+    backgroundColor: '#FFFFFF',
+    borderColor: 'gray',
+    borderWidth: 0.2,
+    borderRadius: 40,
   },
 });
