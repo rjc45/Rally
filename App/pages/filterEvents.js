@@ -4,7 +4,7 @@ import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { RallyLogo, SideIcons, BackButton, ScrollView } from '../components';
+import { RallyLogo, SideIcons, BackButton, ScrollView, CurrentLocationIcon } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
@@ -58,23 +58,7 @@ export default class FilterEvents extends React.Component {
                 }}
                 style={styles.mapStyle}
               >
-                <View>
-                  <Marker
-                    coordinate={{
-                      latitude: 37.4274,
-                      longitude: -122.1697,
-                    }}>
-                    <Image source={Images.currentLocation}/>
-                  </Marker>
-
-                  <Marker
-                    coordinate={{
-                      latitude: 37.4274,
-                      longitude: -122.1697,
-                    }}>
-                    <Image source={Images.currentLocation2}/>
-                  </Marker>
-                </View>
+                <CurrentLocationIcon/>
 
                 {this.state.events.map((event) => {
                   return (
