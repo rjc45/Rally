@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
-import { SideIcons } from '../components';
+import { SideIcons, CurrentLocationIcon } from '../components';
 
 export default class Home extends React.Component {
 
@@ -24,21 +24,7 @@ export default class Home extends React.Component {
           }}
           style={styles.mapStyle}
         >
-          <Marker
-            coordinate={{
-              latitude: 37.4274,
-              longitude: -122.1697,
-            }}>
-            <Image source={Images.currentLocation}/>
-          </Marker>
-
-          <Marker
-            coordinate={{
-              latitude: 37.4274,
-              longitude: -122.1697,
-            }}>
-            <Image source={Images.currentLocation2}/>
-          </Marker>
+          <CurrentLocationIcon/>
 
           <Marker
             coordinate={{
