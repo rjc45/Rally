@@ -5,18 +5,6 @@ import firestore from '../../firebase';
 import firebase from 'firebase';
 
 export default class LoginScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    const params = navigation.state.params || {};
-
-    return { 
-      headerTitle: (
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={material.body2}>Rally</Text>
-          <Text style={[material.caption, {fontSize: 10}]}>Login</Text>
-        </View>
-      )
-    };
-  };
 
   constructor(props) {
     super(props);
@@ -45,7 +33,8 @@ export default class LoginScreen extends React.Component {
         userDocRef.set({
           name: this.state.signUpName
         });
-        this.props.updateStatus();
+
+        this.props.navigation.navigate('Home');
       }
     } catch (err) {
       console.log(err);
@@ -59,6 +48,7 @@ export default class LoginScreen extends React.Component {
       // Note that we don't have to tell the app that the user has logged in.
       // firebase.auth().onAuthStateChanged() in App.js communicates this for us!
       await firebase.auth().signInWithEmailAndPassword(this.state.loginEmail, this.state.loginPassword)
+      this.props.navigation.navigate('Home');
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +79,7 @@ export default class LoginScreen extends React.Component {
           value={this.state.signUpPassword}
           secureTextEntry={true}
           onChangeText={(signUpPassword) => this.setState({ signUpPassword })}
-          placeholder="Password" 
+          placeholder="Password"
         />
         <Button
           title="Sign Up"
