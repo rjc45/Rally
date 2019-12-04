@@ -10,6 +10,7 @@ import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 
+const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
 
 export default class FilterEvents extends React.Component {
 
@@ -32,10 +33,10 @@ export default class FilterEvents extends React.Component {
       let eventCollectionRef = firestore.collection('events').orderBy('id', 'asc');
       let allEvents = await eventCollectionRef.get();
       allEvents.forEach((event) => {
-        eventsData.push(event.data()); 
+        eventsData.push(event.data());
       })
-      this.setState({ searchText: '', events: eventsData})
-        
+      this.setState({ events: eventsData })
+      
     } catch (error) {
       console.log(error);
     }
@@ -77,38 +78,20 @@ export default class FilterEvents extends React.Component {
                   <Image source={Images.currentLocation2}/>
                 </Marker>
 
-                <Marker
-                  coordinate={{
-                    latitude: 37.427799,
-                    longitude: -122.171198,
-                  }}
-                  title="Mano `O Maunakea">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThreeExpanded')}>
-                    <Image source = {Images.event1}/>
-                  </TouchableOpacity>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.425682,
-                    longitude: -122.167445,
-                  }}
-                  title="Social Justice Activities Fair">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwoExpanded')}>
-                    <Image source = {Images.event2}/>
-                  </TouchableOpacity>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.420561,
-                    longitude: -122.166688,
-                  }}
-                  title="2020 Election Trivia Night">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
-                    <Image source = {Images.event3}/>
-                  </TouchableOpacity>
-                </Marker>
+                {this.state.events.map((event) => {
+                  return (
+                    <Marker key={event.id}
+                      coordinate={{
+                        latitude: event.latitude,
+                        longitude: event.longitude,
+                      }}
+                      title={event.name}>
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate(event.navigation)}>
+                        <Image source={eventIcons[Number(event.id) - 1]}/>
+                      </TouchableOpacity>
+                    </Marker>
+                  );
+                })}
               </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
@@ -149,8 +132,8 @@ export default class FilterEvents extends React.Component {
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
                 <View style={styles.listItems}>
-                  <Image source={item.image}/>
-                  <Text style={styles.listText}>{item.eventNum}  {item.name}</Text>
+                  <Image source={eventIcons[Number(item.id) - 1]}/>
+                  <Text style={styles.listText}>{item.name}</Text>
                   <Text style={styles.smallText}>{item.distance}</Text>
                 </View>
               </TouchableOpacity>
