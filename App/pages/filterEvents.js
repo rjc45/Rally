@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput, Dimensions} from 'react-native';
+import { StyleSheet, View, Image, Text, FlatList, TextInput } from 'react-native';
 import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
@@ -10,29 +10,6 @@ import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 
-const events = [
-  {
-    id: '1',
-    name: 'Mana `O Maunakea',
-    image: Images.event1,
-    distance: '5 mi',
-    navigation: 'EventThreeExpanded',
-  },
-  {
-    id: '2',
-    name: 'Social Justice Activities Fair',
-    image: Images.event2,
-    distance: '7 mi',
-    navigation: 'EventTwoExpanded',
-  },
-  {
-    id: '3',
-    name: '2020 Election Trivia Night',
-    image: Images.event3,
-    distance: '12 mi',
-    navigation: 'EventOneExpanded',
-  },
-];
 
 export default class FilterEvents extends React.Component {
 
@@ -42,25 +19,27 @@ export default class FilterEvents extends React.Component {
 
   state = {
     searchText: '',
+    events: [],
+  }
+
+  componentDidMount() {
+    this.getEvents();
   }
 
   getEvents = async () => {
     try {
-      let events = [];
-      let eventCollectionRef = firestore.collection('events');
+      let eventsData = [];
+      let eventCollectionRef = firestore.collection('events').orderBy('id', 'asc');
       let allEvents = await eventCollectionRef.get();
       allEvents.forEach((event) => {
-        events.push(event.data()); 
+        eventsData.push(event.data()); 
       })
-      console.log('woot');
-      return (events ? events : []);
+      this.setState({ searchText: '', events: eventsData})
         
     } catch (error) {
       console.log(error);
     }
-    return ([]);
   }
-
 
   render() {
     const { searchText } = this.state;
@@ -166,7 +145,7 @@ export default class FilterEvents extends React.Component {
           </View>
 
           <FlatList
-            data={events}
+            data={this.state.events}
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
                 <View style={styles.listItems}>
