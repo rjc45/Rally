@@ -23,12 +23,6 @@ const events = [
     distance: '7 mi',
     navigation: 'EventTwo',
   },
-  {
-    eventNum: '3.',
-    name: '2020 Election Trivia Night',
-    distance: '12 mi',
-    navigation: 'EventOne',
-  },
 ];
 
 export default class FilterEvents extends React.Component {
@@ -87,8 +81,8 @@ export default class FilterEvents extends React.Component {
                     longitude: -122.171198,
                   }}
                   title="Mano `O Maunakea">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThree')}>
-                    <Image source = {Images.event1}/>
+                  <TouchableOpacity onPress={() => this.props.navigation.navigate('RallyOne')}>
+                    <Image source = {Images.rally1}/>
                   </TouchableOpacity>
                 </Marker>
 
@@ -99,18 +93,7 @@ export default class FilterEvents extends React.Component {
                   }}
                   title="Social Justice Activities Fair">
                   <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwo')}>
-                    <Image source = {Images.event2}/>
-                  </TouchableOpacity>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.420561,
-                    longitude: -122.166688,
-                  }}
-                  title="2020 Election Trivia Night">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
-                    <Image source = {Images.event3}/>
+                    <Image source = {Images.rally2}/>
                   </TouchableOpacity>
                 </Marker>
               </MapView>
@@ -126,8 +109,8 @@ export default class FilterEvents extends React.Component {
           <View style={styles.visualization}>
             <Text style={styles.title}>Filtering By Rallies</Text>
             <Image
-              source={Images.filterEvents}
-              style={{height: 25, width: 17}}
+              source={Images.filterRallies}
+              style={{height: 25, width: 28}}
             />
           </View>
 

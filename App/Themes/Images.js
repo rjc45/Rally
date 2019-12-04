@@ -6,7 +6,7 @@ const images = {
   event1Card: require('../Images/event1Card.png'),
   event1Pic: require('../Images/event1Pic.png'),
   event2: require('../Images/event2.png'),
-  event2Card: require('../Images/event2Card.png'),  
+  event2Card: require('../Images/event2Card.png'),
   event2Pic: require('../Images/event2Pic.jpg'),
   event3: require('../Images/event3.png'),
   event3Card: require('../Images/event3Card.png'),
@@ -18,6 +18,8 @@ const images = {
   logo: require('../Images/logo.png'),
   male: require('../Images/male.png'),
   rally: require('../Images/logo_filled.png'),
+  rally1: require('../Images/rally2.png'),
+  rally2: require('../Images/rally1.png'),
   star: require('../Images/star.png'),
   yourImage: require('../Images/yourImage.png'),
 }
