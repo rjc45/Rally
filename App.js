@@ -23,7 +23,7 @@ const StackNav = createStackNavigator({
   RallyTwo: {screen: pages.RallyTwo},
   LoginScreen: {screen: pages.LoginScreen},
 },{
-   initialRouteName: 'Home',
+  initialRouteName: 'LoginScreen',
 });
 
 const MyApp = createAppContainer(StackNav);
