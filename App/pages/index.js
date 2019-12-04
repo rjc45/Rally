@@ -14,6 +14,7 @@ import FriendOne from './friendOne';
 import FriendTwo from './friendTwo';
 import RallyOne from './rallyOne';
 import RallyTwo from './rallyTwo';
+import LoginScreen from './LoginScreen';
 
 export {
   Home,
@@ -31,5 +32,6 @@ export {
   FriendOne,
   FriendTwo,
   RallyOne,
-  RallyTwo
+  RallyTwo,
+  LoginScreen,
 }

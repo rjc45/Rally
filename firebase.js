@@ -3,14 +3,14 @@ import  'firebase/firebase-firestore';
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyBHT6JLBdBDjrm5eMReF6e_5qbHV52T1Zs",
-    authDomain: "parg-rally.firebaseapp.com",
-    databaseURL: "https://parg-rally.firebaseio.com",
-    projectId: "parg-rally",
-    storageBucket: "parg-rally.appspot.com",
-    messagingSenderId: "391521014642",
-    appId: "1:391521014642:web:de9c5b2ab718c82c8243eb"
-  };
+  apiKey: "AIzaSyCWxwNnyyDPzHtP9PDF5zxb6R_Tznd-WuM",
+  authDomain: "rally-a4340.firebaseapp.com",
+  databaseURL: "https://rally-a4340.firebaseio.com",
+  projectId: "rally-a4340",
+  storageBucket: "rally-a4340.appspot.com",
+  messagingSenderId: "90744093763",
+  appId: "1:90744093763:web:e7758adce54948fd8da8f6"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 var  firestore = firebase.firestore();

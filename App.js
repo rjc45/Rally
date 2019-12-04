@@ -20,7 +20,8 @@ const StackNav = createStackNavigator({
   FriendOne: {screen: pages.FriendOne},
   FriendTwo: {screen: pages.FriendTwo},
   RallyOne: {screen: pages.RallyOne},
-  RallyTwo: {screen: pages.RallyTwo}
+  RallyTwo: {screen: pages.RallyTwo},
+  LoginScreen: {screen: pages.LoginScreen},
 },{
    initialRouteName: 'Home',
 });
