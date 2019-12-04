@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
-import { RallyLogo, SideIcons } from '../components';
+import { SideIcons } from '../components';
 
 export default class Home extends React.Component {
 
@@ -74,7 +74,7 @@ export default class Home extends React.Component {
           </Marker>
         </MapView>
 
-        <RallyLogo navigation={this.props.navigation}/>
+        <Image source={Images.rally} style={styles.rallyLogo}/>
         <SideIcons navigation={this.props.navigation}/>
 
         <View style={styles.filters}>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   rallyLogo: {
     position: 'absolute',
-    top: '5.5%',
+    top: '6%',
   },
   filters: {
     position: 'absolute',

@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Images, Metrics } from '../Themes';
-import { RallyLogo, BackButton } from '../components';
+import { BackButton } from '../components';
 import CardView from 'react-native-cardview';
 import { ScrollView } from 'react-native-gesture-handler';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 
 export default class Profile extends React.Component {
 
@@ -15,6 +15,14 @@ export default class Profile extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <BackButton navigation={this.props.navigation}/>
+        <View style={styles.logout}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('LoginScreen')}>
+            <SimpleLineIcons name='logout' size={40}/>
+            <Text style={styles.logoutText}>Logout</Text> 
+          </TouchableOpacity>
+        </View>
+        
         <Image 
           source={Images.yourImage}
           style={styles.profilePic}
@@ -112,8 +120,6 @@ export default class Profile extends React.Component {
             </CardView>
           </ScrollView> 
         </View>
-
-        <BackButton navigation={this.props.navigation}/>
       </View>
     );
   }
@@ -125,6 +131,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  logout: {
+    position: 'absolute',
+    top: '6%',
+    alignSelf: 'flex-end',
+    paddingRight: 25,
+  },
+  logoutText: {
+    fontSize: 9,
+    textAlign: 'center',
+    paddingLeft: 10,
   },
   profilePic: {
     borderRadius: 44,
