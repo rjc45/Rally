@@ -49,15 +49,14 @@ export default class FilterEvents extends React.Component {
       allEvents.forEach((event) => {
         events.push(event.data()); 
       })
-
+      console.log('woot');
       return (events ? events : []);
+        
     } catch (error) {
       console.log(error);
     }
     return ([]);
   }
-
-
 
 
   render() {
