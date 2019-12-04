@@ -9,7 +9,7 @@ export default class SideIcons extends Component {
     return (
       <View style={styles.sideIcons}>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Messages')}
+          onPress={() => this.props.navigation.navigate('GiftedChat')}
         >
           <AntDesign
             name='mail'

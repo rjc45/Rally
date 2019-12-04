@@ -22,6 +22,8 @@ const StackNav = createStackNavigator({
   RallyOne: {screen: pages.RallyOne},
   RallyTwo: {screen: pages.RallyTwo},
   LoginScreen: {screen: pages.LoginScreen},
+  GiftedChat: {screen: pages.GiftedChat},
+  GiftedMessages: {screen: pages.GiftedMessages},
 },{
   initialRouteName: 'LoginScreen',
 });

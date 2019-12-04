@@ -15,6 +15,8 @@ import FriendTwo from './friendTwo';
 import RallyOne from './rallyOne';
 import RallyTwo from './rallyTwo';
 import LoginScreen from './LoginScreen';
+import GiftedChat from './giftedChat';
+import GiftedMessages from './giftedMessages';
 
 export {
   Home,
@@ -34,4 +36,6 @@ export {
   RallyOne,
   RallyTwo,
   LoginScreen,
+  GiftedChat,
+  GiftedMessages,
 }
