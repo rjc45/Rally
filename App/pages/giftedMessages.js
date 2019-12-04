@@ -8,6 +8,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
+import { RallyLogo, SideIcons, BackButton, ScrollView } from '../components';
 
 class GiftedMessages extends Component {
   static navigationOptions = ({ navigation }) => ({

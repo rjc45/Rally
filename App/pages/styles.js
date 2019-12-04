@@ -58,11 +58,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#1E90FF',
+    paddingTop: 25,
   },
   roomsHeader: {
     color: '#fff',
     fontSize: 28,
-    top: 20
+    top: 30
   },
   roomsInputContainer: {
     alignItems: 'center',
