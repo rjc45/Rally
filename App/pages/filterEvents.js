@@ -41,6 +41,25 @@ export default class FilterEvents extends React.Component {
     searchText: '',
   }
 
+  getEvents = async () => {
+    try {
+      let events = [];
+      let eventCollectionRef = firestore.collection('events');
+      let allEvents = await eventCollectionRef.get();
+      allEvents.forEach((event) => {
+        events.push(event.data()); 
+      })
+
+      return (events ? events : []);
+    } catch (error) {
+      console.log(error);
+    }
+    return ([]);
+  }
+
+
+
+
   render() {
     const { searchText } = this.state;
 
