@@ -16,6 +16,16 @@ export default class EventOneStartRally extends React.Component {
     header: null,
   };
 
+  constructor(props) {
+    super(props);
+    var firebaseDB = firebase.database();
+    this.rallyGroupRef = firebaseDB.ref('RallyGroups');
+    this.state = {
+      rallyGroups: [],
+      newRallyGroup: ''
+    }
+  }
+
   state = {
     arr: [
       { friend: "friendOne", clicked: false },
@@ -30,6 +40,15 @@ export default class EventOneStartRally extends React.Component {
     this.setState({ arr: tmp });
     return tmp[index].clicked;
   }
+
+  startRally() {
+    if (this.state.newRallyGroup === '') {
+      return;
+    }
+    this.rallyGroupRef.push({ name: this.state.newRallyGroup });
+    this.setState({ newRallyGroup: '' });
+  }
+
 
   render() {
     return (
