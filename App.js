@@ -19,7 +19,7 @@ const StackNav = createStackNavigator({
   GiftedChat: {screen: pages.GiftedChat},
   GiftedMessages: {screen: pages.GiftedMessages},
 },{
-  initialRouteName: 'Home',
+  initialRouteName: 'LoginScreen',
 });
 
 const MyApp = createAppContainer(StackNav);
