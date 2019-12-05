@@ -7,7 +7,6 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton, ScrollView, CurrentLocationIcon } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import firestore from '../../firebase';
-import firebase from 'firebase';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
 

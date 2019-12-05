@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton, CurrentLocationIcon, ScrollView } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 
 const rallyIcons = [ Images.rally1, Images.rally2 ];
