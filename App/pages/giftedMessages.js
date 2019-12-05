@@ -64,11 +64,26 @@ class GiftedMessages extends Component {
     })
   }
 
+  renderSystemMessage = props => {
+    return (
+      <SystemMessage
+        {...props}
+        containerStyle={{
+          marginBottom: 15,
+        }}
+        textStyle={{
+          fontSize: 14,
+        }}
+      />
+    )
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
         <StatusBar barStyle="light-content"/>
         <GiftedChat
+          renderSystemMessage={this.renderSystemMessage}
           messages={this.state.messages}
           onSend={this.addMessage.bind(this)}
           user={{

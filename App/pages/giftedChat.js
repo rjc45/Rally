@@ -40,7 +40,7 @@ class Rooms extends Component {
       querySnapshot.forEach((doc) => {
         roomsFB.push({
           name: doc.data().name,
-          key: doc.data().key
+          key: doc.id,
         });
       });
       this.setState({ rooms: roomsFB });
