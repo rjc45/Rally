@@ -68,23 +68,17 @@ export default class EventsExpanded extends React.Component {
             <Text style={styles.description}>{navigation.getParam('eventInfo').bodyThree}</Text>
           </View>
           <View style={styles.bottombuttons}>
-            {this.state.interested ?
-              <View style={styles.confirmedInterest}>
-                <Button
-                  title="Interested"
-                  onPress={() => this.interestedButton()}
-                />
-                <FontAwesome name='star' size={30}/>
-              </View>
-            :
+            <View style={styles.confirmedInterest}>
               <Button
                 title="Interested"
                 onPress={() => this.interestedButton()}
               />
-            }
+              {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
+            </View>
             <Button
               title="Start a Rally"
-              onPress={() => this.props.navigation.navigate('EventThreeStartRally')}
+              onPress={() => this.props.navigation.navigate('EventsStartRally',
+              {eventInfo: navigation.getParam('eventInfo'), image: navigation.getParam('image')})}
             />
           </View>
         </View>

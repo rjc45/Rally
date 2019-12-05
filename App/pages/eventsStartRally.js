@@ -1,16 +1,12 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
-import { Marker, Callout } from 'react-native-maps';
+import { Button, StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { Images, Metrics } from '../Themes';
-import { RallyLogo, BackButton, SideIcons } from '../components';
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { AntDesign } from '@expo/vector-icons';
-import Constants from 'expo-constants';
+import { BackButton } from '../components';
+import { Entypo } from '@expo/vector-icons';
 
-const { height, width } = Dimensions.get('window')
+const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
 
-export default class EventThreeStartRally extends React.Component {
+export default class EventsStartRally extends React.Component {
 
   static navigationOptions = {
     header: null,
@@ -32,13 +28,16 @@ export default class EventThreeStartRally extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
-        <View style={styles.scrollView}>
-          <Image source={Images.event3Pic} style={styles.eventImage}/>
-            <Text style={styles.title}>Mana `O Maunakea</Text>
-            <Text style={styles.smallText}>Hosted by: Stanford Hui O Nā Moku</Text>
-            <Text style={styles.smallText}>Oct. 30 | 6:30PM - 8:30PM</Text>
-            <Text style={styles.smallText}>Native American Culture Center</Text>
+        <View>
+
+          <Image source={eventImages[navigation.getParam('image')]} style={styles.eventImage}/>
+            <Text style={styles.title}>{navigation.getParam('eventInfo').name}</Text>
+            <Text style={styles.smallText}>{navigation.getParam('eventInfo').host}</Text>
+            <Text style={styles.smallText}>{navigation.getParam('eventInfo').date}</Text>
+            <Text style={styles.smallText}>{navigation.getParam('eventInfo').location}</Text>
             <Text></Text>
           <Text style={styles.title}>Rally with Interested Friends</Text>
           <View style={styles.friendRow}>
@@ -46,7 +45,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(0)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[0].clicked ?
-              <Image source={Images.check} style={styles.check}/>
+              <Entypo name='check' size={30} color='blue'/>
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -56,7 +55,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(1)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[1].clicked ?
-              <Image source={Images.check} style={styles.check}/>
+              <Entypo name='check' size={30} color='blue'/>
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -66,7 +65,7 @@ export default class EventThreeStartRally extends React.Component {
             <TouchableOpacity onPress={() => this.rallyButton(2)}>
             <View style={styles.checkBoxWrapper}>
               {this.state.arr[2].clicked ?
-              <Image source={Images.check} style={styles.check}/>
+              <Entypo name='check' size={30} color='blue'/>
               : <Text></Text>}
             </View>
             </TouchableOpacity>
@@ -76,40 +75,18 @@ export default class EventThreeStartRally extends React.Component {
               title="Let's Rally!"
               onPress={() => this.props.navigation.navigate('Messages')}
             />
-           </View><BackButton navigation={this.props.navigation} />
+           </View>
+
+           <BackButton navigation={this.props.navigation} />
           </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  foreground: {
-    height: 700,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 10,
-  },
-  map: {
-    flex: 1,
-  },
-  mapStyle: {
-    flex: 1,
-    width: Metrics.screenWidth,
-    height: Metrics.screenHeight,
-  },
-  info: {
-    flex: 2.5,
-  },
   eventImage: {
     width: Metrics.screenWidth,
-    height: height*.4,
+    height: Metrics.screenHeight * .4,
   },
   title: {
     fontSize: 24,
@@ -124,7 +101,7 @@ const styles = StyleSheet.create({
   largeText: {
     fontSize: 24,
     textAlign: 'left',
-    paddingVertical: height * .025
+    paddingVertical: Metrics.screenHeight * .025
   },
   checkBoxWrapper: {
     flexDirection: 'row',
@@ -139,11 +116,8 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
-  description: {
-    textAlign: 'center',
-  },
   bottombuttons: {
-    paddingTop: height * .02,
+    paddingTop: Metrics.screenHeight * .02,
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center'
