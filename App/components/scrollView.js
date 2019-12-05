@@ -47,7 +47,8 @@ export default class ScrollView extends Component {
         <FlatList
           data={this.props.data}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventsExpanded',
+            {eventInfo: item, image: Number(item.id) - 1})}>
               <View style={styles.listItems}>
                 {this.props.filter == 'Filtering By Events' &&
                   <Image source={eventIcons[Number(item.id) - 1]}/>

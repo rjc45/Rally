@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, FlatList, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { Button, StyleSheet, View, Image, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -7,7 +7,9 @@ import { RallyLogo, BackButton, SideIcons } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default class EventOneExpanded extends React.Component {
+const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
+
+export default class EventsExpanded extends React.Component {
 
   static navigationOptions = {
     header: null,
@@ -24,6 +26,7 @@ export default class EventOneExpanded extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
@@ -40,17 +43,6 @@ export default class EventOneExpanded extends React.Component {
                 }}
                 style={styles.mapStyle}
               >
-
-              <Marker
-                coordinate={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                }}
-                title="2020 Election Trivia Night">
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOne')}>
-                  <Image source = {Images.event1}/>
-                </TouchableOpacity>
-              </Marker>
             </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
@@ -61,32 +53,29 @@ export default class EventOneExpanded extends React.Component {
       )}>
 
 
-       <View style={styles.scrollView}>
-          <Image source={Images.event1Pic} style={styles.eventImage}/>
+        <View style={styles.scrollView}>
+          <Image source={eventImages[navigation.getParam('image')]} style={styles.eventImage}/>
           <View>
-            <Text style={styles.title}>2020 Election Trivia Night</Text>
-            <Text style={styles.smallText}>Hosted by: Cardinal for Warren</Text>
-            <Text style={styles.smallText}>Oct. 30 | 9PM - 10:30PM</Text>
-            <Text style={styles.smallText}>La Maison Francaise</Text>
+            <Text style={styles.title}>{navigation.getParam('eventInfo').name}</Text>
+            <Text style={styles.smallText}>{navigation.getParam('eventInfo').host}</Text>
+            <Text style={styles.smallText}>{navigation.getParam('eventInfo').date}</Text>
+            <Text style={styles.smallText}>{navigation.getParam('eventInfo').location}</Text>
             <Text></Text>
-            <Text style={styles.description}>Join Cardinal for Warren for a 2020 election trivia about
-            all the candidates at French House! We'll split up into teams (or bring your own team),
-            and the winning team will get a prize!</Text>
+            <Text style={styles.description}>{navigation.getParam('eventInfo').bodyOne} </Text>
             <Text></Text>
-            <Text style={styles.description}>The trivia begins at 9:00pm! All are welcome!</Text>
+            <Text style={styles.description}>{navigation.getParam('eventInfo').bodyTwo}</Text>
             <Text></Text>
-            <Text style={styles.description}>BYOB: bring your own Big, Structural Change beverage (coffee
-            or whatever)!</Text>
-           </View>
+            <Text style={styles.description}>{navigation.getParam('eventInfo').bodyThree}</Text>
+          </View>
           <View style={styles.bottombuttons}>
-             {this.state.interested ?
-               <View style={styles.confirmedInterest}>
-                 <Button
+            {this.state.interested ?
+              <View style={styles.confirmedInterest}>
+                <Button
                   title="Interested"
                   onPress={() => this.interestedButton()}
                 />
-                 <FontAwesome name='star' size={30}/>
-               </View>
+                <FontAwesome name='star' size={30}/>
+              </View>
             :
               <Button
                 title="Interested"
@@ -95,7 +84,7 @@ export default class EventOneExpanded extends React.Component {
             }
             <Button
               title="Start a Rally"
-              onPress={() => this.props.navigation.navigate('EventOneStartRally')}
+              onPress={() => this.props.navigation.navigate('EventThreeStartRally')}
             />
           </View>
         </View>
@@ -134,30 +123,30 @@ const styles = StyleSheet.create({
     height: Metrics.screenHeight *.4,
   },
   title: {
-     fontSize: 24,
-     fontWeight: 'bold',
-     textAlign: 'center',
-     paddingTop: 10,
-   },
-   smallText: {
-     fontSize: 16,
-     textAlign: 'center',
-   },
-    description: {
+    fontSize: 24,
+    fontWeight: 'bold',
     textAlign: 'center',
-   },
-   bottombuttons: {
-     paddingTop: 20,
-     flexDirection: 'row',
-     justifyContent: 'space-between',
-     marginHorizontal: 25,
-   },
-   confirmedInterest: {
-     flexDirection: 'row',
-     alignItems: 'center',
-   },
-   star: {
-     height: 25,
-     width: 25,
-   },
- });
+    paddingTop: 10,
+  },
+  smallText: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  description: {
+    textAlign: 'center',
+  },
+  bottombuttons: {
+    paddingTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 25,
+  },
+  confirmedInterest: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  star: {
+    height: 25,
+    width: 25,
+  },
+});
