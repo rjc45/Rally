@@ -85,7 +85,7 @@ export default class LoginScreen extends React.Component {
         <Button
           title="Sign Up"
           onPress={()=> this.signUp()}
-          color='#ffa000'
+          color='black'
         />
 
 
@@ -105,7 +105,7 @@ export default class LoginScreen extends React.Component {
         <Button
           title='Login'
           onPress={()=> this.login()}
-          color='#ffa000'
+          color='black'
         />
 
       </SafeAreaView>
