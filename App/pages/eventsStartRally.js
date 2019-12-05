@@ -55,12 +55,12 @@ export default class EventsStartRally extends React.Component {
 
     return (
       <View>
-        <Text style={styles.title}>{navigation.getParam('eventInfo').name}</Text>
+        <Text style={styles.title}>{navigation.getParam('info').name}</Text>
         <Image source={eventImages[navigation.getParam('image')]} style={styles.eventImage}/>
 
-        <Text style={styles.smallText}>{navigation.getParam('eventInfo').host}</Text>
-        <Text style={styles.smallText}>{navigation.getParam('eventInfo').date}</Text>
-        <Text style={styles.smallText}>{navigation.getParam('eventInfo').location}</Text>
+        <Text style={styles.smallText}>{navigation.getParam('info').host}</Text>
+        <Text style={styles.smallText}>{navigation.getParam('info').date}</Text>
+        <Text style={styles.smallText}>{navigation.getParam('info').location}</Text>
 
         <Text style={styles.rally}>Rally with Interested Friends</Text>
 

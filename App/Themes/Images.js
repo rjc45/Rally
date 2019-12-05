@@ -17,7 +17,9 @@ const images = {
   friend2: require('../Images/friend2.png'),
   rally: require('../Images/logo_filled.png'),
   rally1: require('../Images/rally2.png'),
+  rally1Pic: require('../Images/rally1Pic.jpg'),
   rally2: require('../Images/rally1.png'),
+  rally2Pic: require('../Images/rally2Pic.jpg'),
   yourImage: require('../Images/yourImage.png'),
 }
 

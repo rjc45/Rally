@@ -83,9 +83,10 @@ export default class FilterEvents extends React.Component {
 
         <ScrollView
           filter={'Filtering By Rallies'}
+          expanded={'RalliesExpanded'}
           icon={Images.filterRallies}
           navigation={this.props.navigation}
-          data={this.state.rallies} 
+          data={this.state.rallies}
         />
 
       </ParallaxScrollView>

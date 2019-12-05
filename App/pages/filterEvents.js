@@ -85,6 +85,7 @@ export default class FilterEvents extends React.Component {
 
         <ScrollView 
           filter={'Filtering By Events'}
+          expanded={'EventsExpanded'}
           icon={Images.filterEvents}
           navigation={this.props.navigation}
           data={this.state.events}

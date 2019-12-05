@@ -8,8 +8,7 @@ import EventsExpanded from './eventsExpanded';
 import EventsStartRally from './eventsStartRally';
 import FriendOne from './friendOne';
 import FriendTwo from './friendTwo';
-import RallyOne from './rallyOne';
-import RallyTwo from './rallyTwo';
+import RalliesExpanded from './ralliesExpanded';
 import LoginScreen from './LoginScreen';
 import GiftedChat from './giftedChat';
 import GiftedMessages from './giftedMessages';
@@ -25,8 +24,7 @@ export {
   EventsStartRally,
   FriendOne,
   FriendTwo,
-  RallyOne,
-  RallyTwo,
+  RalliesExpanded,
   LoginScreen,
   GiftedChat,
   GiftedMessages,

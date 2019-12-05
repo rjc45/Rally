@@ -5,25 +5,29 @@ import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { FontAwesome, Entypo } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
-const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
-const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
+const eventIcons = [ Images.rally1, Images.rally2 ];
+const ralliesImages = [ Images.rally1Pic, Images.rally2Pic ];
 
-export default class EventsExpanded extends React.Component {
+export default class RalliesExpanded extends React.Component {
 
   static navigationOptions = {
     header: null,
   };
 
-  state = { interested: false };
+  state = { 
+    rally: false,
+  };
 
-  interestedButton() {
+  rallyButton() {
     let tmp = !this.state.interested;
     this.setState({ interested: tmp });
     if (tmp) {
-      Alert.alert('Success', 'You are interested in this event!');
+      Alert.alert('Success', 'You have joined ' + this.props.navigation.getParam('info').rallyOwner + '\'s Rally!');
     }
+
+    //navigation to the correct message  
   }
 
   render() {
@@ -31,7 +35,7 @@ export default class EventsExpanded extends React.Component {
 
     return (
       <ParallaxScrollView
-        contentBackgroundColor='white'
+        contentBackgroundColor="white"
         parallaxHeaderHeight={Metrics.screenHeight * .5}
         renderForeground={() => (
           <View style={styles.foreground}>
@@ -45,17 +49,19 @@ export default class EventsExpanded extends React.Component {
                 }}
                 style={styles.mapStyle}
               >
-                <CurrentLocationIcon/>
-                <Marker 
-                  coordinate={{
-                    latitude: navigation.getParam('info').latitude,
-                    longitude: navigation.getParam('info').longitude,
-                  }}
-                  title={navigation.getParam('info').name}
-                >
-                  <Image source={eventIcons[navigation.getParam('image')]}/>
-                </Marker>
-              
+
+              <CurrentLocationIcon/>
+
+              <Marker 
+                coordinate={{
+                  latitude: navigation.getParam('info').latitude,
+                  longitude: navigation.getParam('info').longitude,
+                }}
+                title={navigation.getParam('info').name}
+              >
+                <Image source={eventIcons[navigation.getParam('image')]}/>
+              </Marker>
+
             </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
@@ -70,7 +76,7 @@ export default class EventsExpanded extends React.Component {
           <View style={styles.alignCenter}>
             <Entypo name='chevron-small-up' size={30}/>
             <Text style={styles.title}>{navigation.getParam('info').name}</Text>
-            <Image source={eventImages[navigation.getParam('image')]} style={styles.eventImage}/>
+            <Image source={ralliesImages[navigation.getParam('image')]} style={styles.eventImage}/>
           </View>
 
           <View style={styles.text}>
@@ -92,19 +98,24 @@ export default class EventsExpanded extends React.Component {
             </View>
           }
 
+
           <View style={styles.bottombuttons}>
-            <View style={styles.confirmedInterest}>
-              <Button
-                title="Interested"
-                onPress={() => this.interestedButton()}
-              />
-              {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
-            </View>
             <Button
-              title="Start a Rally"
-              onPress={() => this.props.navigation.navigate('EventsStartRally',
-              {info: navigation.getParam('info'), image: navigation.getParam('image')})}
+              title={'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}
+              onPress={() => this.props.navigation.navigate('FriendTwo')}
             />
+            {this.state.interested ?
+              <View style={styles.confirmedInterest}>
+                <Text style={styles.smallText}>Joined  </Text>
+                <Image source={Images.filterRallies}
+                  style={styles.star}/>
+              </View>
+            :
+              <Button
+                title={'Join ' + navigation.getParam('info').rallyOwner + '\'s Rally'}
+                onPress={() => this.rallyButton()}
+              />
+            }
           </View>
         </View>
       </ParallaxScrollView>
@@ -167,5 +178,9 @@ const styles = StyleSheet.create({
   confirmedInterest: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  star: {
+    height: 25,
+    width: 30,
   },
 });
