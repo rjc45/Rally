@@ -5,9 +5,7 @@ import FilterFriends from './filterFriends';
 import Messages from './messages';
 import Profile from './profile';
 import EventsExpanded from './eventsExpanded';
-import EventOneStartRally from './eventOneStartRally';
-import EventTwoStartRally from './eventTwoStartRally'
-import EventThreeStartRally from './eventThreeStartRally'
+import EventsStartRally from './eventsStartRally';
 import FriendOne from './friendOne';
 import FriendTwo from './friendTwo';
 import RallyOne from './rallyOne';
@@ -24,9 +22,7 @@ export {
   Messages,
   Profile,
   EventsExpanded,
-  EventOneStartRally,
-  EventTwoStartRally,
-  EventThreeStartRally,
+  EventsStartRally,
   FriendOne,
   FriendTwo,
   RallyOne,
