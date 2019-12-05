@@ -3,6 +3,6 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "fk-se3",
+  "urlRandomness": null,
   "https": false
 }

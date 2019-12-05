@@ -66,7 +66,9 @@ export default class FilterEvents extends React.Component {
                         longitude: event.longitude,
                       }}
                       title={event.name}>
-                      <TouchableOpacity onPress={() => this.props.navigation.navigate(event.navigation)}>
+                      <TouchableOpacity 
+                        onPress={() => this.props.navigation.navigate('EventsExpanded', 
+                        {eventInfo: event, image: Number(event.id) - 1})}>
                         <Image source={eventIcons[Number(event.id) - 1]}/>
                       </TouchableOpacity>
                     </Marker>
@@ -85,7 +87,7 @@ export default class FilterEvents extends React.Component {
           filter={'Filtering By Events'}
           icon={Images.filterEvents}
           navigation={this.props.navigation}
-          data={this.state.events} 
+          data={this.state.events}
         />
 
       </ParallaxScrollView>
