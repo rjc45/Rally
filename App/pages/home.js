@@ -188,6 +188,8 @@ const styles = StyleSheet.create({
   rallyLogo: {
     position: 'absolute',
     top: '6%',
+    resizeMode: 'contain',
+    height: 40,
   },
   icon: {
     width: 50,
