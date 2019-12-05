@@ -118,12 +118,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   messagesHeader: {
-    backgroundColor: '#1E90FF'
+    backgroundColor: '#fff'
   },
   messagesTitle: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: '400'
+    color: 'black',
+    fontSize: 15,
+    fontWeight: 'bold'
   },
   messagesBackTitle: {
     color: '#fff'
