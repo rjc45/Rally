@@ -76,20 +76,6 @@ class Rooms extends Component {
         <BackButton navigation={this.props.navigation} />
         <StatusBar barStyle="light-content"/>
         <Text style={styles.roomsHeader}>Messages</Text>
-        <View style={styles.roomsInputContainer}>
-          <TextInput
-            style={styles.roomsInput}
-            placeholder={"New Room Name"}
-            onChangeText={(text) => this.setState({newRoom: text})}
-            value={this.state.newRoom}
-          />
-          <TouchableHighlight style={styles.roomsNewButton}
-            underlayColor="#fff"
-            onPress={() => this.addRoom()}
-          >
-            <Text style={styles.roomsNewButtonText}>Create</Text>
-          </TouchableHighlight>
-        </View>
         <View style={styles.roomsListContainer}>
           <FlatList
             data={this.state.rooms}
