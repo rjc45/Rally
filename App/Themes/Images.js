@@ -1,5 +1,4 @@
 const images = {
-  check: require('../Images/bluecheck.png'),
   currentLocation: require('../Images/currentLocation.png'),
   currentLocation2: require('../Images/currentLocation2.png'),
   event1: require('../Images/event1.png'),
