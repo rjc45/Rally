@@ -4,6 +4,7 @@ import { Images, Metrics } from '../Themes';
 import { BackButton } from '../components';
 import { Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
+import firebase from 'firebase';
 
 const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
 const friendProfiles = [ 'FriendOne', 'FriendTwo' ];
@@ -15,14 +16,29 @@ export default class EventsStartRally extends React.Component {
     header: null,
   };
 
-  state = {
-    arr: [
-      { clicked: false },
-      { clicked: false},
-      { clicked: false},
-    ],
-    friends: [],
-  };
+  constructor(props) {
+    super(props);
+    var user = firebase.auth().currentUser;
+    this.roomsRef = firestore.collection('users/' + user.uid  + '/rooms');
+    this.state = {
+      rooms: [],
+      arr: [
+        { clicked: false },
+        { clicked: false},
+        { clicked: false},
+      ],
+      friends: [],
+    }
+  }
+
+  // state = {
+  //   arr: [
+  //     { clicked: false },
+  //     { clicked: false},
+  //     { clicked: false},
+  //   ],
+  //   friends: [],
+  // };
 
   rallyButton(index) {
     let tmp = this.state.arr;
@@ -49,6 +65,31 @@ export default class EventsStartRally extends React.Component {
       console.log(error);
     }
   }
+
+  openMessages(room) {
+    console.log('2' + room);
+    console.log(room.name);
+    console.log(room.key);
+    this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: room.name});
+  }
+
+  startRally(roomsRef, navigation) {
+    roomsRef.add({ name: navigation.getParam('eventInfo').name });
+    roomsRef.where("name", "==", navigation.getParam('eventInfo').name).get().then((querySnapshot)=> {
+      var roomsFB = [];
+      querySnapshot.forEach((doc) => {
+        roomsFB.push({
+          name: doc.data().name,
+          key: doc.data().key
+        });
+      });
+      this.setState({ rooms: roomsFB });
+      console.log('1'+ this.state.rooms[0]);
+      this.openMessages(this.state.rooms[0]);
+      })
+  }
+
+
 
   render() {
     const { navigation } = this.props;
@@ -85,7 +126,7 @@ export default class EventsStartRally extends React.Component {
         <View style={styles.bottomButton}>
           <Button
             title="Let's Rally!"
-            onPress={() => this.props.navigation.navigate('Messages')}
+            onPress={() => this.startRally(this.roomsRef, navigation)}
           />
         </View>
 
