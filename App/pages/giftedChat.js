@@ -9,7 +9,7 @@ import {
   FlatList,
   View
 } from 'react-native';
-import { RallyLogo, SideIcons, BackButton, ScrollView } from '../components';
+import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from '../components';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
@@ -22,8 +22,8 @@ class Rooms extends Component {
 
   constructor(props) {
     super(props);
-    var firebaseDB = firebase.database();
-    this.roomsRef = firebaseDB.ref('rooms');
+    var user = firebase.auth().currentUser;
+    this.roomsRef = firestore.collection('users/' + user.uid  + '/rooms');
     this.state = {
       rooms: [],
       newRoom: ''
@@ -35,24 +35,30 @@ class Rooms extends Component {
   }
 
   listenForRooms(roomsRef) {
-    roomsRef.on('value', (dataSnapshot) => {
+    roomsRef.get().then((querySnapshot)=> {
       var roomsFB = [];
-      dataSnapshot.forEach((child) => {
+      querySnapshot.forEach((doc) => {
         roomsFB.push({
-          name: child.val().name,
-          key: child.key
+          name: doc.data().name,
+          key: doc.id,
         });
       });
       this.setState({ rooms: roomsFB });
-    });
+      })
+      .catch((error) => {
+      console.log("Error getting documents: ", error);
+      });
   }
+
+ 
 
   addRoom() {
     if (this.state.newRoom === '') {
       return;
     }
-    this.roomsRef.push({ name: this.state.newRoom });
+    this.roomsRef.add({ name: this.state.newRoom });
     this.setState({ newRoom: '' });
+    this.listenForRooms(this.roomsRef);
   }
 
   openMessages(room) {
@@ -73,26 +79,13 @@ class Rooms extends Component {
   render() {
     return (
       <View style={styles.roomsContainer}>
-        <BackButton navigation={this.props.navigation} />
+        <BackButtonMessages navigation={this.props.navigation} />
         <StatusBar barStyle="light-content"/>
         <Text style={styles.roomsHeader}>Messages</Text>
-        <View style={styles.roomsInputContainer}>
-          <TextInput
-            style={styles.roomsInput}
-            placeholder={"New Room Name"}
-            onChangeText={(text) => this.setState({newRoom: text})}
-            value={this.state.newRoom}
-          />
-          <TouchableHighlight style={styles.roomsNewButton}
-            underlayColor="#fff"
-            onPress={() => this.addRoom()}
-          >
-            <Text style={styles.roomsNewButtonText}>Create</Text>
-          </TouchableHighlight>
-        </View>
         <View style={styles.roomsListContainer}>
           <FlatList
             data={this.state.rooms}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => (this.renderRow(item)
             )}
           />

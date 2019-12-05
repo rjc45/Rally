@@ -8,7 +8,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
-import { RallyLogo, SideIcons, BackButton, ScrollView } from '../components';
+import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from '../components';
 
 class GiftedMessages extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -64,11 +64,26 @@ class GiftedMessages extends Component {
     })
   }
 
+  renderSystemMessage = props => {
+    return (
+      <SystemMessage
+        {...props}
+        containerStyle={{
+          marginBottom: 15,
+        }}
+        textStyle={{
+          fontSize: 14,
+        }}
+      />
+    )
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
         <StatusBar barStyle="light-content"/>
         <GiftedChat
+          renderSystemMessage={this.renderSystemMessage}
           messages={this.state.messages}
           onSend={this.addMessage.bind(this)}
           user={{

@@ -15,7 +15,7 @@ const images = {
   filterRallies: require('../Images/filter-rallies.png'),
   friend1: require('../Images/friend1.png'),
   friend2: require('../Images/friend2.png'),
-  rally: require('../Images/logo_filled.png'),
+  rally: require('../Images/rally_text.png'),
   rally1: require('../Images/rally2.png'),
   rally1Pic: require('../Images/rally1Pic.jpg'),
   rally2: require('../Images/rally1.png'),

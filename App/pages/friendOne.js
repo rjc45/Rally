@@ -15,7 +15,7 @@ export default class Profile extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image 
+        <Image
           source={Images.friend1}
           style={styles.profilePic}
         />
@@ -23,40 +23,40 @@ export default class Profile extends React.Component {
 
         <View style={styles.eventsLists}>
           <Text style={styles.headerText}>Interests</Text>
-          
-          <ScrollView 
+
+          <ScrollView
             horizontal={true}
             style={styles.sideScroll}
           >
-            <CardView 
-              cardElevation={2}
-              cardMaxElevation={2}
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
               cornerRadius={5}
               style={styles.cards}
             >
               <Text style={styles.cardText}>Gender Equality</Text>
             </CardView>
-            <CardView 
-              cardElevation={2}
-              cardMaxElevation={2}
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
               cornerRadius={5}
               style={styles.cards}
             >
               <Text style={styles.cardText}>Sexual Health</Text>
             </CardView>
-          </ScrollView> 
+          </ScrollView>
         </View>
 
         <View style={styles.eventsLists}>
           <Text style={styles.headerText}>Upcoming Events</Text>
 
-          <ScrollView 
+          <ScrollView
             horizontal={true}
             style={styles.sideScroll}
           >
-            <CardView 
-              cardElevation={2}
-              cardMaxElevation={2}
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
               cornerRadius={5}
               style={styles.cards}
             >
@@ -65,9 +65,9 @@ export default class Profile extends React.Component {
               <Text>Bldg. 200-002</Text>
             </CardView>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('FilterEvents')}>
-              <CardView 
-                cardElevation={2}
-                cardMaxElevation={2}
+              <CardView
+                cardElevation={5}
+                cardMaxElevation={5}
                 cornerRadius={5}
                 style={styles.cards}
               >
@@ -80,19 +80,19 @@ export default class Profile extends React.Component {
                 />
               </CardView>
             </TouchableOpacity>
-          </ScrollView> 
+          </ScrollView>
         </View>
 
         <View style={styles.eventsLists}>
           <Text style={styles.headerText}>Past Events</Text>
 
-          <ScrollView 
+          <ScrollView
             horizontal={true}
             style={styles.sideScroll}
           >
-            <CardView 
-              cardElevation={2}
-              cardMaxElevation={2}
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
               cornerRadius={5}
               style={styles.cards}
             >
@@ -100,9 +100,9 @@ export default class Profile extends React.Component {
               <Text>11/21/2019</Text>
               <Text>Okada Lounge</Text>
             </CardView>
-            <CardView 
-              cardElevation={2}
-              cardMaxElevation={2}
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
               cornerRadius={5}
               style={styles.cards}
             >
@@ -110,9 +110,9 @@ export default class Profile extends React.Component {
               <Text>11/01/2019</Text>
               <Text>White Plaza</Text>
             </CardView>
-            <CardView 
-              cardElevation={2}
-              cardMaxElevation={2}
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
               cornerRadius={5}
               style={styles.cards}
             >
@@ -120,7 +120,7 @@ export default class Profile extends React.Component {
               <Text>10/22/2019</Text>
               <Text style={{textAlign: 'center'}}>Palo Alto City Hall</Text>
             </CardView>
-          </ScrollView> 
+          </ScrollView>
         </View>
 
         <BackButton navigation={this.props.navigation}/>
@@ -132,7 +132,7 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f7f7f7',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -149,8 +149,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   cards: {
-    borderColor: 'black',
-    borderWidth: 1,
     width: Metrics.screenWidth * 0.33,
     height: Metrics.screenHeight * 0.1,
     padding: 10,
@@ -158,6 +156,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white'
   },
   header: {
     fontSize: 25,
