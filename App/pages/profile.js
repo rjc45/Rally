@@ -5,6 +5,8 @@ import { BackButton } from '../components';
 import CardView from 'react-native-cardview';
 import { ScrollView } from 'react-native-gesture-handler';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
+import firestore from '../../firebase';
+import firebase from 'firebase';
 
 export default class Profile extends React.Component {
 
@@ -12,12 +14,17 @@ export default class Profile extends React.Component {
     header: null,
   };
 
+  logout = async() => {
+    await firebase.auth().signOut();
+    this.props.navigation.navigate('LoginScreen')
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <BackButton navigation={this.props.navigation}/>
         <View style={styles.logout}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('LoginScreen')}>
+          <TouchableOpacity onPress={() => this.logout()}>
             <SimpleLineIcons name='logout' size={40}/>
             <Text style={styles.logoutText}>Logout</Text>
           </TouchableOpacity>

@@ -57,13 +57,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: '#1E90FF',
+    backgroundColor: '#fff',
     paddingTop: 25,
   },
   roomsHeader: {
-    color: '#fff',
+    color: '#000000',
     fontSize: 28,
-    top: 25
+    top: 25,
+    fontWeight: 'bold',
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
   },
   roomsInputContainer: {
     alignItems: 'center',
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   roomLiText: {
-    color: '#1E90FF',
+    color: 'black',
     fontSize: 22,
   },
   messagesHeader: {

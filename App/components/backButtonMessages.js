@@ -14,7 +14,7 @@ export default class BackButtonMessages extends Component {
           <AntDesign
             name='arrowleft'
             size={40}
-            color='white'
+            color='black'
           />
         </TouchableOpacity>
       </View>

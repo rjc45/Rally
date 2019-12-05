@@ -31,15 +31,6 @@ export default class EventsStartRally extends React.Component {
     }
   }
 
-  // state = {
-  //   arr: [
-  //     { clicked: false },
-  //     { clicked: false},
-  //     { clicked: false},
-  //   ],
-  //   friends: [],
-  // };
-
   rallyButton(index) {
     let tmp = this.state.arr;
     tmp[index].clicked = !tmp[index].clicked;
