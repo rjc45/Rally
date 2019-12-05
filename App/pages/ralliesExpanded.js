@@ -27,7 +27,7 @@ export default class RalliesExpanded extends React.Component {
       Alert.alert('Success', 'You have joined ' + this.props.navigation.getParam('info').rallyOwner + '\'s Rally!');
     }
 
-    //navigation to the correct message  
+    //navigation to the correct messages
   }
 
   render() {
@@ -107,8 +107,7 @@ export default class RalliesExpanded extends React.Component {
             {this.state.interested ?
               <View style={styles.confirmedInterest}>
                 <Text style={styles.smallText}>Joined  </Text>
-                <Image source={Images.filterRallies}
-                  style={styles.star}/>
+                <Image source={Images.filterRallies} style={styles.star}/>
               </View>
             :
               <Button
