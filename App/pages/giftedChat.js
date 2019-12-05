@@ -75,7 +75,7 @@ class Rooms extends Component {
       <View style={styles.roomsContainer}>
         <BackButton navigation={this.props.navigation} />
         <StatusBar barStyle="light-content"/>
-        <Text style={styles.roomsHeader}>Chatypus</Text>
+        <Text style={styles.roomsHeader}>Messages</Text>
         <View style={styles.roomsInputContainer}>
           <TextInput
             style={styles.roomsInput}
