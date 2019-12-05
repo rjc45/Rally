@@ -9,7 +9,7 @@ import {
   FlatList,
   View
 } from 'react-native';
-import { RallyLogo, SideIcons, BackButton, ScrollView } from '../components';
+import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from '../components';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
@@ -73,7 +73,7 @@ class Rooms extends Component {
   render() {
     return (
       <View style={styles.roomsContainer}>
-        <BackButton navigation={this.props.navigation} />
+        <BackButtonMessages navigation={this.props.navigation} />
         <StatusBar barStyle="light-content"/>
         <Text style={styles.roomsHeader}>Messages</Text>
         <View style={styles.roomsListContainer}>
