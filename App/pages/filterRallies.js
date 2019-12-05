@@ -4,26 +4,12 @@ import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { RallyLogo, SideIcons, BackButton, CurrentLocationIcon } from '../components';
+import { RallyLogo, SideIcons, BackButton, CurrentLocationIcon, ScrollView } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign, Entypo } from '@expo/vector-icons';
+import firestore from '../../firebase';
 
-const events = [
-  {
-    id: '1',
-    name: 'Mana `O Maunakea',
-    image: Images.rally1,
-    distance: '5 mi',
-    navigation: 'RallyOne',
-  },
-  {
-    id: '2',
-    name: 'Social Justice Activities Fair',
-    image: Images.rally2,
-    distance: '7 mi',
-    navigation: 'RallyTwo',
-  },
-];
+const rallyIcons = [ Images.rally1, Images.rally2 ];
 
 export default class FilterEvents extends React.Component {
 
@@ -32,12 +18,29 @@ export default class FilterEvents extends React.Component {
   };
 
   state = {
-    searchText: '',
+    rallies: [],
+  }
+
+  componentDidMount() {
+    this.getRallies();
+  }
+
+  getRallies = async () => {
+    try {
+      let ralliesData = [];
+      let rallyCollectionRef = firestore.collection('rallies').orderBy('id', 'asc');
+      let allRallies = await rallyCollectionRef.get();
+      allRallies.forEach((rally) => {
+        ralliesData.push(rally.data());
+      })
+      this.setState({ rallies: ralliesData })
+      
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
-    const { searchText } = this.state;
-
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
@@ -49,34 +52,27 @@ export default class FilterEvents extends React.Component {
                 initialRegion={{
                   latitude: 37.4274,
                   longitude: -122.1697,
-                  latitudeDelta: 0.0222,
+                  latitudeDelta: 0.0250,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}
               >
                 <CurrentLocationIcon/>
 
-                <Marker
-                  coordinate={{
-                    latitude: 37.427799,
-                    longitude: -122.171198,
-                  }}
-                  title="Mano `O Maunakea">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('RallyOne')}>
-                    <Image source = {Images.rally1}/>
-                  </TouchableOpacity>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.425682,
-                    longitude: -122.167445,
-                  }}
-                  title="Social Justice Activities Fair">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('RallyTwo')}>
-                    <Image source = {Images.rally2}/>
-                  </TouchableOpacity>
-                </Marker>
+                {this.state.rallies.map((rally) => {
+                  return (
+                    <Marker key={rally.id}
+                      coordinate={{
+                        latitude: rally.latitude,
+                        longitude: rally.longitude,
+                      }}
+                      title={rally.name}>
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate(rally.navigation)}>
+                        <Image source={rallyIcons[Number(rally.id) - 1]}/>
+                      </TouchableOpacity>
+                    </Marker>
+                  );
+                })}
               </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
@@ -86,48 +82,12 @@ export default class FilterEvents extends React.Component {
         </View>
       )}>
 
-        <View style={styles.scrollView}>
-          <View style={styles.visualization}>
-            <Entypo name='chevron-small-up' size={30} style={{justifyContent: 'center'}}/>
-          </View>
-          <View style={styles.visualization}>
-            <Text style={styles.title}>Filtering By Rallies</Text>
-            <Image
-              source={Images.filterRallies}
-              style={{height: 25, width: 28}}
-            />
-          </View>
-
-          <View style={styles.search}>
-            <TouchableOpacity>
-              <AntDesign
-                name='search1'
-                style={{paddingLeft: 10}}
-              />
-            </TouchableOpacity>
-            <TextInput
-              placeholder=''
-              onChangeText={searchText => this.setState({searchText})}
-              value={searchText}
-            />
-          </View>
-
-          <FlatList
-            data={events}
-            renderItem={({ item }) => (
-              <View style={styles.event}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
-                  <View style={styles.listItems}>
-                    <Image source={item.image} />
-                    <Text style={styles.listText}>{item.name}</Text>
-                    <Text style={styles.smallText}>{item.distance}</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            )}
-            keyExtractor={item => item.id}
-          />
-        </View>
+        <ScrollView
+          filter={'Filtering By Rallies'}
+          icon={Images.filterRallies}
+          navigation={this.props.navigation}
+          data={this.state.rallies} 
+        />
 
       </ParallaxScrollView>
     );
@@ -147,50 +107,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 10,
-  },
-  scrollView: {
-    borderRadius: 10,
-  },
-  visualization: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    paddingRight: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  search: {
-    marginTop: 20,
-    marginLeft: 40,
-    marginRight: 40,
-    padding: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 10,
-  },
-  listItems: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 30,
-    marginRight: 30,
-    padding: 20,
-    paddingLeft: 0,
-    borderColor: 'gray',
-    borderBottomWidth: 1,
-  },
-  listText: {
-    fontSize: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  smallText: {
-    fontSize: 13,
-    paddingTop: 4,
   },
   mapStyle: {
     width: Metrics.screenWidth,

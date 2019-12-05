@@ -4,6 +4,8 @@ import { Images, Metrics } from '../Themes';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
+const rallyIcons = [ Images.rally1, Images.rally2 ];
+const friendsIcons = [ Images.friend1, Images.friend2 ];
 
 export default class ScrollView extends Component {
 
@@ -24,7 +26,7 @@ export default class ScrollView extends Component {
           <Text style={styles.title}>{this.props.filter}</Text>
           <Image
             source={this.props.icon}
-            style={{height: 25, width: 17}}
+            style={{height: 25, width: 28}}
           />
         </View>
 
@@ -47,8 +49,19 @@ export default class ScrollView extends Component {
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
               <View style={styles.listItems}>
-                <Image source={eventIcons[Number(item.id) - 1]}/>
-                <Text style={styles.listText}>{item.name}</Text>
+                {this.props.filter == 'Filtering By Events' &&
+                  <Image source={eventIcons[Number(item.id) - 1]}/>
+                }
+                {this.props.filter == 'Filtering By Rallies' &&
+                  <Image source={rallyIcons[Number(item.id) - 1]}/>
+                }
+                {this.props.filter == 'Filtering By Friends' &&
+                  <Image 
+                    source={friendsIcons[Number(item.id) - 1]}
+                    style={styles.icon}
+                  />
+                }
+                <Text style={styles.bigText}>{item.name}</Text>
                 <Text style={styles.smallText}>{item.distance}</Text>
               </View>
             </TouchableOpacity>
@@ -90,19 +103,24 @@ const styles = StyleSheet.create({
   listItems: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginLeft: 30,
     marginRight: 30,
-    padding: 20,
-    paddingLeft: 0,
+    paddingTop: 20,
+    paddingBottom: 20,
     borderColor: 'gray',
     borderBottomWidth: 1,
   },
-  listText: {
+  bigText: {
     fontSize: 20,
-    paddingRight: 10,
+    width: Metrics.screenWidth * 0.6,
   },
   smallText: {
     fontSize: 13,
-    paddingTop: 4,
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
 });

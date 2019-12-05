@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, FlatList, TextInput } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Images, Metrics} from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { RallyLogo, SideIcons, BackButton, ScrollView, CurrentLocationIcon } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { AntDesign, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 
@@ -53,7 +52,7 @@ export default class FilterEvents extends React.Component {
                 initialRegion={{
                   latitude: 37.4274,
                   longitude: -122.1697,
-                  latitudeDelta: 0.0222,
+                  latitudeDelta: 0.0250,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}

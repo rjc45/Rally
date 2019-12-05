@@ -4,12 +4,74 @@ import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { SideIcons, CurrentLocationIcon } from '../components';
+import firestore from '../../firebase';
+
+const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
+const rallyIcons = [ Images.rally1, Images.rally2 ];
+const friendsIcons = [ Images.friend1, Images.friend2 ];
 
 export default class Home extends React.Component {
 
   static navigationOptions = {
     header: null,
   };
+
+  state = {
+    events: [],
+    rallies: [],
+    friends: [],
+  }
+
+  componentDidMount() {
+    this.getEvents();
+    this.getRallies();
+    this.getFriends();
+  }
+
+  getEvents = async () => {
+    try {
+      let eventsData = [];
+      let eventCollectionRef = firestore.collection('events').orderBy('id', 'asc');
+      let allEvents = await eventCollectionRef.get();
+      allEvents.forEach((event) => {
+        eventsData.push(event.data());
+      })
+      this.setState({ events: eventsData })
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  getRallies = async () => {
+    try {
+      let ralliesData = [];
+      let rallyCollectionRef = firestore.collection('rallies').orderBy('id', 'asc');
+      let allRallies = await rallyCollectionRef.get();
+      allRallies.forEach((rally) => {
+        ralliesData.push(rally.data());
+      })
+      this.setState({ rallies: ralliesData })
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  getFriends = async () => {
+    try {
+      let friendsData = [];
+      let friendCollectionRef = firestore.collection('friends').orderBy('id', 'asc');
+      let allFriends = await friendCollectionRef.get();
+      allFriends.forEach((friend) => {
+        friendsData.push(friend.data());
+      })
+      this.setState({ friends: friendsData })
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   render() {
     return (
@@ -19,45 +81,63 @@ export default class Home extends React.Component {
           initialRegion={{
             latitude: 37.4274,
             longitude: -122.1697,
-            latitudeDelta: 0.0222,
+            latitudeDelta: 0.0250,
             longitudeDelta: 0.0001,
           }}
           style={styles.mapStyle}
         >
           <CurrentLocationIcon/>
 
-          <Marker
-            coordinate={{
-              latitude: 37.427799,
-              longitude: -122.171198,
-            }}
-            title="Mano `O Maunakea">
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventThreeExpanded')}>
-              <Image source = {Images.event1}/>
-            </TouchableOpacity>
-          </Marker>
+          {this.state.events.map((event) => {
+            return (
+              <Marker key={event.id}
+                coordinate={{
+                  latitude: event.latitude,
+                  longitude: event.longitude,
+                }}
+                title={event.name}
+              >
+                <TouchableOpacity onPress={() => this.props.navigation.navigate(event.navigation)}>
+                  <Image source={eventIcons[Number(event.id) - 1]}/>
+                </TouchableOpacity>
+              </Marker>
+            );
+          })}
 
-          <Marker
-            coordinate={{
-              latitude: 37.425682,
-              longitude: -122.167445,
-            }}
-            title="Social Justice Activities Fair">
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventTwoExpanded')}>
-              <Image source = {Images.event2}/>
-            </TouchableOpacity>
-          </Marker>
+          {this.state.rallies.map((rally) => {
+            return (
+              <Marker key={rally.id}
+                coordinate={{
+                  latitude: rally.latitude,
+                  longitude: rally.longitude,
+                }}
+                title={rally.name}
+              >
+                <TouchableOpacity onPress={() => this.props.navigation.navigate(rally.navigation)}>
+                  <Image source={rallyIcons[Number(rally.id) - 1]}/>
+                </TouchableOpacity>
+              </Marker>
+            );
+          })}
 
-          <Marker
-            coordinate={{
-              latitude: 37.420561,
-              longitude: -122.166688,
-            }}
-            title="2020 Election Trivia Night">
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('EventOneExpanded')}>
-              <Image source = {Images.event3}/>
-            </TouchableOpacity>
-          </Marker>
+          {this.state.friends.map((friend) => {
+            return (
+              <Marker key={friend.id}
+                coordinate={{
+                  latitude: friend.latitude,
+                  longitude: friend.longitude,
+                }}
+                title={friend.name}
+              >
+                <TouchableOpacity onPress={() => this.props.navigation.navigate(friend.navigation)}>
+                  <Image 
+                    source={friendsIcons[Number(friend.id) - 1]}
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+              </Marker>
+            );
+          })}
         </MapView>
 
         <Image source={Images.rally} style={styles.rallyLogo}/>
@@ -108,6 +188,11 @@ const styles = StyleSheet.create({
   rallyLogo: {
     position: 'absolute',
     top: '6%',
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   filters: {
     position: 'absolute',

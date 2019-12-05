@@ -1,29 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Alert, FlatList, TextInput } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Images, Metrics } from '../Themes';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { RallyLogo, SideIcons, BackButton, CurrentLocationIcon } from '../components';
+import { RallyLogo, SideIcons, BackButton, ScrollView, CurrentLocationIcon } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import firestore from '../../firebase';
 
-const friends = [
-  {
-    id: '1',
-    name: 'Sophie',
-    image: Images.friend1,
-    distance: '5 mi',
-    navigation: 'FriendOne',
-  },
-  {
-    id: '2',
-    name: 'Patrick',
-    image: Images.friend2,
-    distance: '7 mi',
-    navigation: 'FriendTwo',
-  },
-];
+const friendsIcons = [ Images.friend1, Images.friend2 ];
 
 export default class FilterEvents extends React.Component {
 
@@ -32,12 +17,29 @@ export default class FilterEvents extends React.Component {
   };
 
   state = {
-    searchText: '',
+    friends: [],
+  }
+
+  componentDidMount() {
+    this.getFriends();
+  }
+
+  getFriends = async () => {
+    try {
+      let friendsData = [];
+      let friendCollectionRef = firestore.collection('friends').orderBy('id', 'asc');
+      let allFriends = await friendCollectionRef.get();
+      allFriends.forEach((friend) => {
+        friendsData.push(friend.data());
+      })
+      this.setState({ friends: friendsData })
+      
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
-    const { searchText } = this.state;
-
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
@@ -49,34 +51,30 @@ export default class FilterEvents extends React.Component {
                 initialRegion={{
                   latitude: 37.4274,
                   longitude: -122.1697,
-                  latitudeDelta: 0.0222,
+                  latitudeDelta: 0.0250,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}
               >
                 <CurrentLocationIcon/>
 
-                <Marker
-                  coordinate={{
-                    latitude: 37.427799,
-                    longitude: -122.171198,
-                  }}
-                  title="Sophie">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('FriendOne')}>
-                    <Image source = {Images.friend1} style={styles.icon}/>
-                  </TouchableOpacity>
-                </Marker>
-
-                <Marker
-                  coordinate={{
-                    latitude: 37.425682,
-                    longitude: -122.167445,
-                  }}
-                  title="Patrick">
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('FriendTwo')}>
-                    <Image source = {Images.friend2} style={styles.icon}/>
-                  </TouchableOpacity>
-                </Marker>
+                {this.state.friends.map((friend) => {
+                  return (
+                    <Marker key={friend.id}
+                      coordinate={{
+                        latitude: friend.latitude,
+                        longitude: friend.longitude,
+                      }}
+                      title={friend.name}>
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate(friend.navigation)}>
+                        <Image 
+                          source={friendsIcons[Number(friend.id) - 1]}
+                          style={styles.icon}
+                        />
+                      </TouchableOpacity>
+                    </Marker>
+                  );
+                })}
               </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
@@ -86,43 +84,12 @@ export default class FilterEvents extends React.Component {
         </View>
       )}>
 
-        <View style={styles.scrollView}>
-          <View style={styles.visualization}>
-            <Entypo name='chevron-small-up' size={30}/>
-          </View>
-          <View style={styles.visualization}>
-            <Text style={styles.title}>Filtering By Friends</Text>
-            <Image source={Images.filterFriends}></Image>
-          </View>
-
-          <View style={styles.search}>
-            <TouchableOpacity>
-              <AntDesign
-                name='search1'
-                style={{paddingLeft: 10}}
-              />
-            </TouchableOpacity>
-            <TextInput
-              placeholder=''
-              onChangeText={searchText => this.setState({searchText})}
-              value={searchText}
-            />
-          </View>
-
-          <FlatList
-            data={friends}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => this.props.navigation.navigate(item.navigation)}>
-                <View style={styles.listItems}>
-                  <Image source={item.image} style={styles.icon}/>
-                  <Text style={styles.listText}>{item.name}</Text>
-                  <Text style={styles.smallText}>{item.distance}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
-            keyExtractor={item => item.id}
-          />
-        </View>
+        <ScrollView
+          filter={'Filtering By Friends'}
+          icon={Images.filterFriends}
+          navigation={this.props.navigation}
+          data={this.state.friends} 
+        />
 
       </ParallaxScrollView>
     );
@@ -147,50 +114,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-  },
-  scrollView: {
-    borderRadius: 10,
-  },
-  visualization: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    paddingRight: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  search: {
-    marginTop: 10,
-    marginLeft: 40,
-    marginRight: 40,
-    padding: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 10,
-  },
-  listItems: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 30,
-    marginRight: 30,
-    padding: 20,
-    paddingLeft: 0,
-    borderColor: 'gray',
-    borderBottomWidth: 1,
-  },
-  listText: {
-    fontSize: 20,
-    paddingLeft: 20,
-    paddingRight: 10,
-  },
-  smallText: {
-    fontSize: 13,
-    paddingTop: 4,
   },
   mapStyle: {
     width: Metrics.screenWidth,
