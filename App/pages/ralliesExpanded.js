@@ -29,7 +29,12 @@ export default class RalliesExpanded extends React.Component {
       rooms: [],
       rally: false,
       highlightedRoute: 0,
+      members: [],
     }
+  }
+
+  componentDidMount() {
+    this.getMembers();
   }
 
   pressRoute(index) {
@@ -44,12 +49,41 @@ export default class RalliesExpanded extends React.Component {
   };
 
   openMessages(room) {
+    this.getMembers();
+    var user = firebase.auth().currentUser;
+    var memberRef = firestore.collection('users/' + user.uid  + '/rooms/' + room.key + '/members');
     if (room.key == '6HBpyQIweArvlyP50LiK') {
-      var users = ['Sophie'];
-      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: "What is Asian American Studies?", users_arr: users});
+      if (!this.state.members.length) {
+        memberRef.add({name: 'Sophie'});
+      }
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: "What is Asian American Studies?"});
     } else if (room.key == 'fTokbgBc9FSDrmmiO63u') {
-      var users = ['Sophie', 'Patrick'];
-      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: 'Sexual Violence Town Hall', users_arr: users});
+      if (!this.state.members.length) {
+        memberRef.add({name: 'Sophie'});
+        memberRef.add({name: 'Patrick'});
+      }
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: 'Sexual Violence Town Hall'});
+    }
+  }
+
+  getMembers = async () => {
+    try {
+      var roomKey;
+      if (this.props.navigation.getParam('info').rallyOwner == 'Sophie') {
+        roomKey = '6HBpyQIweArvlyP50LiK';
+      } else {
+        roomKey = 'fTokbgBc9FSDrmmiO63u';
+      }
+      let membersData = [];
+      let user = firebase.auth().currentUser
+      let membersCollectionRef = firestore.collection('users/' + user.uid  + '/rooms/' + roomKey + '/members');
+      let allMembers = await membersCollectionRef.get();
+      allMembers.forEach((member) => {
+        membersData.push(member.data());
+      })
+      this.setState({ members: membersData })
+    } catch (error) {
+      console.log(error);
     }
   }
 
