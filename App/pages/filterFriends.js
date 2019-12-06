@@ -86,6 +86,7 @@ export default class FilterEvents extends React.Component {
 
         <ScrollView
           filter={'Filtering By Friends'}
+          expanded={'FriendOne'}
           icon={Images.filterFriends}
           navigation={this.props.navigation}
           data={this.state.friends} 
