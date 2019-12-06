@@ -5,7 +5,6 @@ import { BackButton } from '../components';
 import CardView from 'react-native-cardview';
 import { ScrollView } from 'react-native-gesture-handler';
 import { AntDesign, SimpleLineIcons, Entypo } from '@expo/vector-icons';
-import firestore from '../../firebase';
 import firebase from 'firebase';
 
 export default class Profile extends React.Component {
@@ -34,7 +33,7 @@ export default class Profile extends React.Component {
         <BackButton navigation={this.props.navigation}/>
         <View style={styles.logout}>
           <TouchableOpacity onPress={() => this.logout()}>
-            <SimpleLineIcons name='logout' size={40}/>
+            <SimpleLineIcons name='logout' size={35}/>
             <Text style={styles.logoutText}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -156,14 +155,14 @@ const styles = StyleSheet.create({
   },
   logout: {
     position: 'absolute',
-    top: '6%',
+    top: '7%',
     alignSelf: 'flex-end',
     paddingRight: 25,
   },
   logoutText: {
     fontSize: 9,
     textAlign: 'center',
-    paddingLeft: 10,
+    paddingLeft: 7,
   },
   profilePic: {
     borderRadius: 44,
