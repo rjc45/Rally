@@ -1,18 +1,19 @@
 import React from 'react';
 import { Button, StyleSheet, View, Image, Text, Alert, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
-import { Marker, Callout } from 'react-native-maps';
+import { Marker, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import { material, human, iOSColors, systemWeights } from 'react-native-typography'
 
 
-const eventIcons = [ Images.rally1, Images.rally2 ];
+const ralliesIcons = [ Images.rally1, Images.rally2 ];
 const ralliesImages = [ Images.rally1Pic, Images.rally2Pic ];
+const transportationIcons = [ 'numeric-1-box-outline', 'numeric-2-box-outline' ];
 
 export default class RalliesExpanded extends React.Component {
 
@@ -27,8 +28,20 @@ export default class RalliesExpanded extends React.Component {
     this.state = {
       rooms: [],
       rally: false,
+      highlightedRoute: 0,
     }
   }
+
+  pressRoute(index) {
+    if (this.state.highlightedRoute !== index) {
+      this.setState({ highlightedRoute: index});
+    }
+    this.props.navigation.navigate('Transportation',
+    { info: this.props.navigation.getParam('info'),
+    image: this.props.navigation.getParam('image'), 
+    highlightedRoute: index,
+    type: 'rallies'});
+  };
 
   openMessages(room) {
     if (room.key == '6HBpyQIweArvlyP50LiK') {
@@ -62,6 +75,7 @@ export default class RalliesExpanded extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    const { highlightedRoute } = this.state;
 
     return (
       <ParallaxScrollView
@@ -72,9 +86,9 @@ export default class RalliesExpanded extends React.Component {
             <View style={styles.container}>
               <MapView
                 initialRegion={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                  latitudeDelta: 0.0222,
+                  latitude: navigation.getParam('info').latInit,
+                  longitude: navigation.getParam('info').longInit,
+                  latitudeDelta: navigation.getParam('info').latdelta,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}
@@ -89,8 +103,43 @@ export default class RalliesExpanded extends React.Component {
                 }}
                 title={navigation.getParam('info').name}
               >
-                <Image source={eventIcons[navigation.getParam('image')]}/>
+                <Image source={ralliesIcons[navigation.getParam('image')]}/>
               </Marker>
+
+              {Object.keys(navigation.getParam('info').routes).map((key, index) => {
+                  let route = navigation.getParam('info').routes[key];
+
+                  return (
+                    <View key={index}>
+                      <Polyline
+                        coordinates={route}
+                        strokeWidth={3}
+                        strokeColor={highlightedRoute === index ? '#729CEF' : '#BBBDBF'}
+                        tappable={true}
+                        onPress={() => this.pressRoute(index)}
+                      />
+                      <Marker
+                        coordinate={{
+                          latitude: navigation.getParam('info').transport[index]['_lat'],
+                          longitude: navigation.getParam('info').transport[index]['_long'],
+                        }}
+                      >
+                        <TouchableOpacity onPress={() => this.pressRoute(index)}>
+                          <MaterialCommunityIcons name={transportationIcons[index]} size={25}/>
+                        </TouchableOpacity>
+                      </Marker>
+                    </View>
+                  );
+                })}
+
+                {navigation.getParam('info').routeWalk &&
+                  <Polyline
+                    coordinates={navigation.getParam('info').routeWalk}
+                    strokeWidth={2}
+                    strokeColor={'#729CEF'}
+                    lineDashPattern={[1, 5]}
+                  />
+                }
 
             </MapView>
 

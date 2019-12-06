@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native'
 import { Images, Metrics } from '../Themes';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 
 export default class SideIcons extends Component {
 
@@ -11,21 +11,17 @@ export default class SideIcons extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('GiftedChat')}
         >
-          <Ionicons
-            name='md-mail'
-            size={40}
-            color='black'
-          />
+          <View style={styles.checkBoxWrapper}>
+            <Feather name='mail' size={35}/>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Profile')}
         >
-          <Ionicons
-            name='md-person'
-            size={50}
-            color='black'
-          />
+          <View style={styles.checkBoxWrapper}>
+            <FontAwesome name='user-o' size={35}/>
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -37,6 +33,17 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'flex-end',
     top:'6%',
-    paddingRight: 20,
+    paddingRight: 15,
+  },
+  checkBoxWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 48,
+    height: 48,
+    backgroundColor: '#FFFFFF',
+    borderColor: 'gray',
+    borderWidth: 0.2,
+    borderRadius: 24,
+    marginBottom: 5,
   },
 });

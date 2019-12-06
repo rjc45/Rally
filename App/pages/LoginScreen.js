@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Image, TextInput, Button, Alert} from 'react-native';
+import { View, StyleSheet, SafeAreaView, Image, TextInput, Button, Alert } from 'react-native';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import { Images } from '../Themes';
@@ -62,7 +62,9 @@ export default class LoginScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Image source={Images.rally} style={styles.rallyLogo}/>
+        <View style={styles.rallyLogo}>
+          <Image source={Images.rally} style={styles.logo}/>
+        </View>
         <TextInput
           style={styles.input}
           value={this.state.signUpName}
@@ -121,7 +123,12 @@ const styles = StyleSheet.create({
   },
   rallyLogo: {
     position: 'absolute',
-    top: '6%',
+    top: '7.2%',
+  },
+  logo: {
+    resizeMode: 'contain',
+    height: 30,
+    marginLeft: 15,
   },
   input: {
     width: '90%',

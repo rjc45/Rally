@@ -2,7 +2,6 @@ import Home from './home';
 import FilterEvents from './filterEvents';
 import FilterRallies from './filterRallies';
 import FilterFriends from './filterFriends';
-import Messages from './messages';
 import Profile from './profile';
 import EventsExpanded from './eventsExpanded';
 import EventsStartRally from './eventsStartRally';
@@ -19,7 +18,6 @@ export {
   FilterEvents,
   FilterRallies,
   FilterFriends,
-  Messages,
   Profile,
   EventsExpanded,
   EventsStartRally,

@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
-import { Marker, Polyline } from 'react-native-maps';
+import { Marker, Polyline, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { WebView } from 'react-native-webview';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
+const ralliesIcons = [ Images.rally1, Images.rally2 ];
+const transportationIcons = [ 'numeric-1-box-outline', 'numeric-2-box-outline' ];
 
 export default class Transportation extends React.Component {
 
@@ -54,20 +56,34 @@ export default class Transportation extends React.Component {
                   }}
                   title={navigation.getParam('info').name}
                 >
-                  <Image source={eventIcons[navigation.getParam('image')]} style={styles.mapIcon}/>
+                  <Image source={navigation.getParam('type') == 'events' ? 
+                    eventIcons[navigation.getParam('image')] : ralliesIcons[navigation.getParam('image')]} 
+                    style={styles.mapIcon}/>
                 </Marker>
 
                 {Object.keys(navigation.getParam('info').routes).map((key, index) => {
                   let route = navigation.getParam('info').routes[key];
 
                   return (
-                    <Polyline key={index}
-                      coordinates={route}
-                      strokeWidth={3}
-                      strokeColor={highlightedRoute === index ? '#729CEF' : '#BBBDBF'}
-                      tappable={true}
-                      onPress={() => this.pressRoute(index)}
-                    />
+                    <View key={index}>
+                      <Polyline
+                        coordinates={route}
+                        strokeWidth={3}
+                        strokeColor={highlightedRoute === index ? '#729CEF' : '#BBBDBF'}
+                        tappable={true}
+                        onPress={() => this.pressRoute(index)}
+                      />
+                      <Marker
+                        coordinate={{
+                          latitude: navigation.getParam('info').transport[index]['_lat'],
+                          longitude: navigation.getParam('info').transport[index]['_long'],
+                        }}
+                      >
+                        <TouchableOpacity onPress={() => this.pressRoute(index)}>
+                          <MaterialCommunityIcons name={transportationIcons[index]} size={25}/>
+                        </TouchableOpacity>
+                      </Marker>
+                    </View>
                   );
                 })}
 

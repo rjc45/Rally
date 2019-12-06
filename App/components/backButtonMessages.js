@@ -8,14 +8,8 @@ export default class BackButtonMessages extends Component {
   render () {
     return (
       <View style={styles.backButton}>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.goBack()}
-        >
-          <AntDesign
-            name='arrowleft'
-            size={40}
-            color='black'
-          />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+            <AntDesign name='arrowleft' size={35}/>
         </TouchableOpacity>
       </View>
     );

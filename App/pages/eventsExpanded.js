@@ -1,15 +1,16 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, TouchableOpacity, TouchableHighlight } from 'react-native';
 import MapView from 'react-native-maps';
-import { Marker, Polyline } from 'react-native-maps';
+import { Marker, Polyline, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { FontAwesome, Entypo } from '@expo/vector-icons';
+import { FontAwesome, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import { material, human, iOSColors, systemWeights } from 'react-native-typography'
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
-const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
+const eventImages = [ Images.event2Pic, Images.event3Pic, Images.event1Pic ];
+const transportationIcons = [ 'numeric-1-box-outline', 'numeric-2-box-outline' ];
 
 export default class EventsExpanded extends React.Component {
 
@@ -37,7 +38,8 @@ export default class EventsExpanded extends React.Component {
     this.props.navigation.navigate('Transportation',
     { info: this.props.navigation.getParam('info'),
     image: this.props.navigation.getParam('image'), 
-    highlightedRoute: index });
+    highlightedRoute: index,
+    type: 'events' });
   };
 
   render() {
@@ -78,10 +80,25 @@ export default class EventsExpanded extends React.Component {
                     <Polyline key={index}
                       coordinates={route}
                       strokeWidth={3}
-                      strokeColor={highlightedRoute == index ? '#729CEF' : '#BBBDBF'}
+                      strokeColor={highlightedRoute === index ? '#729CEF' : '#BBBDBF'}
                       tappable={true}
                       onPress={() => this.pressRoute(index)}
                     />
+                  );
+                })}
+
+                {navigation.getParam('info').transport.map((coord, index) => {
+                  return (
+                    <Marker key={index}
+                      coordinate={{
+                        latitude: coord['_lat'],
+                        longitude: coord['_long'],
+                      }}
+                    >
+                      <TouchableOpacity onPress={() => this.pressRoute(index)}>
+                        <MaterialCommunityIcons name={transportationIcons[index]} size={25}/>
+                      </TouchableOpacity>
+                    </Marker>
                   );
                 })}
 
