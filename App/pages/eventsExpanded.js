@@ -43,9 +43,9 @@ export default class EventsExpanded extends React.Component {
             <View style={styles.container}>
               <MapView
                 initialRegion={{
-                  latitude: 37.422632,
-                  longitude: -122.171757,
-                  latitudeDelta: 0.01,
+                  latitude: navigation.getParam('info').latInit,
+                  longitude: navigation.getParam('info').longInit,
+                  latitudeDelta: navigation.getParam('info').latdelta,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}
