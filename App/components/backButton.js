@@ -8,15 +8,9 @@ export default class BackButton extends Component {
   render () {
     return (
       <View style={styles.backButton}>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.goBack()}
-        >
+        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
           <View style={styles.checkBoxWrapper}>
-            <AntDesign
-              name='arrowleft'
-              size={35}
-              color='black'
-            />
+            <AntDesign name='arrowleft' size={35}/>
           </View>
         </TouchableOpacity>
       </View>
