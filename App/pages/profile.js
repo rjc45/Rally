@@ -4,7 +4,7 @@ import { Images, Metrics } from '../Themes';
 import { BackButton } from '../components';
 import CardView from 'react-native-cardview';
 import { ScrollView } from 'react-native-gesture-handler';
-import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
+import { AntDesign, SimpleLineIcons, Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 
@@ -14,9 +14,18 @@ export default class Profile extends React.Component {
     header: null,
   };
 
+  state = {
+    shareLocation: true,
+  }
+
   logout = async() => {
     await firebase.auth().signOut();
     this.props.navigation.navigate('LoginScreen')
+  }
+
+  locationPreference() {
+    let tmp = !this.state.shareLocation;
+    this.setState({ shareLocation: tmp });
   }
 
   render() {
@@ -30,11 +39,17 @@ export default class Profile extends React.Component {
           </TouchableOpacity>
         </View>
 
-        <Image
-          source={Images.yourImage}
-          style={styles.profilePic}
-        />
+        <Image source={Images.yourImage} style={styles.profilePic}/>
         <Text style={styles.header}>Your Profile</Text>
+
+        <View style={styles.locationPrompt}>
+          <Text style={styles.locationText}>Share Location with friends?</Text>
+          <TouchableOpacity onPress={() => this.locationPreference()}>
+            <View style={styles.checkBoxWrapper}>
+              {this.state.shareLocation ? <Entypo name='check' size={30} color='#449AFF'/> : <Text/>}
+            </View>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.eventsLists}>
           <Text style={styles.headerText}>My Interests</Text>
@@ -186,5 +201,23 @@ const styles = StyleSheet.create({
   cardText: {
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  locationPrompt: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  locationText: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    paddingRight: 5,
+  },
+  checkBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#F0F0F0',
+    borderRadius: 20
   },
 });

@@ -18,7 +18,6 @@ export default class BackButton extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',

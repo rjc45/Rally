@@ -34,7 +34,7 @@ export default class Profile extends React.Component {
               cornerRadius={5}
               style={styles.cards}
             >
-              <Text style={styles.cardText}>Housing Justice</Text>
+              <Text style={styles.cardText}>Social Justice</Text>
             </CardView>
             <CardView
               cardElevation={5}
@@ -54,22 +54,16 @@ export default class Profile extends React.Component {
             horizontal={true}
             style={styles.sideScroll}
           >
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('FilterEvents')}>
-              <CardView
-                cardElevation={5}
-                cardMaxElevation={5}
-                cornerRadius={5}
-                style={styles.cards}
-              >
-                <Text style={styles.cardText}>Explore Events</Text>
-                <AntDesign
-                  style={{paddingTop: 10}}
-                  name='pluscircleo'
-                  size={30}
-                  color='black'
-                />
-              </CardView>
-            </TouchableOpacity>
+            <CardView
+              cardElevation={5}
+              cardMaxElevation={5}
+              cornerRadius={5}
+              style={styles.cards}
+            >
+              <Text style={styles.cardText}>What is Asian American Studies?</Text>
+              <Text>12/05/2019</Text>
+              <Text>Okada Lounge</Text>
+            </CardView>
           </ScrollView>
         </View>
 
@@ -89,16 +83,6 @@ export default class Profile extends React.Component {
               <Text style={styles.cardText}>Environmental Justice Dinner</Text>
               <Text>11/21/2019</Text>
               <Text>Okada Lounge</Text>
-            </CardView>
-            <CardView
-              cardElevation={5}
-              cardMaxElevation={5}
-              cornerRadius={5}
-              style={styles.cards}
-            >
-              <Text style={styles.cardText}>Fossil Free Sit-In</Text>
-              <Text>11/01/2019</Text>
-              <Text>White Plaza</Text>
             </CardView>
             <CardView
               cardElevation={5}

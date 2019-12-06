@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
-import { RallyLogo ,SideIcons, CurrentLocationIcon } from '../components';
+import { SideIcons, CurrentLocationIcon } from '../components';
 import firestore from '../../firebase';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
