@@ -1,4 +1,5 @@
 const images = {
+  bus: require('../Images/bus.jpg'),
   currentLocation: require('../Images/currentLocation.png'),
   currentLocation2: require('../Images/currentLocation2.png'),
   event1: require('../Images/event1.png'),

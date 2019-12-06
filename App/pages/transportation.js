@@ -1,43 +1,29 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { FontAwesome, Entypo } from '@expo/vector-icons';
-import { material, human, iOSColors, systemWeights } from 'react-native-typography'
+import { Entypo } from '@expo/vector-icons';
+import { WebView } from 'react-native-webview';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
-const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
 
-export default class EventsExpanded extends React.Component {
+export default class Transportation extends React.Component {
 
   static navigationOptions = {
     header: null,
   };
 
   state = {
-    interested: false,
-    highlightedRoute: 0,
-  };
-
-  interestedButton() {
-    let tmp = !this.state.interested;
-    this.setState({ interested: tmp });
-    if (tmp) {
-      Alert.alert('Success', 'You are interested in this event!');
-    }
+    highlightedRoute: this.props.navigation.getParam('highlightedRoute'),
   };
 
   pressRoute(index) {
     if (this.state.highlightedRoute !== index) {
       this.setState({ highlightedRoute: index});
     }
-    this.props.navigation.navigate('Transportation',
-    { info: this.props.navigation.getParam('info'),
-    image: this.props.navigation.getParam('image'), 
-    highlightedRoute: index });
   };
 
   render() {
@@ -78,7 +64,7 @@ export default class EventsExpanded extends React.Component {
                     <Polyline key={index}
                       coordinates={route}
                       strokeWidth={3}
-                      strokeColor={highlightedRoute == index ? '#729CEF' : '#BBBDBF'}
+                      strokeColor={highlightedRoute === index ? '#729CEF' : '#BBBDBF'}
                       tappable={true}
                       onPress={() => this.pressRoute(index)}
                     />
@@ -105,46 +91,20 @@ export default class EventsExpanded extends React.Component {
         <View style={styles.scrollView}>
           <View style={styles.alignCenter}>
             <Entypo name='chevron-small-up' size={30}/>
-            <Text style={styles.title}>{navigation.getParam('info').name}</Text>
-            <Image source={eventImages[navigation.getParam('image')]} style={styles.eventImage}/>
-          </View>
-
-          <View style={styles.text}>
-            <Text style={styles.smallText}>{navigation.getParam('info').host}</Text>
-            <Text style={styles.smallText}>{navigation.getParam('info').date}</Text>
-            <Text style={styles.smallText}>{navigation.getParam('info').location}</Text>
-          </View>
-          <View style={styles.text}>
-            <Text style={styles.description}>{navigation.getParam('info').bodyOne} </Text>
-          </View>
-          {navigation.getParam('info').bodyTwo &&
-            <View style={styles.text}>
-              <Text style={styles.description}>{navigation.getParam('info').bodyTwo}</Text>
-            </View>
-          }
-          {navigation.getParam('info').bodyThree &&
-            <View style={styles.text}>
-              <Text style={styles.description}>{navigation.getParam('info').bodyThree}</Text>
-            </View>
-          }
-
-          <View style={styles.bottombuttons}>
-            <View style={styles.confirmedInterest}>
-              <TouchableOpacity
-                style={styles.interested}
-                onPress={() => this.interestedButton()}
-                >
-                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Interested</Text>
-                {this.state.interested ? <FontAwesome name='star' size={20}/> : <Text/>}
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity
-              style={styles.interested}
-              onPress={() => this.props.navigation.navigate('EventsStartRally',
-              {info: navigation.getParam('info'), image: navigation.getParam('image')})}
-            >
-            <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Start a Rally</Text>
-            </TouchableOpacity>
+            {highlightedRoute == 0 && <Text style={styles.title}>Marguerite Shuttle Line X</Text>}
+            {highlightedRoute == 1 && <Text style={styles.title}>Marguerite Shuttle Line Y</Text>}
+            <Image source={Images.bus} style={styles.busImage}/>
+            
+            {highlightedRoute == 0 && 
+              <WebView style={styles.schedule}
+                source={{ uri: 'https://transportation.stanford.edu/marguerite/x#marguerite--schedule-anchor' }}
+              />
+            }
+            {highlightedRoute == 1 && 
+              <WebView style={styles.schedule}
+                source={{ uri: 'https://transportation.stanford.edu/marguerite/y#marguerite--schedule-anchor' }}
+              />
+            }
           </View>
         </View>
       </ParallaxScrollView>
@@ -181,7 +141,7 @@ const styles = StyleSheet.create({
   alignCenter: {
     alignItems: 'center',
   },
-  eventImage: {
+  busImage: {
     width: Metrics.screenWidth * 0.90,
     height: Metrics.screenHeight * 0.3,
     margin: 10,
@@ -192,35 +152,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  smallText: {
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  text: {
-    padding: 10,
-  },
-  description: {
-    textAlign: 'center',
-  },
-  bottombuttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingTop: 10,
-  },
-  confirmedInterest: {
-    flexDirection: 'row',
+  schedule: {
+    width: Metrics.screenWidth, 
+    height: Metrics.screenHeight * 0.8,
+    padding: 0,
     alignItems: 'center',
-  },
-  interested: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingTop: 5,
-    paddingBottom:5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    borderRadius: 20,
-    borderColor: '#c4c4c4',
-    borderWidth: 1,
   }
 });
