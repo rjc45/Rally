@@ -136,7 +136,7 @@ export default class RalliesExpanded extends React.Component {
             onPress={() => this.props.navigation.navigate('FriendTwo')}
             >
               <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
-              {'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
+              {'View ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
           </TouchableOpacity>
 
             {this.state.interested ?
@@ -145,7 +145,7 @@ export default class RalliesExpanded extends React.Component {
                 onPress={() => this.rallyButton()}
                 >
                   <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
-                  {'See ' + navigation.getParam('info').rallyOwner + '\'s rally'}</Text>
+                  {'View ' + navigation.getParam('info').rallyOwner + '\'s rally'}</Text>
               </TouchableOpacity>
             :
             <TouchableOpacity
