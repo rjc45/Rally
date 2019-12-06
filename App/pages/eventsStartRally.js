@@ -5,6 +5,7 @@ import { BackButton } from '../components';
 import { Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
+import { material, human, iOSColors, systemWeights } from 'react-native-typography'
 
 const eventImages = [ Images.event2Pic, Images.event3Pic, Images.event1Pic ];
 const friendProfiles = [ 'FriendOne', 'FriendTwo' ];
@@ -52,7 +53,7 @@ export default class EventsStartRally extends React.Component {
         friendsData.push(friend.data());
       })
       this.setState({ friends: friendsData })
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -120,10 +121,12 @@ export default class EventsStartRally extends React.Component {
         })}
 
         <View style={styles.bottomButton}>
-          <Button
-            title="Let's Rally!"
+          <TouchableOpacity
+            style={styles.interested}
             onPress={() => this.startRally(this.roomsRef, navigation)}
-          />
+            >
+            <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>Let's Rally!</Text>
+          </TouchableOpacity>
         </View>
 
         <BackButton navigation={this.props.navigation} />
@@ -187,5 +190,18 @@ const styles = StyleSheet.create({
   },
   bottomButton: {
     padding: 20,
+    marginLeft: 105,
+    marginRight: 105
+  },
+  interested: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'center',
+    backgroundColor: 'white',
+    paddingTop: 5,
+    paddingBottom:5,
+    borderRadius: 20,
+    borderColor: '#c4c4c4',
+    borderWidth: 1,
   },
 });

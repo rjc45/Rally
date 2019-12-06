@@ -37,7 +37,7 @@ export default class EventsExpanded extends React.Component {
     }
     this.props.navigation.navigate('Transportation',
     { info: this.props.navigation.getParam('info'),
-    image: this.props.navigation.getParam('image'), 
+    image: this.props.navigation.getParam('image'),
     highlightedRoute: index,
     type: 'events' });
   };
@@ -160,7 +160,7 @@ export default class EventsExpanded extends React.Component {
               onPress={() => this.props.navigation.navigate('EventsStartRally',
               {info: navigation.getParam('info'), image: navigation.getParam('image')})}
             >
-            <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Start a Rally</Text>
+            <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign:'center'}]}>Start a Rally</Text>
             </TouchableOpacity>
           </View>
         </View>
