@@ -135,7 +135,7 @@ export default class RalliesExpanded extends React.Component {
             style={styles.interested}
             onPress={() => this.props.navigation.navigate('FriendTwo')}
             >
-              <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>
+              <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
               {'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
           </TouchableOpacity>
 
@@ -149,8 +149,8 @@ export default class RalliesExpanded extends React.Component {
               style={styles.interested}
               onPress={() => this.rallyButton()}
               >
-                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>
-                {'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
+                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
+                {'Join ' + navigation.getParam('info').rallyOwner + '\'s Rally'}</Text>
             </TouchableOpacity>
             }
           </View>
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   bottombuttons: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-around',
     paddingTop: 10,
   },
@@ -229,5 +229,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: '#c4c4c4',
     borderWidth: 1,
+    margin: 10
   }
 });
