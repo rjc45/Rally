@@ -17,7 +17,7 @@ export default class EventsExpanded extends React.Component {
     header: null,
   };
 
-  state = { 
+  state = {
     interested: false,
     highlightedRoute: 0,
   };
@@ -60,10 +60,10 @@ export default class EventsExpanded extends React.Component {
                 >
                   <Image source={eventIcons[navigation.getParam('image')]} style={styles.mapIcon}/>
                 </Marker>
-                
+
                 {Object.keys(navigation.getParam('info').routes).map((key, index) => {
                   let route = navigation.getParam('info').routes[key];
-                  
+
                   return (
                     <Polyline key={index}
                       coordinates={route}
@@ -126,11 +126,13 @@ export default class EventsExpanded extends React.Component {
               </TouchableOpacity>
               {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
             </View>
-            <Button
-              title="Start a Rally"
+            <TouchableOpacity
+              style={styles.interested}
               onPress={() => this.props.navigation.navigate('EventsStartRally',
               {info: navigation.getParam('info'), image: navigation.getParam('image')})}
-            />
+            >
+            <Text style={[human.title3, {color: iOSColors.blue}]}>Start a Rally</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ParallaxScrollView>
