@@ -140,10 +140,13 @@ export default class RalliesExpanded extends React.Component {
           </TouchableOpacity>
 
             {this.state.interested ?
-              <View style={styles.confirmedInterest}>
-                <Text style={styles.smallText}>Joined  </Text>
-                <Image source={Images.filterRallies} style={styles.star}/>
-              </View>
+              <TouchableOpacity
+                style={styles.interested}
+                onPress={() => this.rallyButton()}
+                >
+                  <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
+                  {'Go to \'' + navigation.getParam('info').name + '\' chat'}</Text>
+              </TouchableOpacity>
             :
             <TouchableOpacity
               style={styles.interested}
@@ -215,10 +218,12 @@ const styles = StyleSheet.create({
   confirmedInterest: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center'
   },
   star: {
     height: 25,
     width: 30,
+    alignItems: 'center'
   },
   interested: {
     backgroundColor: 'white',
