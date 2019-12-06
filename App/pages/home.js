@@ -76,12 +76,11 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-
         <MapView
           initialRegion={{
-            latitude: 37.4274,
-            longitude: -122.1697,
-            latitudeDelta: 0.0250,
+            latitude: 37.422632,
+            longitude: -122.171757,
+            latitudeDelta: 0.035,
             longitudeDelta: 0.0001,
           }}
           style={styles.mapStyle}

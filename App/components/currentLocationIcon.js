@@ -10,16 +10,16 @@ export default class CurrentLocationIcon extends Component {
       <View>
         <Marker
           coordinate={{
-            latitude: 37.4274,
-            longitude: -122.1697,
+            latitude: 37.422632,
+            longitude: -122.171757,
         }}>
           <Image source={Images.currentLocation}/>
         </Marker>
 
         <Marker
           coordinate={{
-            latitude: 37.4274,
-            longitude: -122.1697,
+            latitude: 37.422632,
+            longitude: -122.171757,
           }}>
             <Image source={Images.currentLocation2}/>
         </Marker>

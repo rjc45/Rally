@@ -29,7 +29,12 @@ export default class RalliesExpanded extends React.Component {
   }
 
   openMessages(room) {
-    this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: room.name});
+    console.log(room.key);
+    if (room.key == '6HBpyQIweArvlyP50LiK') {
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: "What is Asian American Studies?"});
+    } else if (room.key == 'fTokbgBc9FSDrmmiO63u') {
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: 'Sexual Violence Town Hall'});
+    }
   }
 
   rallyButton() {
