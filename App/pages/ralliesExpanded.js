@@ -145,7 +145,7 @@ export default class RalliesExpanded extends React.Component {
                 onPress={() => this.rallyButton()}
                 >
                   <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
-                  {'Go to \'' + navigation.getParam('info').name + '\' chat'}</Text>
+                  {'See ' + navigation.getParam('info').rallyOwner + '\'s rally'}</Text>
               </TouchableOpacity>
             :
             <TouchableOpacity
