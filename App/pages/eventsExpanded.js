@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
+import { material, human, iOSColors } from 'react-native-typography'
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
 const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
@@ -46,7 +47,7 @@ export default class EventsExpanded extends React.Component {
                 style={styles.mapStyle}
               >
                 <CurrentLocationIcon/>
-                <Marker 
+                <Marker
                   coordinate={{
                     latitude: navigation.getParam('info').latitude,
                     longitude: navigation.getParam('info').longitude,
@@ -97,10 +98,12 @@ export default class EventsExpanded extends React.Component {
 
           <View style={styles.bottombuttons}>
             <View style={styles.confirmedInterest}>
-              <Button
-                title="Interested"
+              <TouchableOpacity
+                style={styles.interested}
                 onPress={() => this.interestedButton()}
-              />
+                >
+                <Text style={[human.title3, {color: iOSColors.blue}]}>Interested</Text>
+              </TouchableOpacity>
               {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
             </View>
             <Button
@@ -174,4 +177,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  text: {
+    color:'blue',
+      textAlign:'center',
+      paddingLeft : 10,
+      paddingRight : 10,
+  },
+  interested: {
+    backgroundColor: 'white',
+    paddingTop:5,
+    paddingBottom:5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 20,
+    borderColor: '#c4c4c4',
+    borderWidth: 1,
+  }
 });
