@@ -6,7 +6,7 @@ import { Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 
-const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
+const eventImages = [ Images.event2Pic, Images.event3Pic, Images.event1Pic ];
 const friendProfiles = [ 'FriendOne', 'FriendTwo' ];
 const friendsIcons = [ Images.friend1, Images.friend2 ];
 
@@ -87,10 +87,6 @@ export default class EventsStartRally extends React.Component {
       })
   }
 
-
-
-
-
   render() {
     const { navigation } = this.props;
 
@@ -139,7 +135,7 @@ export default class EventsStartRally extends React.Component {
 const styles = StyleSheet.create({
   eventImage: {
     width: Metrics.screenWidth * 0.90,
-    height: Metrics.screenHeight * 0.3,
+    height: Metrics.screenHeight * 0.25,
     margin: 20,
     borderRadius: 10,
   },
@@ -147,13 +143,15 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 55,
+    paddingTop: 58,
+    paddingLeft: 7,
   },
   rally: {
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    padding: 20,
+    padding: 15,
+    paddingTop: 40,
   },
   smallText: {
     fontSize: 16,

@@ -20,7 +20,7 @@ export default class ScrollView extends Component {
 
       <View style={styles.scrollView}>
         <View style={styles.visualization}>
-          <Entypo name='chevron-small-up' size={30} style={{justifyContent: 'center'}}/>
+          <Entypo name='chevron-small-up' size={30}/>
         </View>
         <View style={styles.visualization}>
           <Text style={styles.title}>{this.props.filter}</Text>
@@ -32,7 +32,7 @@ export default class ScrollView extends Component {
 
         <View style={styles.search}>
           <TouchableOpacity>
-            <AntDesign name='search1' style={{paddingLeft: 10}}/>
+            <AntDesign name='search1' style={{paddingLeft: 5}}/>
           </TouchableOpacity>
           <TextInput
             placeholder=''
@@ -90,13 +90,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    paddingTop: 5,
     paddingRight: 10,
     fontSize: 20,
     fontWeight: 'bold',
   },
   search: {
-    marginTop: 20,
+    marginTop: 18,
     marginLeft: 40,
     marginRight: 40,
     padding: 5,
