@@ -79,7 +79,7 @@ export default class Transportation extends React.Component {
                           longitude: navigation.getParam('info').transport[index]['_long'],
                         }}
                       >
-                        <TouchableOpacity onPress={() => console.log('nice')}>
+                        <TouchableOpacity onPress={() => this.pressRoute(index)}>
                           <MaterialCommunityIcons name={transportationIcons[index]} size={25}/>
                         </TouchableOpacity>
                       </Marker>
