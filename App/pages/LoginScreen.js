@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Image, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, SafeAreaView, Image, TextInput, Button, Alert} from 'react-native';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import { Images } from '../Themes';
