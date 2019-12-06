@@ -32,10 +32,7 @@ export default class ScrollView extends Component {
 
         <View style={styles.search}>
           <TouchableOpacity>
-            <AntDesign
-              name='search1'
-              style={{paddingLeft: 10}}
-            />
+            <AntDesign name='search1' style={{paddingLeft: 10}}/>
           </TouchableOpacity>
           <TextInput
             placeholder=''
@@ -76,7 +73,7 @@ export default class ScrollView extends Component {
 
 const styles = StyleSheet.create({
   scrollView: {
-    borderRadius: 10,
+    borderTopLeftRadius: 30,
   },
   visualization: {
     flexDirection: 'row',
