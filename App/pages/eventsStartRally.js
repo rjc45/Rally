@@ -65,8 +65,8 @@ export default class EventsStartRally extends React.Component {
   }
 
   startRally(roomsRef, navigation) {
-    roomsRef.add({ name: navigation.getParam('eventInfo').name });
-    roomsRef.where("name", "==", navigation.getParam('eventInfo').name).get().then((querySnapshot)=> {
+    roomsRef.add({ name: navigation.getParam('info').name });
+    roomsRef.where("name", "==", navigation.getParam('info').name).get().then((querySnapshot)=> {
       var roomsFB = [];
       querySnapshot.forEach((doc) => {
         roomsFB.push({
