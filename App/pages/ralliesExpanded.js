@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   },
   eventImage: {
     width: Metrics.screenWidth * 0.90,
-    height: Metrics.screenHeight * 0.3,
+    height: Metrics.screenHeight * 0.25,
     margin: 10,
     borderRadius: 10,
   },
