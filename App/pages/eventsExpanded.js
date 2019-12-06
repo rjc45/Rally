@@ -16,7 +16,10 @@ export default class EventsExpanded extends React.Component {
     header: null,
   };
 
-  state = { interested: false };
+  state = { 
+    interested: false,
+    highlightedRoute: 0,
+  };
 
   interestedButton() {
     let tmp = !this.state.interested;
@@ -28,6 +31,7 @@ export default class EventsExpanded extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    const { highlightedRoute } = this.state;
 
     return (
       <ParallaxScrollView
@@ -38,9 +42,9 @@ export default class EventsExpanded extends React.Component {
             <View style={styles.container}>
               <MapView
                 initialRegion={{
-                  latitude: 37.4274,
-                  longitude: -122.1697,
-                  latitudeDelta: navigation.getParam('info').latdelta,
+                  latitude: 37.422632,
+                  longitude: -122.171757,
+                  latitudeDelta: 0.01,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}
@@ -55,12 +59,28 @@ export default class EventsExpanded extends React.Component {
                 >
                   <Image source={eventIcons[navigation.getParam('image')]} style={styles.mapIcon}/>
                 </Marker>
+                
+                {Object.keys(navigation.getParam('info').routes).map((key, index) => {
+                  let route = navigation.getParam('info').routes[key];
+                  
+                  return (
+                    <Polyline key={index}
+                      coordinates={route}
+                      strokeWidth={3}
+                      strokeColor={highlightedRoute == index ? '#729CEF' : '#BBBDBF'}
+                    />
+                  );
+                })}
 
-                <Polyline
-                  coordinates={navigation.getParam('info').latlng}
-                  strokeWidth={2}
-                />
-            </MapView>
+                {navigation.getParam('info').routeWalk &&
+                  <Polyline
+                    coordinates={navigation.getParam('info').routeWalk}
+                    strokeWidth={2}
+                    strokeColor={'#729CEF'}
+                    lineDashPattern={[1, 5]}
+                  />
+                }
+              </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
             <SideIcons navigation={this.props.navigation} />
