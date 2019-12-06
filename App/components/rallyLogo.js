@@ -10,7 +10,7 @@ export default class RallyLogo extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Home')}
         >
-          <Image source={Images.rally} style={styles.logo}/>
+          <Image source={Images.rally}/>
         </TouchableOpacity>
       </View>
     );
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     resizeMode: 'contain',
-    height: 40,
+    height: 50,
+    backgroundColor: 'white'
   },
 });

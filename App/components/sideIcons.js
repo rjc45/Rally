@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native'
 import { Images, Metrics } from '../Themes';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 export default class SideIcons extends Component {
 
@@ -11,8 +11,8 @@ export default class SideIcons extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('GiftedChat')}
         >
-          <AntDesign
-            name='mail'
+          <Ionicons
+            name='md-mail'
             size={40}
             color='black'
           />
@@ -21,9 +21,9 @@ export default class SideIcons extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Profile')}
         >
-          <AntDesign
-            name='user'
-            size={40}
+          <Ionicons
+            name='md-person'
+            size={50}
             color='black'
           />
         </TouchableOpacity>
