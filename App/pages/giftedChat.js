@@ -14,9 +14,10 @@ import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
 
-class Rooms extends Component {
+
+class GiftedChat extends Component {
   static navigationOptions = {
-    title: 'Rooms',
+    title: 'Messages',
     header: null
   };
 
@@ -80,7 +81,7 @@ class Rooms extends Component {
     return (
       <View style={styles.roomsContainer}>
         <BackButtonMessages navigation={this.props.navigation} />
-        <StatusBar barStyle="light-content"/>
+        <StatusBar barStyle="dark-content"/>
         <Text style={styles.roomsHeader}>Messages</Text>
         <View style={styles.roomsListContainer}>
           <FlatList
@@ -95,4 +96,4 @@ class Rooms extends Component {
   }
 }
 
-export default Rooms;
+export default GiftedChat;

@@ -58,10 +58,7 @@ export default class EventsStartRally extends React.Component {
   }
 
   openMessages(room) {
-    console.log('2' + room);
-    console.log(room.name);
-    console.log(room.key);
-    this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: room.name});
+    this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: room.name, friends: arr});
   }
 
   startRally(roomsRef, navigation) {
