@@ -51,7 +51,7 @@ export default class FilterEvents extends React.Component {
                 initialRegion={{
                   latitude: 37.422632,
                   longitude: -122.171757,
-                  latitudeDelta: 0.035,
+                  latitudeDelta: 0.025,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}

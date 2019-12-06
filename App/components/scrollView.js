@@ -67,9 +67,13 @@ export default class ScrollView extends Component {
           keyExtractor={item => item.id}
         />
         {this.props.filter == 'Filtering By Friends' &&
-          <View style={styles.listItems}>
-            
-          </View>
+          <TouchableOpacity>
+            <View style={styles.listItems}>
+              <AntDesign name='pluscircleo' size={35} style={{paddingLeft: 7}}/>
+              <Text style={styles.bigText}>Add Friend</Text>
+              <Text style={styles.smallText}>     </Text>
+            </View>
+          </TouchableOpacity>
         } 
       </View>
     );
@@ -116,7 +120,7 @@ const styles = StyleSheet.create({
   },
   bigText: {
     fontSize: 20,
-    width: Metrics.screenWidth * 0.6,
+    width: Metrics.screenWidth * 0.55,
   },
   smallText: {
     fontSize: 13,

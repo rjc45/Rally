@@ -49,8 +49,8 @@ export default class FilterEvents extends React.Component {
             <View style={styles.container}>
               <MapView
                 initialRegion={{
-                  latitude: 37.422632,
-                  longitude: -122.171757,
+                  latitude: 37.423632,
+                  longitude: -122.17,
                   latitudeDelta: 0.035,
                   longitudeDelta: 0.001,
                 }}
