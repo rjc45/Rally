@@ -66,7 +66,8 @@ export default class FilterEvents extends React.Component {
                         longitude: rally.longitude,
                       }}
                       title={rally.name}>
-                      <TouchableOpacity onPress={() => this.props.navigation.navigate(rally.navigation)}>
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate('RalliesExpanded', 
+                        {info: rally, image: Number(rally.id) - 1})}>
                         <Image source={rallyIcons[Number(rally.id) - 1]}/>
                       </TouchableOpacity>
                     </Marker>

@@ -68,7 +68,7 @@ export default class FilterEvents extends React.Component {
                       title={event.name}>
                       <TouchableOpacity 
                         onPress={() => this.props.navigation.navigate('EventsExpanded', 
-                        {eventInfo: event, image: Number(event.id) - 1})}>
+                        {info: event, image: Number(event.id) - 1})}>
                         <Image source={eventIcons[Number(event.id) - 1]}/>
                       </TouchableOpacity>
                     </Marker>
