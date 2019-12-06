@@ -9,14 +9,16 @@ import { GiftedChat, SystemMessage } from 'react-native-gifted-chat';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
-import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from '../components';
+import { BackButton } from '../components';
+import { Images } from '../Themes';
 
 class GiftedMessages extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerTitle: navigation.state.params.roomName,
     headerStyle: styles.messagesHeader,
     headerTitleStyle: styles.messagesTitle,
-    headerBackTitleStyle: styles.messagesBackTitle
+    headerBackTitleStyle: styles.messagesBackTitle,
+    headerLeft: <BackButton navigation={navigation} noBackground={true}/>,
   });
 
   constructor(props) {
@@ -84,7 +86,6 @@ class GiftedMessages extends Component {
     })
   }
 
-
   render() {
     return (
       <View style={{flex: 1}}>
@@ -92,8 +93,8 @@ class GiftedMessages extends Component {
         <View style={styles.friendContainer}>
           {this.state.members.map((member, index) => {
             return (
-            <Text key={index} style={styles.roomLiText}>  {member.name}  </Text>
-          );
+              <Text key={index} style={styles.roomLiText}>  {member.name}  </Text>
+            );
           })}
         </View>
         <GiftedChat

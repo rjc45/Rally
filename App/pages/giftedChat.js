@@ -2,18 +2,15 @@
 import React, { Component } from 'react';
 import {
   Text,
-  TextInput,
   TouchableHighlight,
   StatusBar,
-  ListView,
   FlatList,
   View
 } from 'react-native';
-import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from '../components';
+import { BackButtonMessages } from '../components';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
-
 
 class GiftedChat extends Component {
   static navigationOptions = {
@@ -45,13 +42,11 @@ class GiftedChat extends Component {
         });
       });
       this.setState({ rooms: roomsFB });
-      })
-      .catch((error) => {
+    })
+    .catch((error) => {
       console.log("Error getting documents: ", error);
-      });
+    });
   }
-
- 
 
   addRoom() {
     if (this.state.newRoom === '') {
@@ -87,8 +82,7 @@ class GiftedChat extends Component {
           <FlatList
             data={this.state.rooms}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (this.renderRow(item)
-            )}
+            renderItem={({item}) => (this.renderRow(item))}
           />
         </View>
       </View>

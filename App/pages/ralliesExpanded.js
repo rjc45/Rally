@@ -179,14 +179,14 @@ export default class RalliesExpanded extends React.Component {
 
 
           <View style={styles.bottombuttons}>
-          <TouchableOpacity
-            style={styles.interested}
-            onPress={() => navigation.getParam('info').rallyOwner == "Patrick" 
-            ? this.props.navigation.navigate('FriendTwo') : this.props.navigation.navigate('FriendOne')}
-            >
-              <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
-              {'View ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.interested}
+              onPress={() => navigation.getParam('info').rallyOwner == "Patrick" 
+              ? this.props.navigation.navigate('FriendTwo') : this.props.navigation.navigate('FriendOne')}
+              >
+                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
+                {'View ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
+            </TouchableOpacity>
 
             {this.state.interested ?
               <TouchableOpacity
@@ -262,7 +262,8 @@ const styles = StyleSheet.create({
   bottombuttons: {
     flexDirection: 'column',
     justifyContent: 'space-around',
-    paddingTop: 10,
+    marginTop: 20,
+    marginBottom: 40,
   },
   confirmedInterest: {
     flexDirection: 'row',

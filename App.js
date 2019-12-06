@@ -18,7 +18,7 @@ const StackNav = createStackNavigator({
   GiftedMessages: {screen: pages.GiftedMessages},
   Transportation: {screen: pages.Transportation},
 },{
-  initialRouteName: 'FilterEvents',
+  initialRouteName: 'LoginScreen',
 });
 
 const MyApp = createAppContainer(StackNav);
