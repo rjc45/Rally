@@ -37,7 +37,8 @@ export default class EventsExpanded extends React.Component {
     this.props.navigation.navigate('Transportation',
     { info: this.props.navigation.getParam('info'),
     image: this.props.navigation.getParam('image'), 
-    highlightedRoute: index });
+    highlightedRoute: index,
+    type: 'events' });
   };
 
   render() {

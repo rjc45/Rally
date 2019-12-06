@@ -9,6 +9,7 @@ import { Entypo } from '@expo/vector-icons';
 import { WebView } from 'react-native-webview';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
+const ralliesIcons = [ Images.rally1, Images.rally2 ];
 
 export default class Transportation extends React.Component {
 
@@ -54,7 +55,9 @@ export default class Transportation extends React.Component {
                   }}
                   title={navigation.getParam('info').name}
                 >
-                  <Image source={eventIcons[navigation.getParam('image')]} style={styles.mapIcon}/>
+                  <Image source={navigation.getParam('type') == 'events' ? 
+                    eventIcons[navigation.getParam('image')] : ralliesIcons[navigation.getParam('image')]} 
+                    style={styles.mapIcon}/>
                 </Marker>
 
                 {Object.keys(navigation.getParam('info').routes).map((key, index) => {
@@ -97,12 +100,12 @@ export default class Transportation extends React.Component {
             
             {highlightedRoute == 0 && 
               <WebView style={styles.schedule}
-                source={{ uri: 'https://transportation.stanford.edu/marguerite/x#marguerite--schedule-anchor' }}
+                source={{ uri: 'https://transportation.stanford.edu/marguerite/y#marguerite--schedule-anchor' }}
               />
             }
             {highlightedRoute == 1 && 
               <WebView style={styles.schedule}
-                source={{ uri: 'https://transportation.stanford.edu/marguerite/y#marguerite--schedule-anchor' }}
+                source={{ uri: 'https://transportation.stanford.edu/marguerite/x#marguerite--schedule-anchor' }}
               />
             }
           </View>
