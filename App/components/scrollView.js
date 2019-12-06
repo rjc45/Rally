@@ -66,6 +66,11 @@ export default class ScrollView extends Component {
           )}
           keyExtractor={item => item.id}
         />
+        {this.props.filter == 'Filtering By Friends' &&
+          <View style={styles.listItems}>
+            
+          </View>
+        } 
       </View>
     );
   }

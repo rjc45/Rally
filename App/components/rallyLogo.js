@@ -18,7 +18,7 @@ export default class RallyLogo extends Component {
 const styles = StyleSheet.create({
   rallyLogo: {
     position: 'absolute',
-    top: '7.2%',
+    top: '8%',
   },
   logo: {
     resizeMode: 'contain',

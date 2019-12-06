@@ -43,7 +43,7 @@ export default class FilterEvents extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={Metrics.screenHeight * .8}
+        parallaxHeaderHeight={Metrics.screenHeight * .7}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
@@ -52,7 +52,7 @@ export default class FilterEvents extends React.Component {
                   latitude: 37.422632,
                   longitude: -122.171757,
                   latitudeDelta: 0.035,
-                  longitudeDelta: 0.0001,
+                  longitudeDelta: 0.001,
                 }}
                 style={styles.mapStyle}
               >
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   foreground: {
-    height: 700,
+    height: 400,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

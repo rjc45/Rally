@@ -43,7 +43,7 @@ export default class FilterEvents extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor="white"
-        parallaxHeaderHeight={Metrics.screenHeight * .8}
+        parallaxHeaderHeight={Metrics.screenHeight * .7}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>

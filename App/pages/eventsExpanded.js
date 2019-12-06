@@ -49,7 +49,7 @@ export default class EventsExpanded extends React.Component {
     return (
       <ParallaxScrollView
         contentBackgroundColor='white'
-        parallaxHeaderHeight={Metrics.screenHeight * .5}
+        parallaxHeaderHeight={Metrics.screenHeight * .6}
         renderForeground={() => (
           <View style={styles.foreground}>
             <View style={styles.container}>
