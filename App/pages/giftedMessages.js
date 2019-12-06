@@ -86,6 +86,7 @@ class GiftedMessages extends Component {
     })
   }
 
+
   render() {
     return (
       <View style={{flex: 1}}>
@@ -93,8 +94,8 @@ class GiftedMessages extends Component {
         <View style={styles.friendContainer}>
           {this.state.members.map((member, index) => {
             return (
-              <Text key={index} style={styles.roomLiText}>  {member.name}  </Text>
-            );
+            <Text key={index} style={styles.roomLiText}>  {member.name}  </Text>
+          );
           })}
         </View>
         <GiftedChat
