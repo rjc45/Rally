@@ -123,8 +123,8 @@ export default class EventsExpanded extends React.Component {
                 onPress={() => this.interestedButton()}
                 >
                 <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Interested</Text>
+                {this.state.interested ? <FontAwesome name='star' size={20}/> : <Text/>}
               </TouchableOpacity>
-              {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
             </View>
             <TouchableOpacity
               style={styles.interested}
@@ -199,15 +199,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  text: {
-    color:'blue',
-      textAlign:'center',
-      paddingLeft : 10,
-      paddingRight : 10,
-  },
   interested: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: 'white',
-    paddingTop:5,
+    paddingTop: 5,
     paddingBottom:5,
     paddingLeft: 10,
     paddingRight: 10,
