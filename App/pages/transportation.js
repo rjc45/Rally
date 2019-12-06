@@ -100,12 +100,12 @@ export default class Transportation extends React.Component {
             
             {highlightedRoute == 0 && 
               <WebView style={styles.schedule}
-                source={{ uri: 'https://transportation.stanford.edu/marguerite/y#marguerite--schedule-anchor' }}
+                source={{ uri: 'https://transportation.stanford.edu/marguerite/x#marguerite--schedule-anchor' }}
               />
             }
             {highlightedRoute == 1 && 
               <WebView style={styles.schedule}
-                source={{ uri: 'https://transportation.stanford.edu/marguerite/x#marguerite--schedule-anchor' }}
+                source={{ uri: 'https://transportation.stanford.edu/marguerite/y#marguerite--schedule-anchor' }}
               />
             }
           </View>
