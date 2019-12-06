@@ -136,14 +136,17 @@ export default class RalliesExpanded extends React.Component {
             onPress={() => this.props.navigation.navigate('FriendTwo')}
             >
               <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
-              {'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
+              {'View ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
           </TouchableOpacity>
 
             {this.state.interested ?
-              <View style={styles.confirmedInterest}>
-                <Text style={styles.smallText}>Joined  </Text>
-                <Image source={Images.filterRallies} style={styles.star}/>
-              </View>
+              <TouchableOpacity
+                style={styles.interested}
+                onPress={() => this.rallyButton()}
+                >
+                  <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
+                  {'View ' + navigation.getParam('info').rallyOwner + '\'s rally'}</Text>
+              </TouchableOpacity>
             :
             <TouchableOpacity
               style={styles.interested}
@@ -215,10 +218,12 @@ const styles = StyleSheet.create({
   confirmedInterest: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center'
   },
   star: {
     height: 25,
     width: 30,
+    alignItems: 'center'
   },
   interested: {
     backgroundColor: 'white',
