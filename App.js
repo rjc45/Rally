@@ -18,7 +18,7 @@ const StackNav = createStackNavigator({
   GiftedChat: {screen: pages.GiftedChat},
   GiftedMessages: {screen: pages.GiftedMessages},
 },{
-  initialRouteName: 'FilterEvents',
+  initialRouteName: 'FilterRallies',
 });
 
 const MyApp = createAppContainer(StackNav);

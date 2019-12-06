@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View, Image, Text, Alert } from 'react-native';
+import { Button, StyleSheet, View, Image, Text, Alert, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Callout } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
@@ -8,6 +8,8 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Entypo } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
+import { material, human, iOSColors, systemWeights } from 'react-native-typography'
+
 
 const eventIcons = [ Images.rally1, Images.rally2 ];
 const ralliesImages = [ Images.rally1Pic, Images.rally2Pic ];
@@ -81,7 +83,7 @@ export default class RalliesExpanded extends React.Component {
 
               <CurrentLocationIcon/>
 
-              <Marker 
+              <Marker
                 coordinate={{
                   latitude: navigation.getParam('info').latitude,
                   longitude: navigation.getParam('info').longitude,
@@ -129,20 +131,27 @@ export default class RalliesExpanded extends React.Component {
 
 
           <View style={styles.bottombuttons}>
-            <Button
-              title={'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}
-              onPress={() => this.props.navigation.navigate('FriendTwo')}
-            />
+          <TouchableOpacity
+            style={styles.interested}
+            onPress={() => this.props.navigation.navigate('FriendTwo')}
+            >
+              <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>
+              {'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
+          </TouchableOpacity>
+
             {this.state.interested ?
               <View style={styles.confirmedInterest}>
                 <Text style={styles.smallText}>Joined  </Text>
                 <Image source={Images.filterRallies} style={styles.star}/>
               </View>
             :
-              <Button
-                title={'Join ' + navigation.getParam('info').rallyOwner + '\'s Rally'}
-                onPress={() => this.rallyButton()}
-              />
+            <TouchableOpacity
+              style={styles.interested}
+              onPress={() => this.rallyButton()}
+              >
+                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>
+                {'See ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
+            </TouchableOpacity>
             }
           </View>
         </View>
@@ -211,4 +220,14 @@ const styles = StyleSheet.create({
     height: 25,
     width: 30,
   },
+  interested: {
+    backgroundColor: 'white',
+    paddingTop:5,
+    paddingBottom:5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 20,
+    borderColor: '#c4c4c4',
+    borderWidth: 1,
+  }
 });

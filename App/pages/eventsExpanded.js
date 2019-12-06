@@ -6,7 +6,7 @@ import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
-import { material, human, iOSColors } from 'react-native-typography'
+import { material, human, iOSColors, systemWeights } from 'react-native-typography'
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
 const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
@@ -122,7 +122,7 @@ export default class EventsExpanded extends React.Component {
                 style={styles.interested}
                 onPress={() => this.interestedButton()}
                 >
-                <Text style={[human.title3, {color: iOSColors.blue}]}>Interested</Text>
+                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Interested</Text>
               </TouchableOpacity>
               {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
             </View>
@@ -131,7 +131,7 @@ export default class EventsExpanded extends React.Component {
               onPress={() => this.props.navigation.navigate('EventsStartRally',
               {info: navigation.getParam('info'), image: navigation.getParam('image')})}
             >
-            <Text style={[human.title3, {color: iOSColors.blue}]}>Start a Rally</Text>
+            <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Start a Rally</Text>
             </TouchableOpacity>
           </View>
         </View>
