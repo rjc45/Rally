@@ -4,7 +4,7 @@ import {
   StatusBar,
   View
 } from 'react-native';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat, SystemMessage } from 'react-native-gifted-chat';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import styles from './styles.js';
@@ -13,6 +13,7 @@ import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from
 class GiftedMessages extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.state.params.roomName,
+    friends: navigation.state.params.friends,
     headerStyle: styles.messagesHeader,
     headerTitleStyle: styles.messagesTitle,
     headerBackTitleStyle: styles.messagesBackTitle
@@ -81,7 +82,7 @@ class GiftedMessages extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <StatusBar barStyle="light-content"/>
+        <StatusBar barStyle="dark-content"/>
         <GiftedChat
           renderSystemMessage={this.renderSystemMessage}
           messages={this.state.messages}
