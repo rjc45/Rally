@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
-import { SideIcons, CurrentLocationIcon } from '../components';
+import { RallyLogo ,SideIcons, CurrentLocationIcon } from '../components';
 import firestore from '../../firebase';
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
@@ -37,7 +37,7 @@ export default class Home extends React.Component {
         eventsData.push(event.data());
       })
       this.setState({ events: eventsData })
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +52,7 @@ export default class Home extends React.Component {
         ralliesData.push(rally.data());
       })
       this.setState({ rallies: ralliesData })
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -67,7 +67,7 @@ export default class Home extends React.Component {
         friendsData.push(friend.data());
       })
       this.setState({ friends: friendsData })
-      
+
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +130,7 @@ export default class Home extends React.Component {
                 title={friend.name}
               >
                 <TouchableOpacity onPress={() => this.props.navigation.navigate(friend.navigation)}>
-                  <Image 
+                  <Image
                     source={friendsIcons[Number(friend.id) - 1]}
                     style={styles.icon}
                   />
@@ -140,7 +140,7 @@ export default class Home extends React.Component {
           })}
         </MapView>
 
-        <Image source={Images.rally} style={styles.rallyLogo}/>
+        <RallyLogo navigation={this.props.navigation} />
         <SideIcons navigation={this.props.navigation}/>
 
         <View style={styles.filters}>
