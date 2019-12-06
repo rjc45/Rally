@@ -18,7 +18,6 @@ import styles from './styles.js';
 class GiftedChat extends Component {
   static navigationOptions = {
     title: 'Messages',
-    friends: null,
     header: null
   };
 
@@ -84,7 +83,6 @@ class GiftedChat extends Component {
         <BackButtonMessages navigation={this.props.navigation} />
         <StatusBar barStyle="dark-content"/>
         <Text style={styles.roomsHeader}>Messages</Text>
-
         <View style={styles.roomsListContainer}>
           <FlatList
             data={this.state.rooms}

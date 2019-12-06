@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import {
   StatusBar,
-  View
+  View,
+  Text
 } from 'react-native';
 import { GiftedChat, SystemMessage } from 'react-native-gifted-chat';
 import firestore from '../../firebase';
@@ -12,8 +13,7 @@ import { RallyLogo, SideIcons, BackButtonMessages, ScrollView, BackButton } from
 
 class GiftedMessages extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.roomName,
-    friends: navigation.state.params.friends,
+    headerTitle: navigation.state.params.roomName,
     headerStyle: styles.messagesHeader,
     headerTitleStyle: styles.messagesTitle,
     headerBackTitleStyle: styles.messagesBackTitle

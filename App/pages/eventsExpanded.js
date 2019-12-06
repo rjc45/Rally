@@ -6,7 +6,7 @@ import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
-import { material, human, iOSColors } from 'react-native-typography'
+import { material, human, iOSColors, systemWeights } from 'react-native-typography'
 
 const eventIcons = [ Images.event1, Images.event2, Images.event3 ];
 const eventImages = [ Images.event3Pic, Images.event2Pic, Images.event1Pic ];
@@ -17,7 +17,7 @@ export default class EventsExpanded extends React.Component {
     header: null,
   };
 
-  state = { 
+  state = {
     interested: false,
     highlightedRoute: 0,
   };
@@ -63,7 +63,7 @@ export default class EventsExpanded extends React.Component {
 
                 {Object.keys(navigation.getParam('info').routes).map((key, index) => {
                   let route = navigation.getParam('info').routes[key];
-                  
+
                   return (
                     <Polyline key={index}
                       coordinates={route}
@@ -122,15 +122,17 @@ export default class EventsExpanded extends React.Component {
                 style={styles.interested}
                 onPress={() => this.interestedButton()}
                 >
-                <Text style={[human.title3, {color: iOSColors.blue}]}>Interested</Text>
+                <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Interested</Text>
+                {this.state.interested ? <FontAwesome name='star' size={20}/> : <Text/>}
               </TouchableOpacity>
-              {this.state.interested ? <FontAwesome name='star' size={30}/> : <Text/>}
             </View>
-            <Button
-              title="Start a Rally"
+            <TouchableOpacity
+              style={styles.interested}
               onPress={() => this.props.navigation.navigate('EventsStartRally',
               {info: navigation.getParam('info'), image: navigation.getParam('image')})}
-            />
+            >
+            <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue}]}>Start a Rally</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ParallaxScrollView>
@@ -197,15 +199,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  text: {
-    color:'blue',
-      textAlign:'center',
-      paddingLeft : 10,
-      paddingRight : 10,
-  },
   interested: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: 'white',
-    paddingTop:5,
+    paddingTop: 5,
     paddingBottom:5,
     paddingLeft: 10,
     paddingRight: 10,
