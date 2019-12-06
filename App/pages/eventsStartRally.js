@@ -24,10 +24,11 @@ export default class EventsStartRally extends React.Component {
       rooms: [],
       arr: [
         { clicked: false },
-        { clicked: false},
-        { clicked: false},
+        { clicked: false },
       ],
       friends: [],
+      members: [],
+      users: [],
     }
   }
 
@@ -58,7 +59,17 @@ export default class EventsStartRally extends React.Component {
   }
 
   openMessages(room) {
-    this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: room.name, friends: arr});
+    var user = firebase.auth().currentUser;
+    var memberRef = firestore.collection('users/' + user.uid  + '/rooms/' + room.key + '/members');
+    if (this.state.arr[0].clicked == true) {
+      memberRef.add({name: 'Sophie'});
+      console.log('added sophie');
+    }
+    if (this.state.arr[1].clicked == true) {
+      memberRef.add({name: 'Patrick'});
+      console.log('added patrick');
+    }
+    this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: room.name});
   }
 
   startRally(roomsRef, navigation) {
@@ -72,10 +83,11 @@ export default class EventsStartRally extends React.Component {
         });
       });
       this.setState({ rooms: roomsFB });
-      console.log('1'+ this.state.rooms[0]);
       this.openMessages(this.state.rooms[0]);
       })
   }
+
+
 
 
 

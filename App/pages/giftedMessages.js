@@ -26,14 +26,33 @@ class GiftedMessages extends Component {
     this.messagesRef = FirebaseDB.ref(`messages/${roomKey}`);
     this.state = {
       user: '',
-      messages: []
+      messages: [],
+      members: []
     }
   }
 
   componentDidMount() {
     this.setState({ user: firebase.auth().currentUser });
+    this.getMembers();
     this.listenForMessages(this.messagesRef);
   }
+
+  getMembers = async () => {
+    try {
+      let membersData = [];
+      var roomKey = this.props.navigation.state.params.roomKey;
+      let user = firebase.auth().currentUser
+      let membersCollectionRef = firestore.collection('users/' + user.uid  + '/rooms/' + roomKey + '/members');
+      let allMembers = await membersCollectionRef.get();
+      allMembers.forEach((member) => {
+        membersData.push(member.data());
+      })
+      this.setState({ members: membersData })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   listenForMessages(messagesRef) {
     messagesRef.on('value', (dataSnapshot) => {
@@ -65,24 +84,18 @@ class GiftedMessages extends Component {
     })
   }
 
-  renderSystemMessage = props => {
-    return (
-      <SystemMessage
-        {...props}
-        containerStyle={{
-          marginBottom: 15,
-        }}
-        textStyle={{
-          fontSize: 14,
-        }}
-      />
-    )
-  }
 
   render() {
     return (
       <View style={{flex: 1}}>
         <StatusBar barStyle="dark-content"/>
+        <View style={styles.friendContainer}>
+          {this.state.members.map((member, index) => {
+            return (
+            <Text key={index} style={styles.roomLiText}>  {member.name}  </Text>
+          );
+          })}
+        </View>
         <GiftedChat
           renderSystemMessage={this.renderSystemMessage}
           messages={this.state.messages}

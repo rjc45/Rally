@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   logo: {
     resizeMode: 'contain',
     height: 50,
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     borderRadius: 10,
     borderColor: 'gray',
     borderWidth: .2

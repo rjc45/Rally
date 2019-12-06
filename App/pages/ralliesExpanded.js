@@ -31,11 +31,12 @@ export default class RalliesExpanded extends React.Component {
   }
 
   openMessages(room) {
-    console.log(room.key);
     if (room.key == '6HBpyQIweArvlyP50LiK') {
-      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: "What is Asian American Studies?"});
+      var users = ['Sophie'];
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: "What is Asian American Studies?", users_arr: users});
     } else if (room.key == 'fTokbgBc9FSDrmmiO63u') {
-      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: 'Sexual Violence Town Hall'});
+      var users = ['Sophie', 'Patrick'];
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: 'Sexual Violence Town Hall', users_arr: users});
     }
   }
 

@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   keyboardView: {
     flex: 1,
-    backgroundColor: '#1E90FF'
   },
   authContainer: {
     flex: 1,
@@ -81,7 +80,6 @@ const styles = StyleSheet.create({
     height: 40,
     textAlign: 'center',
     fontSize: 18,
-    color: '#1E90FF',
     borderColor: '#f9f9f9',
     borderWidth: 2,
     borderRadius: 4,
@@ -103,6 +101,12 @@ const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: '#fff'
   },
+  friendContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+  },
   roomLi: {
     flex: 1,
     backgroundColor: '#fff',
@@ -118,7 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   messagesHeader: {
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   messagesTitle: {
     color: 'black',
