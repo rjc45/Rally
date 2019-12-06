@@ -5,7 +5,7 @@ import { Marker, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 import firestore from '../../firebase';
 import firebase from 'firebase';
 import { material, human, iOSColors, systemWeights } from 'react-native-typography'
@@ -13,6 +13,7 @@ import { material, human, iOSColors, systemWeights } from 'react-native-typograp
 
 const ralliesIcons = [ Images.rally1, Images.rally2 ];
 const ralliesImages = [ Images.rally1Pic, Images.rally2Pic ];
+const transportationIcons = [ 'numeric-1-box-outline', 'numeric-2-box-outline' ];
 
 export default class RalliesExpanded extends React.Component {
 
@@ -108,13 +109,25 @@ export default class RalliesExpanded extends React.Component {
                   let route = navigation.getParam('info').routes[key];
 
                   return (
-                    <Polyline key={index}
-                      coordinates={route}
-                      strokeWidth={3}
-                      strokeColor={highlightedRoute == index ? '#729CEF' : '#BBBDBF'}
-                      tappable={true}
-                      onPress={() => this.pressRoute(index)}
-                    />
+                    <View key={index}>
+                      <Polyline
+                        coordinates={route}
+                        strokeWidth={3}
+                        strokeColor={highlightedRoute === index ? '#729CEF' : '#BBBDBF'}
+                        tappable={true}
+                        onPress={() => this.pressRoute(index)}
+                      />
+                      <Marker
+                        coordinate={{
+                          latitude: navigation.getParam('info').transport[index]['_lat'],
+                          longitude: navigation.getParam('info').transport[index]['_long'],
+                        }}
+                      >
+                        <TouchableOpacity onPress={() => this.pressRoute(index)}>
+                          <MaterialCommunityIcons name={transportationIcons[index]} size={25}/>
+                        </TouchableOpacity>
+                      </Marker>
+                    </View>
                   );
                 })}
 
