@@ -12,6 +12,7 @@ import RalliesExpanded from './ralliesExpanded';
 import LoginScreen from './LoginScreen';
 import GiftedChat from './giftedChat';
 import GiftedMessages from './giftedMessages';
+import Transportation from './transportation';
 
 export {
   Home,
@@ -28,4 +29,5 @@ export {
   LoginScreen,
   GiftedChat,
   GiftedMessages,
+  Transportation,
 }
