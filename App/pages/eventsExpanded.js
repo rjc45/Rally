@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, StyleSheet, View, Image, Text, Alert } from 'react-native';
 import MapView from 'react-native-maps';
-import { Marker, Callout } from 'react-native-maps';
+import { Marker, Polyline } from 'react-native-maps';
 import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
@@ -40,7 +40,7 @@ export default class EventsExpanded extends React.Component {
                 initialRegion={{
                   latitude: 37.4274,
                   longitude: -122.1697,
-                  latitudeDelta: 0.0222,
+                  latitudeDelta: navigation.getParam('info').latdelta,
                   longitudeDelta: 0.0001,
                 }}
                 style={styles.mapStyle}
@@ -53,9 +53,13 @@ export default class EventsExpanded extends React.Component {
                   }}
                   title={navigation.getParam('info').name}
                 >
-                  <Image source={eventIcons[navigation.getParam('image')]}/>
+                  <Image source={eventIcons[navigation.getParam('image')]} style={styles.mapIcon}/>
                 </Marker>
-              
+
+                <Polyline
+                  coordinates={navigation.getParam('info').latlng}
+                  strokeWidth={2}
+                />
             </MapView>
 
             <RallyLogo navigation={this.props.navigation} />
@@ -64,7 +68,6 @@ export default class EventsExpanded extends React.Component {
           </View>
         </View>
       )}>
-
 
         <View style={styles.scrollView}>
           <View style={styles.alignCenter}>
@@ -130,6 +133,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Metrics.screenWidth,
     height: Metrics.screenHeight,
+  },
+  mapIcon: {
+    marginBottom: 35,
   },
   scrollView: {
     paddingLeft: 20,
