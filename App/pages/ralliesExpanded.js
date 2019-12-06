@@ -57,8 +57,6 @@ export default class RalliesExpanded extends React.Component {
       })
       this.openMessages(FirebaseDB.ref('messages/fTokbgBc9FSDrmmiO63u'));
     }
-
-    //navigation to the correct messages
   }
 
   render() {
@@ -133,7 +131,8 @@ export default class RalliesExpanded extends React.Component {
           <View style={styles.bottombuttons}>
           <TouchableOpacity
             style={styles.interested}
-            onPress={() => this.props.navigation.navigate('FriendTwo')}
+            onPress={() => navigation.getParam('info').rallyOwner == "Patrick" 
+            ? this.props.navigation.navigate('FriendTwo') : this.props.navigation.navigate('FriendOne')}
             >
               <Text style={[human.title3, systemWeights.semibold, {color: iOSColors.blue, textAlign: 'center'}]}>
               {'View ' + navigation.getParam('info').rallyOwner + '\'s Profile'}</Text>
