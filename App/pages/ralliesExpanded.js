@@ -6,6 +6,8 @@ import { Images, Metrics } from '../Themes';
 import { RallyLogo, BackButton, SideIcons, CurrentLocationIcon } from '../components';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Entypo } from '@expo/vector-icons';
+import firestore from '../../firebase';
+import firebase from 'firebase';
 
 const eventIcons = [ Images.rally1, Images.rally2 ];
 const ralliesImages = [ Images.rally1Pic, Images.rally2Pic ];
@@ -16,15 +18,42 @@ export default class RalliesExpanded extends React.Component {
     header: null,
   };
 
-  state = { 
-    rally: false,
-  };
+  constructor(props) {
+    super(props);
+    var user = firebase.auth().currentUser;
+    this.roomsRef = firestore.collection('users/' + user.uid  + '/rooms');
+    this.state = {
+      rooms: [],
+      rally: false,
+    }
+  }
+
+  openMessages(room) {
+    console.log(room.key);
+    if (room.key == '6HBpyQIweArvlyP50LiK') {
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: "What is Asian American Studies?"});
+    } else if (room.key == 'fTokbgBc9FSDrmmiO63u') {
+      this.props.navigation.navigate('GiftedMessages', {roomKey: room.key, roomName: 'Sexual Violence Town Hall'});
+    }
+  }
 
   rallyButton() {
     let tmp = !this.state.interested;
     this.setState({ interested: tmp });
+    var FirebaseDB = firebase.database();
     if (tmp) {
       Alert.alert('Success', 'You have joined ' + this.props.navigation.getParam('info').rallyOwner + '\'s Rally!');
+    }
+    if (this.props.navigation.getParam('info').rallyOwner == 'Sophie') {
+      this.roomsRef.doc('6HBpyQIweArvlyP50LiK').set({
+        name: "What is Asian American Studies?",
+      });
+      this.openMessages(FirebaseDB.ref('messages/6HBpyQIweArvlyP50LiK'));
+    } else if (this.props.navigation.getParam('info').rallyOwner == 'Patrick') {
+      this.roomsRef.doc('fTokbgBc9FSDrmmiO63u').set({
+        name: 'Sexual Violence Town Hall',
+      })
+      this.openMessages(FirebaseDB.ref('messages/fTokbgBc9FSDrmmiO63u'));
     }
 
     //navigation to the correct messages
