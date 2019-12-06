@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 50,
+    paddingTop: 55,
   },
   rally: {
     fontSize: 22,

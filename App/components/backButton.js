@@ -11,11 +11,13 @@ export default class BackButton extends Component {
         <TouchableOpacity
           onPress={() => this.props.navigation.goBack()}
         >
-          <AntDesign
-            name='arrowleft'
-            size={40}
-            color='black'
-          />
+          <View style={styles.checkBoxWrapper}>
+            <AntDesign
+              name='arrowleft'
+              size={35}
+              color='black'
+            />
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -26,8 +28,19 @@ export default class BackButton extends Component {
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
-    top: '6%',
+    top: '7%',
     alignSelf: 'flex-start',
     paddingLeft: 15,
+  },
+  checkBoxWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: '#FFFFFF',
+    borderColor: 'gray',
+    borderWidth: 0.2,
+    borderRadius: 20,
+    paddingTop: 2,
   },
 });

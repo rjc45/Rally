@@ -7,9 +7,7 @@ export default class RallyLogo extends Component {
   render () {
     return (
       <View style={styles.rallyLogo}>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Home')}
-        >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
           <Image source={Images.rally} style={styles.logo}/>
         </TouchableOpacity>
       </View>
@@ -20,14 +18,11 @@ export default class RallyLogo extends Component {
 const styles = StyleSheet.create({
   rallyLogo: {
     position: 'absolute',
-    top: '6%',
+    top: '7.2%',
   },
   logo: {
     resizeMode: 'contain',
-    height: 50,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    borderColor: 'gray',
-    borderWidth: .2
+    height: 30,
+    marginLeft: 15,
   },
 });

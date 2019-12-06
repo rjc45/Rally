@@ -139,7 +139,9 @@ export default class Home extends React.Component {
           })}
         </MapView>
 
-        <RallyLogo navigation={this.props.navigation} />
+        <View style={styles.rallyLogo}>
+          <Image source={Images.rally} style={styles.logo}/>
+        </View>
         <SideIcons navigation={this.props.navigation}/>
 
         <View style={styles.filters}>
@@ -186,9 +188,12 @@ const styles = StyleSheet.create({
   },
   rallyLogo: {
     position: 'absolute',
-    top: '6%',
+    top: '7.2%',
+  },
+  logo: {
     resizeMode: 'contain',
-    height: 40,
+    height: 30,
+    marginLeft: 15,
   },
   icon: {
     width: 50,
@@ -204,7 +209,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   checkBoxWrapper: {
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     width: 80,
