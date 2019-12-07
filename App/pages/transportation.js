@@ -80,7 +80,7 @@ export default class Transportation extends React.Component {
                         }}
                       >
                         <TouchableOpacity onPress={() => this.pressRoute(index)}>
-                          <MaterialCommunityIcons name={transportationIcons[index]} size={25}/>
+                          <MaterialCommunityIcons name={transportationIcons[index]} size={25} color='#081FA6'/>
                         </TouchableOpacity>
                       </Marker>
                     </View>
